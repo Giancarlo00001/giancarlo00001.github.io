@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Free Quote - The Notceb Financial Group</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #047857;
+            --primary-dark: #065f46;
+            --primary-light: #10b981;
+            --primary-glow: rgba(4, 120, 87, 0.3);
+            --bg-light: #f0f9ff;
+            --bg-white: #ffffff;
+            --text-dark: #1a202c;
+            --text-light: #4a5568;
+            --border: #e2e8f0;
+            --gradient-primary: linear-gradient(135deg, #047857 0%, #065f46 100%);
+            --accent-orange: #f97316;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            overflow: hidden;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--primary-glow) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(4, 120, 87, 0.2) 0%, transparent 30%);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(4, 120, 87, 0.1);
+        }
+
+        .card-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 60px 30px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .card-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .coverage-amount {
+            color: #fbbf24;
+            font-size: 3rem;
+            font-weight: 900;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .card-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.5;
+            margin-top: 16px;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 6px;
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: white;
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .form-section {
+            padding: 40px 30px;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .step-title {
+            font-size: 1.75rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .step-subtitle {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--primary);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+
+        /* Age Slider Styles */
+        .age-slider-container {
+            padding: 20px 0;
+        }
+
+        .age-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .age-value {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .age-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            padding: 0 10px;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 14px;
+            border-radius: 10px;
+            background: linear-gradient(to right, var(--primary) 0%, var(--primary) 50%, var(--border) 50%, var(--border) 100%);
+            outline: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            cursor: pointer;
+            box-shadow: 0 4px 16px var(--primary-glow);
+            border: 5px solid white;
+            transition: all 0.3s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 24px var(--primary-glow);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            cursor: pointer;
+            box-shadow: 0 4px 16px var(--primary-glow);
+            border: 5px solid white;
+            transition: all 0.3s;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 24px var(--primary-glow);
+        }
+
+        .age-range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 0 10px;
+        }
+
+        .radio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        /* Health Options - Stacked Style */
+        .health-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .health-option {
+            position: relative;
+        }
+
+        .health-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .health-option label {
+            display: block;
+            background: #2196F3;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #2196F3;
+        }
+
+        .health-option:hover label {
+            background: #1976D2;
+            border-color: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+        }
+
+        .health-option input[type="radio"]:checked + label {
+            background: #1565C0;
+            border-color: #0D47A1;
+            box-shadow: 0 4px 16px rgba(33, 150, 243, 0.5);
+        }
+
+        .radio-option {
+            position: relative;
+            background: var(--bg-light);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .radio-option:hover {
+            border-color: var(--primary);
+            background: rgba(4, 120, 87, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(4, 120, 87, 0.2);
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .radio-option:has(input[type="radio"]:checked) {
+            border-color: var(--primary);
+            background: rgba(4, 120, 87, 0.12);
+            border-width: 3px;
+            box-shadow: 0 0 0 4px var(--primary-glow);
+            transform: translateY(-3px);
+        }
+
+        .radio-option label {
+            cursor: pointer;
+            font-weight: 600;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Recommendation badge on options */
+        .recommended {
+            position: relative;
+        }
+
+        .recommended::after {
+            content: '⭐ Most Popular';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #78350f;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 8px;
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 32px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-light);
+            border-color: var(--primary);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        /* Risk reversal */
+        .risk-reversal {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .success-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 24px;
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .success-title {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .success-text {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .success-box {
+            background: rgba(4, 120, 87, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 24px 0;
+            animation: slideIn 0.5s ease 0.3s both;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-box p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .info-box p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .trust-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .social-proof-banner {
+                padding: 12px 16px;
+                gap: 16px;
+            }
+
+            .proof-item {
+                font-size: 0.8rem;
+            }
+
+            .card-header {
+                padding: 40px 24px 32px;
+            }
+
+            .card-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .coverage-amount {
+                font-size: 2.2rem;
+            }
+
+            .qualify-badge {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+
+            .form-section {
+                padding: 32px 24px;
+            }
+
+            .step-title {
+                font-size: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .radio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column-reverse;
+            }
+
+            .btn-secondary, .btn-primary {
+                width: 100%;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .age-value {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">The Notceb Financial Group</div>
+        </div>
+
+        <!-- Social Proof Banner -->
+        <div class="social-proof-banner">
+            <div class="proof-item">
+                <span class="proof-icon">👥</span>
+                <span>10,000+ Families Protected</span>
+            </div>
+            <div class="proof-item">
+                <span class="proof-icon">⭐</span>
+                <span>4.9/5 Rating</span>
+            </div>
+            <div class="proof-item">
+                <span class="proof-icon">⚡</span>
+                <span>Instant Quotes</span>
+            </div>
+        </div>
+
+        <div class="main-card">
+            <div class="card-header" id="cardHeader">
+                <h1>
+                    Get your family <span class="coverage-amount">$100,000+</span> in coverage
+                </h1>
+                <p>With The New Final Expense Plan (Less than $1/day)</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <form id="leadForm">
+                    <!-- Step 1: Age -->
+                    <div class="form-step active" data-step="1">
+                        <div class="step-header">
+                            <h2 class="step-title">Select Your Age</h2>
+                            <p class="step-subtitle">Just move the slider — takes 2 seconds!</p>
+                        </div>
+
+                        <div class="age-slider-container">
+                            <div class="age-display">
+                                <div class="age-value" id="ageValue">45</div>
+                                <div class="age-label">years old</div>
+                            </div>
+
+                            <div class="slider-wrapper">
+                                <input type="range" id="ageSlider" name="age" min="18" max="100" value="45" step="1">
+                            </div>
+
+                            <div class="age-range-labels">
+                                <span>18</span>
+                                <span>100</span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-primary" onclick="goToStep(2)">
+                            <span class="btn-text">Continue →</span>
+                        </button>
+                        
+                        <div class="risk-reversal">
+                            🔒 100% Free • No Obligation • Takes 60 Seconds
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Health -->
+                    <div class="form-step" data-step="2">
+                        <div class="step-header">
+                            <h2 class="step-title">Do you have any health conditions?</h2>
+                            <p class="step-subtitle">Anything noteworthy such as diabetes, stroke, etc. This just helps us find you the best professional to help!</p>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="health-options">
+                                <div class="health-option">
+                                    <input type="radio" name="health" value="yes" id="health1" required onchange="autoAdvance(3, 'health')">
+                                    <label for="health1">Yes</label>
+                                </div>
+                                <div class="health-option">
+                                    <input type="radio" name="health" value="no" id="health2" onchange="autoAdvance(3, 'health')">
+                                    <label for="health2">No</label>
+                                </div>
+                                <div class="health-option">
+                                    <input type="radio" name="health" value="unsure" id="health3" onchange="autoAdvance(3, 'health')">
+                                    <label for="health3">Unsure</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-secondary" onclick="goToStep(1)" style="width: 100%; margin-top: 24px;">← Back</button>
+                    </div>
+
+                    <!-- Step 3: Tobacco -->
+                    <div class="form-step" data-step="3">
+                        <div class="step-header">
+                            <h2 class="step-title">Do you use tobacco?</h2>
+                            <p class="step-subtitle">Cigarettes, cigars, vape, or chewing tobacco</p>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="radio-grid">
+                                <div class="radio-option">
+                                    <input type="radio" name="tobacco" value="no" id="tobacco1" required onchange="autoAdvance(4, 'tobacco')">
+                                    <label for="tobacco1">No</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="tobacco" value="yes" id="tobacco2" onchange="autoAdvance(4, 'tobacco')">
+                                    <label for="tobacco2">Yes</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-secondary" onclick="goToStep(2)" style="width: 100%; margin-top: 24px;">← Back</button>
+                    </div>
+
+                    <!-- Step 4: Coverage Amount -->
+                    <div class="form-step" data-step="4">
+                        <div class="step-header">
+                            <h2 class="step-title">How much coverage?</h2>
+                            <p class="step-subtitle">Average funeral: $7-12k • Final expenses: $15-25k</p>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="radio-grid">
+                                <div class="radio-option">
+                                    <input type="radio" name="coverage" value="5000-10000" id="cov1" required onchange="autoAdvance(5, 'coverage')">
+                                    <label for="cov1">$5k - $10k<br><small style="font-size: 0.8rem; font-weight: 400;">Basic funeral</small></label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="coverage" value="10000-25000" id="cov2" onchange="autoAdvance(5, 'coverage')">
+                                    <label for="cov2">$10k - $25k</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="coverage" value="25000-50000" id="cov3" onchange="autoAdvance(5, 'coverage')">
+                                    <label for="cov3">$25k - $50k</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="coverage" value="50000+" id="cov4" onchange="autoAdvance(5, 'coverage')">
+                                    <label for="cov4">$50k+</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="coverage" value="unsure" id="cov5" onchange="autoAdvance(5, 'coverage')">
+                                    <label for="cov5">Not sure</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-secondary" onclick="goToStep(3)" style="width: 100%; margin-top: 24px;">← Back</button>
+                    </div>
+
+                    <!-- Step 5: Contact Info -->
+                    <div class="form-step" data-step="5">
+                        <div class="step-header">
+                            <h2 class="step-title">Last Step!</h2>
+                            <p class="step-subtitle">Enter your information to see if you qualify</p>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" required placeholder="John" onblur="revealNextFields()">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Smith" onblur="revealNextFields()">
+                            </div>
+                        </div>
+
+                        <div id="additionalFields" style="display: none; animation: fadeInUp 0.5s ease;">
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state">State <span class="required">*</span></label>
+                                <select id="state" name="state" required>
+                                    <option value="">Select your state</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="button" class="btn-secondary" onclick="goToStep(4)">← Back</button>
+                            <button type="button" class="btn-primary" style="flex: 1;" onclick="validateAndSubmit()">
+                                <span class="btn-text">Check If I Qualify</span>
+                            </button>
+                        </div>
+
+                        <div class="risk-reversal">
+                            ✅ Your information is 100% secure and confidential<br>
+                            📞 We'll call within 24 hours to discuss your options
+                        </div>
+                    </div>
+
+                    <!-- Success Step -->
+                    <div class="form-step" data-step="success">
+                        <!-- Green Header Section -->
+                        <div style="background: var(--gradient-primary); color: white; padding: 24px 30px; text-align: center; border-radius: 24px 24px 0 0;">
+                            <div style="font-size: 2.5rem; margin-bottom: 8px;">🎉</div>
+                            <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; color: white;">You're All Set!</h2>
+                            <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">Your information has been received.</p>
+                        </div>
+
+                        <!-- White Content Section -->
+                        <div style="background: white; padding: 40px 30px;">
+                            <!-- Meet Your Agent Section -->
+                            <div style="margin-bottom: 32px;">
+                                <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--text-dark); text-align: center; margin-bottom: 32px;">Meet Your Agent</h3>
+                                
+                                <!-- Agent Profile -->
+                                <div style="background: var(--bg-light); border-radius: 20px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                                    <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center;">
+                                        <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #047857 0%, #065f46 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: 800; box-shadow: 0 4px 16px rgba(4, 120, 87, 0.3);">
+                                            D
+                                        </div>
+                                        <div style="text-align: center; flex: 1; min-width: 200px;">
+                                            <h4 style="font-size: 1.5rem; font-weight: 800; color: var(--text-dark); margin-bottom: 8px;">Derrick</h4>
+                                            <p style="color: var(--text-light); font-size: 1rem; font-weight: 600; margin: 0;">Licensed Insurance Specialist</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Video Placeholder -->
+                                    <div style="background: #1a1a1a; border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
+                                        <div style="text-align: center; color: white; z-index: 1;">
+                                            <div style="font-size: 4rem; margin-bottom: 12px;">▶️</div>
+                                            <p style="font-size: 1.1rem; font-weight: 600;">Watch Derrick's Introduction</p>
+                                            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 8px;">Learn how he can help protect your family</p>
+                                        </div>
+                                        <!-- Optional: Add actual video embed here -->
+                                        <!-- <iframe width="100%" height="100%" src="YOUR_VIDEO_URL" frameborder="0" allowfullscreen></iframe> -->
+                                    </div>
+
+                                    <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                                        <p style="color: var(--text-dark); font-size: 0.95rem; line-height: 1.7; margin: 0; text-align: center;">
+                                            "I'm here to make this process simple and stress-free for you and your family. Let's find the perfect coverage that fits your needs and budget."<br>
+                                            <strong style="color: var(--primary); margin-top: 8px; display: block;">— Derrick</strong>
+                                        </p>
+                                    </div>
+
+                                    <!-- CTA Button -->
+                                    <button type="button" class="btn-primary" onclick="startChat()" style="margin-top: 0;">
+                                        <span class="btn-text">💬 Start Chatting With Derrick Now</span>
+                                    </button>
+
+                                    <p style="text-align: center; color: var(--text-light); font-size: 0.85rem; margin-top: 16px; font-weight: 600;">
+                                        ⚡ Average response time: Under 5 minutes
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="success-box">
+                                <p>✅ Application submitted successfully<br>
+                                📧 Confirmation email sent<br>
+                                👤 Derrick has been assigned to your case</p>
+                            </div>
+
+                            <div class="info-box">
+                                <p><strong>What happens next?</strong><br><br>
+                                <strong>Right now:</strong> Chat with Derrick instantly<br>
+                                <strong>Within 1 hour:</strong> Receive your personalized quote via email<br>
+                                <strong>Within 24 hours:</strong> Derrick will call to finalize your coverage<br>
+                                <strong>Within 48 hours:</strong> Your family can be fully protected<br><br>
+                                💚 <strong>You made the right choice</strong> — most clients wish they had done this sooner!</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <span class="trust-icon">🔒</span>
+                        <span>Bank-Level Security</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-icon">⭐</span>
+                        <span>A+ BBB Rating</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-icon">✓</span>
+                        <span>Zero Obligation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        // Age slider functionality
+        const ageSlider = document.getElementById('ageSlider');
+        const ageValue = document.getElementById('ageValue');
+
+        ageSlider.addEventListener('input', function() {
+            ageValue.textContent = this.value;
+            
+            // Update slider fill
+            const percent = ((this.value - this.min) / (this.max - this.min)) * 100;
+            this.style.background = `linear-gradient(to right, var(--primary) 0%, var(--primary) ${percent}%, var(--border) ${percent}%, var(--border) 100%)`;
+        });
+
+        // Initialize slider gradient
+        const initPercent = ((ageSlider.value - ageSlider.min) / (ageSlider.max - ageSlider.min)) * 100;
+        ageSlider.style.background = `linear-gradient(to right, var(--primary) 0%, var(--primary) ${initPercent}%, var(--border) ${initPercent}%, var(--border) 100%)`;
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function goToStep(stepNumber) {
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+
+            const targetStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+            if (targetStep) {
+                targetStep.classList.add('active');
+                if (stepNumber !== 'success') {
+                    currentStep = stepNumber;
+                    updateProgress();
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function validateAndGoToStep(nextStep) {
+            const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const requiredInputs = currentStepElement.querySelectorAll('input[required]:not([type="radio"]):not([type="checkbox"]), select[required]');
+            
+            for (let input of requiredInputs) {
+                if (!input.value.trim()) {
+                    input.focus();
+                    alert('Please fill in all required fields to continue');
+                    return;
+                }
+            }
+            
+            goToStep(nextStep);
+        }
+
+        function validateRadioAndGoToStep(nextStep, fieldName) {
+            const selected = document.querySelector(`input[name="${fieldName}"]:checked`);
+            if (!selected) {
+                alert('Please select an option to continue');
+                return;
+            }
+            goToStep(nextStep);
+        }
+
+        // Auto-advance when radio button is selected
+        function autoAdvance(nextStep, fieldName) {
+            const selected = document.querySelector(`input[name="${fieldName}"]:checked`);
+            if (selected) {
+                // Small delay for visual feedback
+                setTimeout(() => {
+                    goToStep(nextStep);
+                }, 400);
+            }
+        }
+
+        // Reveal additional fields after name is entered
+        function revealNextFields() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            
+            if (firstName.trim() && lastName.trim()) {
+                const additionalFields = document.getElementById('additionalFields');
+                if (additionalFields.style.display === 'none') {
+                    additionalFields.style.display = 'block';
+                    // Smooth scroll to show new fields
+                    setTimeout(() => {
+                        additionalFields.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                }
+            }
+        }
+
+        function validateAndSubmit() {
+            const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const requiredInputs = currentStepElement.querySelectorAll('input[required]:not([type="radio"]):not([type="checkbox"]), select[required]');
+            
+            for (let input of requiredInputs) {
+                if (!input.value.trim()) {
+                    input.focus();
+                    alert('Please fill in all required fields');
+                    return;
+                }
+            }
+
+            const formData = new FormData(document.getElementById('leadForm'));
+            const data = Object.fromEntries(formData.entries());
+            
+            data.timestamp = formatTimestampEST();
+            
+            console.log('Lead Data Collected:', data);
+
+            // Hide header on success page
+            document.getElementById('cardHeader').style.display = 'none';
+
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.querySelector('.form-step[data-step="success"]').classList.add('active');
+            document.getElementById('progressBar').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function formatTimestampEST() {
+            const now = new Date();
+            const estDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+            
+            const month = String(estDate.getMonth() + 1).padStart(2, '0');
+            const day = String(estDate.getDate()).padStart(2, '0');
+            const year = estDate.getFullYear();
+            
+            let hours = estDate.getHours();
+            const minutes = String(estDate.getMinutes()).padStart(2, '0');
+            const seconds = String(estDate.getSeconds()).padStart(2, '0');
+            
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+            
+            return `${month}/${day}/${year} ${hours}:${minutes}:${seconds} ${ampm} EST`;
+        }
+
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 3) {
+                    value = `(${value}`;
+                } else if (value.length <= 6) {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                } else {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Start chat function
+        function startChat() {
+            // Replace with your actual chat/calendar/contact link
+            // Examples:
+            // window.open('https://calendly.com/your-link', '_blank');
+            // window.open('https://wa.me/1234567890', '_blank'); // WhatsApp
+            // window.location.href = 'mailto:derrick@yourcompany.com';
+            
+            alert('Chat functionality would open here!\n\nConnect this to:\n- Calendly booking\n- Live chat widget\n- WhatsApp\n- Phone number\n- Contact form');
+        }
+
+        updateProgress();
+    </script>
+</body>
+</html>
