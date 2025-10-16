@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Notceb Financial Group - Final Expense Insurance That Makes Sense</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #047857;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #047857;
+        }
+
+        .sign-up-btn {
+            border: 2px solid #2d3748;
+            padding: 10px 24px;
+            border-radius: 4px;
+            color: #2d3748 !important;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .sign-up-btn:hover {
+            background: #2d3748;
+            color: white !important;
+        }
+
+        .hero {
+            background: white;
+            padding: 80px 0 100px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h2 {
+            color: #047857;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #4a5568;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: #047857;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #065f46;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-light {
+            background: #f7fafc;
+        }
+
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .section-tag {
+            color: #047857;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .section-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-link {
+            color: #047857;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .text-link:hover {
+            gap: 12px;
+        }
+
+        .chart-visual {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 40px;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .bar-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .bar {
+            width: 100%;
+            background: #e2e8f0;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+
+        .bar.highlight {
+            background: linear-gradient(180deg, #dc2626 0%, #ef4444 100%);
+        }
+
+        .bar-label {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            color: #1a202c;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .use-case {
+            text-align: center;
+        }
+
+        .use-case-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .use-case h3 {
+            font-size: 1.15rem;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .use-case p {
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-item h3 {
+            font-size: 1.5rem;
+            color: #1a202c;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .value-item p {
+            font-size: 1.05rem;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .trust-section {
+            background: #f7fafc;
+            text-align: center;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-item h3 {
+            font-size: 1.4rem;
+            color: #1a202c;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .trust-item p {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .dark-section {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+        }
+
+        .dark-section .section-tag {
+            color: #10b981;
+        }
+
+        .dark-section .section-title {
+            color: white;
+        }
+
+        .dark-section .section-text {
+            color: #cbd5e0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 5rem;
+            font-weight: 700;
+            color: white;
+            opacity: 0.15;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            font-size: 1.05rem;
+            color: #cbd5e0;
+            line-height: 1.6;
+        }
+
+        .emotional-section {
+            background: white;
+        }
+
+        .emotional-content {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .emotional-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .emotional-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: white;
+            padding: 20px 30px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1a202c;
+            border-radius: 0 8px 0 0;
+            box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .faq-card {
+            padding: 40px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .faq-card.blue {
+            background: #dbeafe;
+        }
+
+        .faq-card.orange {
+            background: #fed7aa;
+        }
+
+        .faq-card.pink {
+            background: #fce7f3;
+        }
+
+        .faq-card.teal {
+            background: #ccfbf1;
+        }
+
+        .faq-card h3 {
+            font-size: 1.6rem;
+            color: #1a202c;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .faq-card p {
+            font-size: 1.05rem;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section {
+            background: #dbeafe;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            color: #1a202c;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-decoration {
+            font-size: 4rem;
+            margin-top: 2rem;
+        }
+
+        footer {
+            background: white;
+            padding: 80px 0 40px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            color: #047857;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-brand p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-size: 1.1rem;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #047857;
+        }
+
+        @media (max-width: 968px) {
+            .hero-grid,
+            .split-section,
+            .emotional-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1,
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .use-cases-grid,
+            .values-grid,
+            .trust-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">The Notceb Financial Group</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why">Why Final Expense</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="sign-up-btn">SIGN UP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h2>STARTING AT $30/MONTH</h2>
+                    <h1>Final expense insurance that makes sense</h1>
+                    <p>You're an average person just like everyone else, so when you heard that you should have final expense insurance, you were skeptical. Now we make it easy to get the coverage your family needs at a price that makes sense.</p>
+                    <a href="#contact" class="hero-btn">Get Started →</a>
+                </div>
+                <div class="hero-image">
+                    <svg viewBox="0 0 500 400" style="width: 100%; height: auto;">
+                        <rect width="500" height="400" fill="#f0f9ff"/>
+                        <circle cx="100" cy="300" r="30" fill="#fbbf24"/>
+                        <rect x="50" y="240" width="40" height="80" fill="#34d399"/>
+                        <rect x="120" y="180" width="200" height="140" fill="#e5e7eb"/>
+                        <rect x="140" y="200" width="160" height="80" fill="#60a5fa"/>
+                        <circle cx="420" cy="100" r="40" fill="#e5e7eb"/>
+                        <path d="M 400 100 L 420 120 L 440 100" stroke="#9ca3af" stroke-width="3" fill="none"/>
+                        <rect x="200" y="320" width="100" height="60" fill="#f87171" rx="5"/>
+                        <circle cx="380" cy="320" r="25" fill="#34d399"/>
+                        <rect x="360" y="280" width="40" height="40" fill="#818cf8"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container">
+            <div class="split-section">
+                <div class="chart-visual">
+                    <p class="chart-title">$1 million of coverage</p>
+                    <div class="chart-bars">
+                        <div class="bar-wrapper">
+                            <div class="bar highlight" style="height: 280px;"></div>
+                            <p class="bar-label">The Notceb Financial Group</p>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 160px;"></div>
+                            <p class="bar-label">Company 1</p>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 200px;"></div>
+                            <p class="bar-label">Company 2</p>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 240px;"></div>
+                            <p class="bar-label">Company 3</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="section-tag">PROTECT YOUR FAMILY</p>
+                    <h2 class="section-title">Affordable coverage</h2>
+                    <p class="section-text">About 70% of Americans overestimate the price of final expense insurance, but it's not their fault! Final expense insurance is vague and confusing, and we're here to fix that by getting you the right policy for your situation, and it all starts as low as $30/month.</p>
+                    <a href="#contact" class="text-link">Find Your Policy →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why" class="section">
+        <div class="container">
+            <div class="split-section">
+                <div>
+                    <p class="section-tag">MORE FOR LESS</p>
+                    <h2 class="section-title">Why do people get final expense insurance?</h2>
+                    <p class="section-text">Final expense insurance is a way to make sure that your family and dependants don't suffer financially when you pass. Final expense insurance can be used to pay for a funeral, pay off debts (including medical bills), pay for legal expenses and help your family maintain their standard of living when they no longer have you to support them.</p>
+                    <a href="#contact" class="text-link">Get Help →</a>
+                </div>
+                <div class="hero-image">
+                    <svg viewBox="0 0 500 400" style="width: 100%; height: auto;">
+                        <rect width="500" height="400" fill="#fef3c7"/>
+                        <circle cx="250" cy="150" r="60" fill="#fbbf24"/>
+                        <rect x="220" y="210" width="60" height="100" fill="#60a5fa"/>
+                        <rect x="180" y="260" width="40" height="50" fill="#fb923c"/>
+                        <rect x="280" y="260" width="40" height="50" fill="#fb923c"/>
+                        <path d="M 250 150 Q 270 160 280 170" stroke="#1f2937" stroke-width="2" fill="none"/>
+                        <circle cx="240" cy="140" r="5" fill="#1f2937"/>
+                        <circle cx="260" cy="140" r="5" fill="#1f2937"/>
+                        <rect x="100" y="320" width="80" height="60" fill="#94a3b8" rx="5"/>
+                        <rect x="320" y="280" width="100" height="100" fill="#cbd5e1" rx="5"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="use-cases-grid">
+                <div class="use-case">
+                    <div class="use-case-icon">🌹</div>
+                    <h3>Pay for funeral costs</h3>
+                    <p>Average funeral expenses range from $7,000 to $12,000</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">💳</div>
+                    <h3>Pay off debts</h3>
+                    <p>Settle outstanding medical bills and personal loans</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">⚖️</div>
+                    <h3>Cover legal expenses</h3>
+                    <p>Handle probate costs and estate administration</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">🏠</div>
+                    <h3>Maintain living standards</h3>
+                    <p>Help your family stay financially stable</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="text-align: center;">
+            <p class="section-tag">WHY CHOOSE US</p>
+            <h2 class="section-title">Simple, Affordable, Fast</h2>
+            <p class="section-text" style="max-width: 800px; margin: 0 auto 60px;">We believe everyone deserves peace of mind without breaking the bank</p>
+
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">💰</div>
+                    <h3>Affordable</h3>
+                    <p>Starting at just $30/month with fixed premiums that never increase as you age</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">✓</div>
+                    <h3>Easy to qualify</h3>
+                    <p>No medical exam required for most applicants ages 50-85, even with pre-existing conditions</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">⚡</div>
+                    <h3>Fast & simple</h3>
+                    <p>Get approved quickly and receive benefits within 24-48 hours when needed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section trust-section">
+        <div class="container">
+            <p class="section-tag">ONLY RECOMMEND CERTIFIED PARTNERS</p>
+            <h2 class="section-title">You're in good hands</h2>
+            <p class="section-text" style="max-width: 800px; margin: 0 auto;">All our insurance partners are vetted and reviewed by our team to ensure they hold up to our standards</p>
+
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">A+</div>
+                    <h3>Highly Rated</h3>
+                    <p>All our final expense insurance providers have hundreds of 5 star reviews</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🔍</div>
+                    <h3>In-Depth Review</h3>
+                    <p>When you contact us we will do an in depth review to find the perfect partner for you</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⭐⭐⭐⭐⭐</div>
+                    <h3>In-Depth Review</h3>
+                    <p>All of our insurance partners are vetted to ensure they are properly certified and licensed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark-section">
+        <div class="container">
+            <p class="section-tag">HOW IT WORKS</p>
+            <h2 class="section-title">So, how does it work?</h2>
+            <p class="section-text">Fill out the form or give us a call and we will automatically search our database of certified final expense insurance partners to find the perfect option for your situation.</p>
+
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Contact us</h3>
+                    <p>Reach out for a free consultation about your needs and situation</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We'll find your match</h3>
+                    <p>Based on your answers we will determine if you qualify and match with one of our partners</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get the perfect policy</h3>
+                    <p>We'll connect you with a partner that we know will be able to serve you best and get you the coverage you need</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section emotional-section">
+        <div class="container">
+            <div class="emotional-content">
+                <div class="emotional-image">
+                    <svg viewBox="0 0 400 500" style="width: 100%; height: auto;">
+                        <rect width="400" height="500" fill="#fef3c7"/>
+                        <rect x="0" y="0" width="400" height="500" fill="url(#brickPattern)"/>
+                        <defs>
+                            <pattern id="brickPattern" x="0" y="0" width="60" height="30" patternUnits="userSpaceOnUse">
+                                <rect width="60" height="30" fill="#d97706"/>
+                                <rect width="60" height="2" fill="#92400e"/>
+                                <rect width="60" height="2" y="28" fill="#92400e"/>
+                                <rect width="2" height="30" fill="#92400e"/>
+                                <rect width="2" height="30" x="58" fill="#92400e"/>
+                            </pattern>
+                        </defs>
+                        <circle cx="180" cy="280" r="50" fill="#fbbf24"/>
+                        <rect x="150" y="330" width="60" height="100" fill="#7c3aed"/>
+                        <rect x="120" y="380" width="35" height="50" fill="#a78bfa"/>
+                        <rect x="185" y="380" width="35" height="50" fill="#a78bfa"/>
+                        <circle cx="165" cy="270" r="6" fill="#1f2937"/>
+                        <circle cx="195" cy="270" r="6" fill="#1f2937"/>
+                        <path d="M 170 290 Q 180 295 190 290" stroke="#1f2937" stroke-width="2" fill="none"/>
+                        <ellipse cx="280" cy="340" rx="35" ry="45" fill="#fbbf24"/>
+                        <rect x="260" y="385" width="40" height="65" fill="#6ee7b7"/>
+                        <rect x="240" y="415" width="25" height="35" fill="#34d399"/>
+                        <rect x="275" y="415" width="25" height="35" fill="#34d399"/>
+                    </svg>
+                    <div class="image-caption">Protect those you love ❤️</div>
+                </div>
+                <div>
+                    <p class="section-tag">THE NOTCEB FINANCIAL GROUP</p>
+                    <h2 class="section-title">Protect those who matter</h2>
+                    <p class="section-text">We would all do anything for our loved ones, and now we make it easier than ever to get final expense insurance that protects your family financially.</p>
+                    <a href="#contact" class="text-link">Get Help →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container">
+            <div class="faq-grid">
+                <div class="faq-card blue">
+                    <h3>When do I need final expense insurance?</h3>
+                    <p>If you're age 50-85 and want to ensure your family isn't burdened with funeral costs and final expenses, now is the perfect time. Getting coverage while you're healthy can result in lower premiums.</p>
+                    <a href="#contact" class="text-link">Get Help →</a>
+                </div>
+                <div class="faq-card orange">
+                    <h3>Does my age affect my cost?</h3>
+                    <p>Yes, your age can affect your premiums. Your insurance company will evaluate the risk you pose and place you in a 'risk grouping'. Usually, the younger and healthier you are, the lower the premiums that you have to pay.</p>
+                    <a href="#contact" class="text-link">Get Help →</a>
+                </div>
+                <div class="faq-card pink">
+                    <h3>How much do I need?</h3>
+                    <p>There is no one-size-fits-all answer. A final expense insurance agent will look at your debts, personal situation, financial goals and your family's needs so they can make recommendations tailored to you.</p>
+                    <a href="#contact" class="text-link">Get Help →</a>
+                </div>
+                <div class="faq-card teal">
+                    <h3>Why do people get final expense insurance?</h3>
+                    <p>Final expense insurance ensures your family and dependants don't suffer financially when you die. It can pay for a funeral, pay off debts, cover medical bills, and help your family maintain their standard of living.</p>
+                    <a href="#contact" class="text-link">Get Help →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Get Started Today</h2>
+            <p>It's cheaper than you think!</p>
+            <a href="#contact" class="hero-btn">Get Help →</a>
+            <div class="cta-decoration">😺</div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>The Notceb Financial Group</h3>
+                    <p>We help people find the best final expense insurance policy for their situation.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <p style="color: #4a5568; margin-bottom: 0.5rem;">📞 (555) 123-4567</p>
+                    <p style="color: #4a5568;">✉️ info@notcebfinancial.com</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#why">Why Final Expense</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
