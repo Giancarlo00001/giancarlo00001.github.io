@@ -36,10 +36,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .animated-bg {
-            display: none;
-        }
-
         .container {
             max-width: 500px;
             margin: 0 auto;
@@ -60,7 +56,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* Social Proof Banner */
         .social-proof-banner {
             background: white;
             border-radius: 12px;
@@ -154,17 +149,6 @@
             display: block;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .step-header {
             text-align: center;
             margin-bottom: 24px;
@@ -223,7 +207,6 @@
             box-shadow: 0 0 0 4px var(--primary-glow);
         }
 
-        /* Age Slider Styles */
         .age-slider-container {
             padding: 10px 0;
         }
@@ -312,51 +295,6 @@
             gap: 10px;
         }
 
-        /* Health Options - Stacked Style */
-        .health-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .health-option {
-            position: relative;
-        }
-
-        .health-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .health-option label {
-            display: block;
-            background: #2196F3;
-            color: white;
-            padding: 14px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 2px solid #2196F3;
-        }
-
-        .health-option:hover label {
-            background: #1976D2;
-            border-color: #1976D2;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
-        }
-
-        .health-option input[type="radio"]:checked + label {
-            background: #1565C0;
-            border-color: #0D47A1;
-            box-shadow: 0 4px 16px rgba(33, 150, 243, 0.5);
-        }
-
         .radio-option {
             position: relative;
             background: var(--bg-light);
@@ -400,25 +338,6 @@
             font-weight: 600;
             margin: 0;
             font-size: 1rem;
-        }
-
-        /* Recommendation badge on options */
-        .recommended {
-            position: relative;
-        }
-
-        .recommended::after {
-            content: '⭐ Most Popular';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: var(--accent-orange);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            white-space: nowrap;
         }
 
         .btn-primary {
@@ -493,7 +412,6 @@
             margin-top: 16px;
         }
 
-        /* Risk reversal */
         .risk-reversal {
             text-align: center;
             margin-top: 16px;
@@ -502,61 +420,12 @@
             font-weight: 600;
         }
 
-        .success-section {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .success-icon {
-            font-size: 5rem;
-            margin-bottom: 24px;
-            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.3) rotate(-10deg);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        .success-title {
-            color: var(--primary);
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
-
-        .success-text {
-            color: var(--text-light);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
         .success-box {
             background: rgba(4, 120, 87, 0.1);
             border: 2px solid var(--primary);
             border-radius: 16px;
             padding: 20px;
             margin: 24px 0;
-            animation: slideIn 0.5s ease 0.3s both;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .success-box p {
@@ -606,49 +475,7 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-
-            .social-proof-banner {
-                padding: 12px 16px;
-                gap: 16px;
-            }
-
-            .proof-item {
-                font-size: 0.8rem;
-            }
-
-            .card-header {
-                padding: 40px 24px 32px;
-            }
-
-            .card-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .coverage-amount {
-                font-size: 2.2rem;
-            }
-
-            .qualify-badge {
-                font-size: 1rem;
-                padding: 12px 20px;
-            }
-
-            .form-section {
-                padding: 32px 24px;
-            }
-
-            .step-title {
-                font-size: 1.5rem;
-            }
-
             .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .radio-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -659,16 +486,6 @@
             .btn-secondary, .btn-primary {
                 width: 100%;
             }
-
-            .trust-badges {
-                flex-direction: column;
-                gap: 12px;
-                align-items: center;
-            }
-
-            .age-value {
-                font-size: 3.5rem;
-            }
         }
     </style>
 </head>
@@ -678,7 +495,6 @@
             <div class="logo">The Notceb Financial Group</div>
         </div>
 
-        <!-- Social Proof Banner -->
         <div class="social-proof-banner">
             <div class="proof-item">
                 <span class="proof-icon">👥</span>
@@ -697,9 +513,9 @@
         <div class="main-card">
             <div class="card-header" id="cardHeader">
                 <h1>
-                    Get your family <span class="coverage-amount">$100,000+</span> in coverage
+                    Don't Leave Your Family With <span class="coverage-amount">Funeral Costs and Debt</span>
                 </h1>
-                <p>With The New Final Expense Plan (Less than $1/day)</p>
+                <p>Final expense coverage starting at <span style="color: #fbbf24; font-weight: 700;">less than $1/day</span></p>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressBar" style="width: 0%"></div>
                 </div>
@@ -707,8 +523,28 @@
 
             <div class="form-section">
                 <form id="leadForm">
-                    <!-- Step 1: Age -->
+                    <!-- Step 1: Zip Code -->
                     <div class="form-step active" data-step="1">
+                        <div class="step-header">
+                            <h2 class="step-title">What's your zip code?</h2>
+                            <p class="step-subtitle">We need this to find available plans in your area</p>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="zipCode" name="zipCode" required placeholder="Enter zip code" maxlength="5" pattern="[0-9]{5}">
+                        </div>
+
+                        <button type="button" class="btn-primary" onclick="goToStep(2)">
+                            <span class="btn-text">Continue →</span>
+                        </button>
+                        
+                        <div class="risk-reversal">
+                            🔒 100% Free • No Obligation • Takes 60 Seconds
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Age -->
+                    <div class="form-step" data-step="2">
                         <div class="step-header">
                             <h2 class="step-title">Select Your Age</h2>
                             <p class="step-subtitle">Just move the slider — takes 2 seconds!</p>
@@ -730,67 +566,16 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn-primary" onclick="goToStep(2)">
-                            <span class="btn-text">Continue →</span>
-                        </button>
-                        
-                        <div class="risk-reversal">
-                            🔒 100% Free • No Obligation • Takes 60 Seconds
+                        <div class="button-group">
+                            <button type="button" class="btn-secondary" onclick="goToStep(1)">← Back</button>
+                            <button type="button" class="btn-primary" style="flex: 1;" onclick="goToStep(3)">
+                                <span class="btn-text">Continue →</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Step 2: Health -->
-                    <div class="form-step" data-step="2">
-                        <div class="step-header">
-                            <h2 class="step-title">Do you have any health conditions?</h2>
-                            <p class="step-subtitle">Anything noteworthy such as diabetes, stroke, etc. This just helps us find you the best professional to help!</p>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="health-options">
-                                <div class="health-option">
-                                    <input type="radio" name="health" value="yes" id="health1" required onchange="autoAdvance(3, 'health')">
-                                    <label for="health1">Yes</label>
-                                </div>
-                                <div class="health-option">
-                                    <input type="radio" name="health" value="no" id="health2" onchange="autoAdvance(3, 'health')">
-                                    <label for="health2">No</label>
-                                </div>
-                                <div class="health-option">
-                                    <input type="radio" name="health" value="unsure" id="health3" onchange="autoAdvance(3, 'health')">
-                                    <label for="health3">Unsure</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="button" class="btn-secondary" onclick="goToStep(1)" style="width: 100%; margin-top: 24px;">← Back</button>
-                    </div>
-
-                    <!-- Step 3: Tobacco -->
+                    <!-- Step 3: Coverage Amount -->
                     <div class="form-step" data-step="3">
-                        <div class="step-header">
-                            <h2 class="step-title">Do you use tobacco?</h2>
-                            <p class="step-subtitle">Cigarettes, cigars, vape, or chewing tobacco</p>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="radio-grid">
-                                <div class="radio-option">
-                                    <input type="radio" name="tobacco" value="no" id="tobacco1" required onchange="autoAdvance(4, 'tobacco')">
-                                    <label for="tobacco1">No</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" name="tobacco" value="yes" id="tobacco2" onchange="autoAdvance(4, 'tobacco')">
-                                    <label for="tobacco2">Yes</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="button" class="btn-secondary" onclick="goToStep(2)" style="width: 100%; margin-top: 24px;">← Back</button>
-                    </div>
-
-                    <!-- Step 4: Coverage Amount -->
-                    <div class="form-step" data-step="4">
                         <div class="step-header">
                             <h2 class="step-title">How much coverage?</h2>
                             <p class="step-subtitle">Average funeral: $7-12k • Final expenses: $15-25k</p>
@@ -799,24 +584,51 @@
                         <div class="form-group">
                             <div class="radio-grid">
                                 <div class="radio-option">
-                                    <input type="radio" name="coverage" value="5000-10000" id="cov1" required onchange="autoAdvance(5, 'coverage')">
+                                    <input type="radio" name="coverage" value="5000-10000" id="cov1" required onchange="autoAdvance(4, 'coverage')">
                                     <label for="cov1">$5k - $10k<br><small style="font-size: 0.8rem; font-weight: 400;">Basic funeral</small></label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" name="coverage" value="10000-25000" id="cov2" onchange="autoAdvance(5, 'coverage')">
+                                    <input type="radio" name="coverage" value="10000-25000" id="cov2" onchange="autoAdvance(4, 'coverage')">
                                     <label for="cov2">$10k - $25k</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" name="coverage" value="25000-50000" id="cov3" onchange="autoAdvance(5, 'coverage')">
+                                    <input type="radio" name="coverage" value="25000-50000" id="cov3" onchange="autoAdvance(4, 'coverage')">
                                     <label for="cov3">$25k - $50k</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" name="coverage" value="50000+" id="cov4" onchange="autoAdvance(5, 'coverage')">
+                                    <input type="radio" name="coverage" value="50000+" id="cov4" onchange="autoAdvance(4, 'coverage')">
                                     <label for="cov4">$50k+</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" name="coverage" value="unsure" id="cov5" onchange="autoAdvance(5, 'coverage')">
+                                    <input type="radio" name="coverage" value="unsure" id="cov5" onchange="autoAdvance(4, 'coverage')">
                                     <label for="cov5">Not sure</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-secondary" onclick="goToStep(2)" style="width: 100%; margin-top: 24px;">← Back</button>
+                    </div>
+
+                    <!-- Step 4: Do you have life insurance -->
+                    <div class="form-step" data-step="4">
+                        <div class="step-header">
+                            <h2 class="step-title">Do you currently have life insurance?</h2>
+                            <p class="step-subtitle">This helps us find the best options for you</p>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="radio-grid">
+                                <div class="radio-option">
+                                    <input type="radio" name="hasInsurance" value="yes" id="ins1" required onchange="autoAdvance(5, 'hasInsurance')">
+                                    <label for="ins1">Yes</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="hasInsurance" value="no" id="ins2" onchange="autoAdvance(5, 'hasInsurance')">
+                                    <label for="ins2">No</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="hasInsurance" value="not-sure" id="ins3" onchange="autoAdvance(5, 'hasInsurance')">
+                                    <label for="ins3">Not sure</label>
                                 </div>
                             </div>
                         </div>
@@ -824,123 +636,157 @@
                         <button type="button" class="btn-secondary" onclick="goToStep(3)" style="width: 100%; margin-top: 24px;">← Back</button>
                     </div>
 
-                    <!-- Step 5: Contact Info -->
+                    <!-- Step 5: How soon -->
                     <div class="form-step" data-step="5">
                         <div class="step-header">
-                            <h2 class="step-title">Last Step!</h2>
-                            <p class="step-subtitle">Enter your information to see if you qualify</p>
+                            <h2 class="step-title">How soon are you looking to get coverage?</h2>
+                            <p class="step-subtitle">This helps us prioritize your request</p>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="radio-grid">
+                                <div class="radio-option">
+                                    <input type="radio" name="timeline" value="immediately" id="time1" required onchange="autoAdvance(6, 'timeline')">
+                                    <label for="time1">Immediately (within 1 week) 🔥</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="timeline" value="30-days" id="time2" onchange="autoAdvance(6, 'timeline')">
+                                    <label for="time2">Within 30 days</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="timeline" value="researching" id="time3" onchange="autoAdvance(6, 'timeline')">
+                                    <label for="time3">Just researching</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-secondary" onclick="goToStep(4)" style="width: 100%; margin-top: 24px;">← Back</button>
+                    </div>
+
+                    <!-- Step 6: Who is this for -->
+                    <div class="form-step" data-step="6">
+                        <div class="step-header">
+                            <h2 class="step-title">Who is this coverage for?</h2>
+                            <p class="step-subtitle">This helps us personalize your quote</p>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="radio-grid">
+                                <div class="radio-option">
+                                    <input type="radio" name="coverageFor" value="myself" id="for1" required onchange="autoAdvance(7, 'coverageFor')">
+                                    <label for="for1">Myself</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="coverageFor" value="spouse" id="for2" onchange="autoAdvance(7, 'coverageFor')">
+                                    <label for="for2">My spouse</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="coverageFor" value="parent" id="for3" onchange="autoAdvance(7, 'coverageFor')">
+                                    <label for="for3">My parent</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="coverageFor" value="other" id="for4" onchange="autoAdvance(7, 'coverageFor')">
+                                    <label for="for4">Other</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-secondary" onclick="goToStep(5)" style="width: 100%; margin-top: 24px;">← Back</button>
+                    </div>
+                    <div class="form-step" data-step="6">
+                        <div class="step-header">
+                            <h2 class="step-title">What's your name?</h2>
+                            <p class="step-subtitle">We're almost done - just need a few details</p>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name <span class="required">*</span></label>
-                                <input type="text" id="firstName" name="firstName" required placeholder="John" onblur="revealNextFields()">
+                                <input type="text" id="firstName" name="firstName" required placeholder="John">
                             </div>
 
                             <div class="form-group">
                                 <label for="lastName">Last Name <span class="required">*</span></label>
-                                <input type="text" id="lastName" name="lastName" required placeholder="Smith" onblur="revealNextFields()">
-                            </div>
-                        </div>
-
-                        <div id="additionalFields" style="display: none;">
-                            <div class="form-group">
-                                <label for="email">Email Address <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required placeholder="john@example.com">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone Number <span class="required">*</span></label>
-                                <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="state">State <span class="required">*</span></label>
-                                <select id="state" name="state" required>
-                                    <option value="">Select your state</option>
-                                    <option value="AL">Alabama</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                    <option value="CA">California</option>
-                                    <option value="CO">Colorado</option>
-                                    <option value="CT">Connecticut</option>
-                                    <option value="DE">Delaware</option>
-                                    <option value="FL">Florida</option>
-                                    <option value="GA">Georgia</option>
-                                    <option value="HI">Hawaii</option>
-                                    <option value="ID">Idaho</option>
-                                    <option value="IL">Illinois</option>
-                                    <option value="IN">Indiana</option>
-                                    <option value="IA">Iowa</option>
-                                    <option value="KS">Kansas</option>
-                                    <option value="KY">Kentucky</option>
-                                    <option value="LA">Louisiana</option>
-                                    <option value="ME">Maine</option>
-                                    <option value="MD">Maryland</option>
-                                    <option value="MA">Massachusetts</option>
-                                    <option value="MI">Michigan</option>
-                                    <option value="MN">Minnesota</option>
-                                    <option value="MS">Mississippi</option>
-                                    <option value="MO">Missouri</option>
-                                    <option value="MT">Montana</option>
-                                    <option value="NE">Nebraska</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="NH">New Hampshire</option>
-                                    <option value="NJ">New Jersey</option>
-                                    <option value="NM">New Mexico</option>
-                                    <option value="NY">New York</option>
-                                    <option value="NC">North Carolina</option>
-                                    <option value="ND">North Dakota</option>
-                                    <option value="OH">Ohio</option>
-                                    <option value="OK">Oklahoma</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="PA">Pennsylvania</option>
-                                    <option value="RI">Rhode Island</option>
-                                    <option value="SC">South Carolina</option>
-                                    <option value="SD">South Dakota</option>
-                                    <option value="TN">Tennessee</option>
-                                    <option value="TX">Texas</option>
-                                    <option value="UT">Utah</option>
-                                    <option value="VT">Vermont</option>
-                                    <option value="VA">Virginia</option>
-                                    <option value="WA">Washington</option>
-                                    <option value="WV">West Virginia</option>
-                                    <option value="WI">Wisconsin</option>
-                                    <option value="WY">Wyoming</option>
-                                </select>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
                             </div>
                         </div>
 
                         <div class="button-group">
-                            <button type="button" class="btn-secondary" onclick="goToStep(4)">← Back</button>
-                            <button type="button" class="btn-primary" style="flex: 1;" onclick="validateAndSubmit()">
-                                <span class="btn-text">Check If I Qualify</span>
+                            <button type="button" class="btn-secondary" onclick="goToStep(5)">← Back</button>
+                            <button type="button" class="btn-primary" style="flex: 1;" onclick="validateNameAndContinue()">
+                                <span class="btn-text">Continue →</span>
                             </button>
                         </div>
 
                         <div class="risk-reversal">
-                            ✅ Your information is 100% secure and confidential<br>
+                            ✅ Your information is 100% secure and confidential
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Phone & Email with Verification -->
+                    <div class="form-step" data-step="7">
+                        <div class="step-header">
+                            <h2 class="step-title">Last step!</h2>
+                            <p class="step-subtitle">Where should we send your free quote?</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <div style="display: flex; gap: 8px; align-items: flex-start;">
+                                <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567" style="flex: 1;">
+                                <button type="button" id="changeNumberBtn" onclick="changePhoneNumber()" style="display: none; padding: 14px 20px; background: white; border: 2px solid var(--border); border-radius: 12px; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; cursor: pointer; white-space: nowrap; transition: all 0.3s;">
+                                    Change
+                                </button>
+                            </div>
+                            <div id="recaptcha-container"></div>
+                        </div>
+
+                        <div id="verificationSection" style="display: none; margin-top: 16px;">
+                            <div class="form-group">
+                                <label for="verificationCode">Verification Code <span class="required">*</span></label>
+                                <div style="max-width: 200px; margin: 0 auto;">
+                                    <input type="text" id="verificationCode" name="verificationCode" placeholder="000000" maxlength="6" pattern="[0-9]{6}" style="text-align: center; font-size: 1.5rem; letter-spacing: 0.5rem; font-weight: 700;">
+                                </div>
+                                <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 12px; text-align: center;">
+                                    <span id="verificationStatus">📱 Code sent! Check your phone</span>
+                                </p>
+                                <div style="text-align: center; margin-top: 8px;">
+                                    <button type="button" id="resendCode" onclick="sendVerificationCode()" style="background: transparent; border: none; color: var(--primary); font-weight: 600; font-size: 0.85rem; cursor: pointer; padding: 8px 16px; text-decoration: underline;">
+                                        Resend Code
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 16px;">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+
+                        <div class="button-group">
+                            <button type="button" class="btn-secondary" onclick="goToStep(7)">← Back</button>
+                            <button type="button" class="btn-primary" id="continueBtn" style="flex: 1;" onclick="handlePhoneSubmit()">
+                                <span class="btn-text">Continue →</span>
+                            </button>
+                        </div>
+
+                        <div class="risk-reversal">
                             📞 We'll call within 24 hours to discuss your options
                         </div>
                     </div>
 
                     <!-- Success Step -->
                     <div class="form-step" data-step="success">
-                        <!-- Green Header Section -->
                         <div style="background: var(--gradient-primary); color: white; padding: 24px 30px; text-align: center; border-radius: 24px 24px 0 0;">
                             <div style="font-size: 2.5rem; margin-bottom: 8px;">🎉</div>
                             <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; color: white;">You're All Set!</h2>
                             <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">Your information has been received.</p>
                         </div>
 
-                        <!-- White Content Section -->
                         <div style="background: white; padding: 40px 30px;">
-                            <!-- Meet Your Agent Section -->
                             <div style="margin-bottom: 32px;">
                                 <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--text-dark); text-align: center; margin-bottom: 32px;">Meet Your Agent</h3>
                                 
-                                <!-- Agent Profile -->
                                 <div style="background: var(--bg-light); border-radius: 20px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
                                     <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center;">
                                         <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #047857 0%, #065f46 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: 800; box-shadow: 0 4px 16px rgba(4, 120, 87, 0.3);">
@@ -952,15 +798,21 @@
                                         </div>
                                     </div>
 
-                                    <!-- Video Placeholder -->
                                     <div style="background: #1a1a1a; border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
                                         <div style="text-align: center; color: white; z-index: 1;">
                                             <div style="font-size: 4rem; margin-bottom: 12px;">▶️</div>
                                             <p style="font-size: 1.1rem; font-weight: 600;">Watch Derrick's Introduction</p>
                                             <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 8px;">Learn how he can help protect your family</p>
                                         </div>
-                                        <!-- Optional: Add actual video embed here -->
-                                        <!-- <iframe width="100%" height="100%" src="YOUR_VIDEO_URL" frameborder="0" allowfullscreen></iframe> -->
+                                    </div>
+
+                                    <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                                        <button type="button" class="btn-primary" onclick="startCall()" style="margin-top: 0; flex: 1;">
+                                            <span class="btn-text">📞 Call Derrick Now</span>
+                                        </button>
+                                        <button type="button" class="btn-primary" onclick="startChat()" style="margin-top: 0; flex: 1;">
+                                            <span class="btn-text">💬 Text Derrick</span>
+                                        </button>
                                     </div>
 
                                     <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
@@ -969,11 +821,6 @@
                                             <strong style="color: var(--primary); margin-top: 8px; display: block;">— Derrick</strong>
                                         </p>
                                     </div>
-
-                                    <!-- CTA Button -->
-                                    <button type="button" class="btn-primary" onclick="startChat()" style="margin-top: 0;">
-                                        <span class="btn-text">💬 Start Chatting With Derrick Now</span>
-                                    </button>
 
                                     <p style="text-align: center; color: var(--text-light); font-size: 0.85rem; margin-top: 16px; font-weight: 600;">
                                         ⚡ Average response time: Under 5 minutes
@@ -1017,137 +864,126 @@
         </div>
     </div>
 
+    <script type="module">
+        // Import Firebase
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAjxTuXUrBLLnSmBv9YPHRGxDgimvXT2Xk",
+            authDomain: "beso-sms-verify.firebaseapp.com",
+            projectId: "beso-sms-verify",
+            storageBucket: "beso-sms-verify.firebasestorage.app",
+            messagingSenderId: "256955185877",
+            appId: "1:256955185877:web:2bbd12c88f053595d2c05c",
+            measurementId: "G-88QVY03XLF"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const analytics = getAnalytics(app);
+
+        // Make auth available globally
+        window.firebaseAuth = auth;
+        window.confirmationResult = null;
+
+        // Initialize reCAPTCHA
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+            'size': 'invisible',
+            'callback': (response) => {
+                console.log('reCAPTCHA solved');
+            }
+        });
+    </script>
+
     <script>
         let currentStep = 1;
-        const totalSteps = 5;
+        const totalSteps = 8;
+        let phoneVerified = false;
+        let verificationCodeSent = false;
+        let resendTimer = null;
+        let resendCountdown = 30;
 
-        // Age slider functionality
         const ageSlider = document.getElementById('ageSlider');
         const ageValue = document.getElementById('ageValue');
 
         ageSlider.addEventListener('input', function() {
             ageValue.textContent = this.value;
             
-            // Update slider fill
             const percent = ((this.value - this.min) / (this.max - this.min)) * 100;
             this.style.background = `linear-gradient(to right, var(--primary) 0%, var(--primary) ${percent}%, var(--border) ${percent}%, var(--border) 100%)`;
         });
 
-        // Initialize slider gradient
         const initPercent = ((ageSlider.value - ageSlider.min) / (ageSlider.max - ageSlider.min)) * 100;
         ageSlider.style.background = `linear-gradient(to right, var(--primary) 0%, var(--primary) ${initPercent}%, var(--border) ${initPercent}%, var(--border) 100%)`;
 
-        function updateProgress() {
-            const progress = (currentStep / totalSteps) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-        }
-
-        function goToStep(stepNumber) {
-            document.querySelectorAll('.form-step').forEach(step => {
-                step.classList.remove('active');
+        // Phone verification code auto-advance
+        const verificationInput = document.getElementById('verificationCode');
+        if (verificationInput) {
+            verificationInput.addEventListener('input', function(e) {
+                // Only allow numbers
+                this.value = this.value.replace(/\D/g, '');
+                
+                // Auto-verify when 6 digits entered
+                if (this.value.length === 6) {
+                    verifyCode(this.value);
+                }
             });
-
-            const targetStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
-            if (targetStep) {
-                targetStep.classList.add('active');
-                if (stepNumber !== 'success') {
-                    currentStep = stepNumber;
-                    updateProgress();
-                }
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
         }
 
-        function validateAndGoToStep(nextStep) {
-            const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
-            const requiredInputs = currentStepElement.querySelectorAll('input[required]:not([type="radio"]):not([type="checkbox"]), select[required]');
-            
-            for (let input of requiredInputs) {
-                if (!input.value.trim()) {
-                    input.focus();
-                    alert('Please fill in all required fields to continue');
-                    return;
-                }
-            }
-            
-            goToStep(nextStep);
-        }
-
-        function validateRadioAndGoToStep(nextStep, fieldName) {
-            const selected = document.querySelector(`input[name="${fieldName}"]:checked`);
-            if (!selected) {
-                alert('Please select an option to continue');
-                return;
-            }
-            goToStep(nextStep);
-        }
-
-        // Auto-advance when radio button is selected
-        function autoAdvance(nextStep, fieldName) {
-            const selected = document.querySelector(`input[name="${fieldName}"]:checked`);
-            if (selected) {
-                // Small delay for visual feedback
-                setTimeout(() => {
-                    goToStep(nextStep);
-                }, 400);
-            }
-        }
-
-        // Reveal additional fields after name is entered
-        function revealNextFields() {
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            
-            if (firstName.trim() && lastName.trim()) {
-                const additionalFields = document.getElementById('additionalFields');
-                if (additionalFields.style.display === 'none') {
-                    additionalFields.style.display = 'block';
-                    setTimeout(() => {
-                        additionalFields.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 100);
-                }
-            }
-        }
-
-        function validateAndSubmit() {
-            console.log('Submit button clicked');
-            
+        function validateNameAndContinue() {
             const firstName = document.getElementById('firstName');
             const lastName = document.getElementById('lastName');
-            const email = document.getElementById('email');
-            const phone = document.getElementById('phone');
-            const state = document.getElementById('state');
 
-            if (!firstName || !lastName || !email || !phone || !state) {
-                console.error('One or more form elements not found');
-                alert('Form error - please refresh the page');
-                return;
-            }
-
-            // Check all required fields
             if (!firstName.value.trim() || !lastName.value.trim()) {
                 alert('Please enter your first and last name');
                 firstName.focus();
                 return;
             }
 
-            // Reveal fields if not visible
-            const additionalFields = document.getElementById('additionalFields');
-            if (additionalFields && additionalFields.style.display === 'none') {
-                additionalFields.style.display = 'block';
-                alert('Please fill in all fields');
+            goToStep(7);
+        }
+
+        function handlePhoneSubmit() {
+            const phone = document.getElementById('phone');
+            const continueBtn = document.getElementById('continueBtn');
+
+            // Validate phone
+            const phoneDigits = phone.value.replace(/\D/g, '');
+            if (phoneDigits.length !== 10) {
+                alert('Please enter a valid 10-digit phone number');
+                phone.focus();
                 return;
             }
 
-            if (!email.value.trim() || !phone.value.trim() || !state.value) {
-                alert('Please fill in all required fields');
-                if (!email.value.trim()) email.focus();
-                else if (!phone.value.trim()) phone.focus();
-                else state.focus();
+            // If code not sent yet, send it
+            if (!verificationCodeSent) {
+                sendVerificationCode();
                 return;
             }
 
-            // Validate email format
+            // If code sent but not verified, check verification
+            if (!phoneVerified) {
+                const code = document.getElementById('verificationCode').value;
+                if (code.length !== 6) {
+                    alert('Please enter the 6-digit verification code');
+                    document.getElementById('verificationCode').focus();
+                    return;
+                }
+                return; // verifyCode function handles the rest
+            }
+
+            // If verified, validate email and submit
+            const email = document.getElementById('email');
+            if (!email.value.trim()) {
+                alert('Please enter your email address');
+                email.focus();
+                return;
+            }
+
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email.value.trim())) {
                 alert('Please enter a valid email address');
@@ -1155,20 +991,194 @@
                 return;
             }
 
+            validateAndSubmit();
+        }
+
+        function sendVerificationCode() {
+            const phone = document.getElementById('phone');
+            const phoneDigits = phone.value.replace(/\D/g, '');
+            
+            if (phoneDigits.length !== 10) {
+                alert('Please enter a valid phone number first');
+                phone.focus();
+                return;
+            }
+
+            // Disable phone input and show change button
+            phone.disabled = true;
+            document.getElementById('changeNumberBtn').style.display = 'block';
+
+            // Show verification section
+            document.getElementById('verificationSection').style.display = 'block';
+            document.getElementById('continueBtn').innerHTML = '<span class="btn-text">Verify & Continue →</span>';
+            
+            // Format phone number for Firebase (must include country code)
+            const formattedPhone = '+1' + phoneDigits;
+            
+            console.log('Sending verification code to:', formattedPhone);
+            
+            // Update status to loading
+            document.getElementById('verificationStatus').innerHTML = '⏳ Sending code...';
+            
+            // Use Firebase Phone Authentication
+            const appVerifier = window.recaptchaVerifier;
+            
+            signInWithPhoneNumber(window.firebaseAuth, formattedPhone, appVerifier)
+                .then((confirmationResult) => {
+                    // SMS sent successfully
+                    window.confirmationResult = confirmationResult;
+                    verificationCodeSent = true;
+                    
+                    // Update status
+                    document.getElementById('verificationStatus').innerHTML = '✅ Code sent! Check your phone';
+                    
+                    // Focus on verification input
+                    setTimeout(() => {
+                        document.getElementById('verificationCode').focus();
+                    }, 300);
+                })
+                .catch((error) => {
+                    console.error('Error sending SMS:', error);
+                    alert('Error sending verification code. Please try again.');
+                    
+                    // Reset on error
+                    phone.disabled = false;
+                    document.getElementById('changeNumberBtn').style.display = 'none';
+                    document.getElementById('verificationSection').style.display = 'none';
+                    document.getElementById('continueBtn').innerHTML = '<span class="btn-text">Continue →</span>';
+                    document.getElementById('verificationStatus').innerHTML = '📱 Code sent! Check your phone';
+                    
+                    // Reset reCAPTCHA
+                    window.recaptchaVerifier.render().then(function(widgetId) {
+                        grecaptcha.reset(widgetId);
+                    });
+                });
+        }
+
+        function changePhoneNumber() {
+            // Re-enable phone input
+            document.getElementById('phone').disabled = false;
+            document.getElementById('phone').focus();
+            
+            // Hide change button
+            document.getElementById('changeNumberBtn').style.display = 'none';
+            
+            // Hide and reset verification section
+            document.getElementById('verificationSection').style.display = 'none';
+            document.getElementById('verificationCode').value = '';
+            document.getElementById('verificationCode').style.borderColor = '';
+            
+            // Reset button
+            document.getElementById('continueBtn').innerHTML = '<span class="btn-text">Continue →</span>';
+            
+            // Reset flags
+            verificationCodeSent = false;
+            phoneVerified = false;
+            window.confirmationResult = null;
+            
+            // Reset reCAPTCHA
+            if (window.recaptchaVerifier) {
+                window.recaptchaVerifier.render().then(function(widgetId) {
+                    grecaptcha.reset(widgetId);
+                });
+            }
+        }
+
+        function verifyCode(code) {
+            console.log('Verifying code:', code);
+            
+            if (code.length === 6 && window.confirmationResult) {
+                // Update status to verifying
+                document.getElementById('verificationStatus').innerHTML = '⏳ Verifying...';
+                
+                // Verify the code with Firebase
+                window.confirmationResult.confirm(code)
+                    .then((result) => {
+                        // Code verified successfully
+                        phoneVerified = true;
+                        document.getElementById('verificationStatus').innerHTML = '✅ Verified! Number confirmed';
+                        document.getElementById('verificationCode').style.borderColor = 'var(--primary)';
+                        document.getElementById('continueBtn').innerHTML = '<span class="btn-text">Check If I Qualify →</span>';
+                        
+                        // Show checkmark and focus email
+                        setTimeout(() => {
+                            document.getElementById('email').focus();
+                        }, 500);
+                        
+                        console.log('Phone verification successful:', result);
+                    })
+                    .catch((error) => {
+                        // Wrong code
+                        console.error('Verification error:', error);
+                        document.getElementById('verificationStatus').innerHTML = '❌ Invalid code. Please try again';
+                        document.getElementById('verificationCode').style.borderColor = '#ef4444';
+                        document.getElementById('verificationCode').value = '';
+                        phoneVerified = false;
+                    });
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function goToStep(stepNumber) {
+            // Validate zip code on step 1
+            if (currentStep === 1 && stepNumber === 2) {
+                const zipCode = document.getElementById('zipCode');
+                if (!zipCode.value.trim() || !/^\d{5}$/.test(zipCode.value)) {
+                    alert('Please enter a valid 5-digit zip code');
+                    zipCode.focus();
+                    return;
+                }
+            }
+
+            console.log('Going to step:', stepNumber); // Debug log
+
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+
+            const targetStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+            console.log('Target step found:', targetStep); // Debug log
+            
+            if (targetStep) {
+                targetStep.classList.add('active');
+                if (stepNumber !== 'success') {
+                    currentStep = stepNumber;
+                    updateProgress();
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                console.error('Step not found:', stepNumber); // Debug log
+            }
+        }
+
+        function autoAdvance(nextStep, fieldName) {
+            const selected = document.querySelector(`input[name="${fieldName}"]:checked`);
+            if (selected) {
+                setTimeout(() => {
+                    goToStep(nextStep);
+                }, 400);
+            }
+        }
+
+        function validateAndSubmit() {
+            if (!phoneVerified) {
+                alert('Please verify your phone number first');
+                return;
+            }
+
             const formData = new FormData(document.getElementById('leadForm'));
             const data = Object.fromEntries(formData.entries());
             
             data.timestamp = formatTimestampEST();
+            data.phoneVerified = true;
             
             console.log('Lead Data Collected:', data);
 
-            // Hide header, social proof, and card header on success page
-            const pageHeader = document.getElementById('pageHeader');
-            const socialProof = document.getElementById('socialProof');
             const cardHeader = document.getElementById('cardHeader');
-            
-            if (pageHeader) pageHeader.style.display = 'none';
-            if (socialProof) socialProof.style.display = 'none';
             if (cardHeader) cardHeader.style.display = 'none';
 
             document.querySelectorAll('.form-step').forEach(step => {
@@ -1206,7 +1216,6 @@
             return `${month}/${day}/${year} ${hours}:${minutes}:${seconds} ${ampm} EST`;
         }
 
-        // Phone number formatting
         const phoneInput = document.getElementById('phone');
         if (phoneInput) {
             phoneInput.addEventListener('input', function(e) {
@@ -1224,27 +1233,24 @@
             });
         }
 
-        // Start chat function
+        function startCall() {
+            window.location.href = 'tel:+18605108741';
+        }
+
         function startChat() {
-            // Get user's name from the form
             const firstName = document.getElementById('firstName').value || 'there';
             const lastName = document.getElementById('lastName').value || '';
             const fullName = `${firstName} ${lastName}`.trim();
             
-            // Get their selected coverage
             const coverageElement = document.querySelector('input[name="coverage"]:checked');
             const coverage = coverageElement ? coverageElement.value : 'not specified';
             
-            // Pre-filled message
             const message = `Hi Derrick! My name is ${fullName}. I just submitted my insurance form and I'm interested in ${coverage} coverage. I'd love to discuss my options. When can we chat?`;
             
-            // Derrick's phone number
-            const phoneNumber = '16159716491'; // Derrick: (615) 971-6491
+            const phoneNumber = '18605108741';
             
-            // Try to open SMS
             const smsLink = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
             
-            // Create a temporary link and click it
             const link = document.createElement('a');
             link.href = smsLink;
             link.target = '_blank';
@@ -1252,27 +1258,23 @@
             link.click();
             document.body.removeChild(link);
             
-            // Also show a helpful popup with copy option
             setTimeout(() => {
                 const shouldCopy = confirm(
-                    `Opening SMS to Derrick at (615) 971-6491\n\n` +
+                    `Opening SMS to Derrick at (860) 510-8741\n\n` +
                     `If SMS doesn't open automatically, click OK to copy the message, then text Derrick manually.\n\n` +
                     `Message: "${message}"`
                 );
                 
                 if (shouldCopy) {
-                    // Copy message to clipboard
                     navigator.clipboard.writeText(message).then(() => {
-                        alert(`Message copied! 📋\n\nNow text it to: (615) 971-6491`);
+                        alert(`Message copied! 📋\n\nNow text it to: (860) 510-8741`);
                     }).catch(() => {
-                        // Fallback if clipboard doesn't work
-                        prompt('Copy this message and text to (615) 971-6491:', message);
+                        prompt('Copy this message and text to (860) 510-8741:', message);
                     });
                 }
             }, 500);
             
-            // Log for tracking
-            console.log('Opening SMS to Derrick (615) 971-6491 with message:', message);
+            console.log('Opening SMS to Derrick (860) 510-8741 with message:', message);
         }
 
         updateProgress();
