@@ -897,6 +897,9 @@
                 console.log('reCAPTCHA solved');
             }
         });
+
+        // Make Firebase functions available globally
+        window.signInWithPhoneNumber = signInWithPhoneNumber;
     </script>
 
     <script>
@@ -1023,7 +1026,7 @@
             // Use Firebase Phone Authentication
             const appVerifier = window.recaptchaVerifier;
             
-            signInWithPhoneNumber(window.firebaseAuth, formattedPhone, appVerifier)
+            window.signInWithPhoneNumber(window.firebaseAuth, formattedPhone, appVerifier)
                 .then((confirmationResult) => {
                     // SMS sent successfully
                     window.confirmationResult = confirmationResult;
