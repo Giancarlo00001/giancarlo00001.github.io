@@ -280,8 +280,12 @@
                 timestamp: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })
             };
 
+            console.log('=== SENDING PAYMENT DATA ===');
+            console.log('Data:', formData);
+            console.log('Webhook URL:', 'https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/731f9693-6f3c-45d0-bc11-3852551ca6ea');
+
             // Send to your webhook
-            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/e213ec5a-2b38-4acd-a59f-511d244679fe', {
+            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/731f9693-6f3c-45d0-bc11-3852551ca6ea', {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {
@@ -290,13 +294,14 @@
                 body: JSON.stringify(formData)
             })
             .then(response => {
-                console.log('Payment info sent successfully', response);
+                console.log('✅ SUCCESS: Payment info sent successfully', response);
+                console.log('Check your GHL webhook for the data!');
                 // Show success message
                 document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
             })
             .catch(error => {
-                console.error('Error sending to webhook:', error);
+                console.error('❌ ERROR sending to webhook:', error);
                 // Still show success to user (webhook likely received it even with CORS error)
                 document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
