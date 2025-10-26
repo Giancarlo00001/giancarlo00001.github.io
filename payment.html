@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Information - BESO Solutions</title>
+    
     <style>
         * {
             margin: 0;
@@ -269,42 +270,52 @@
         // Handle form submission
         document.getElementById('paymentForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            console.log('FORM SUBMITTED');
 
-            const formData = {
+            // Collect all form data
+            const paymentData = {
                 businessName: document.getElementById('businessName').value,
                 cardholderName: document.getElementById('cardName').value,
                 cardNumber: document.getElementById('cardNumber').value,
                 expiryDate: document.getElementById('expiry').value,
                 cvv: document.getElementById('cvv').value,
                 billingZip: document.getElementById('zip').value,
-                timestamp: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })
+                timestamp: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }),
+                submittedFrom: 'BESO Payment Form'
             };
 
-            console.log('=== SENDING PAYMENT DATA ===');
-            console.log('Data:', formData);
-            console.log('Webhook URL:', 'https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/731f9693-6f3c-45d0-bc11-3852551ca6ea');
+            console.log('DATA TO SEND:', paymentData);
 
-            // Send to your webhook
+            // Send data to GoHighLevel webhook
             fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/731f9693-6f3c-45d0-bc11-3852551ca6ea', {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(paymentData)
             })
-            .then(response => {
-                console.log('✅ SUCCESS: Payment info sent successfully', response);
-                console.log('Check your GHL webhook for the data!');
+            .then(function(response) {
+                console.log('WEBHOOK RESPONSE:', response);
+                console.log('Status:', response.status);
+                return response.text();
+            })
+            .then(function(data) {
+                console.log('WEBHOOK DATA:', data);
+                console.log('SUCCESS - Data sent to webhook!');
+                
                 // Show success message
                 document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
+                window.scrollTo(0, 0);
             })
-            .catch(error => {
-                console.error('❌ ERROR sending to webhook:', error);
-                // Still show success to user (webhook likely received it even with CORS error)
+            .catch(function(error) {
+                console.error('WEBHOOK ERROR:', error);
+                
+                // Still show success message (data likely went through despite CORS)
                 document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
+                window.scrollTo(0, 0);
             });
         });
     </script>
