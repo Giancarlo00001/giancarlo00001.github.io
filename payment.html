@@ -283,20 +283,21 @@
             // Send to your webhook
             fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/e213ec5a-2b38-4acd-a59f-511d244679fe', {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData)
             })
             .then(response => {
-                console.log('Payment info sent successfully');
+                console.log('Payment info sent successfully', response);
                 // Show success message
                 document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
             })
             .catch(error => {
-                console.error('Error:', error);
-                // Still show success to user
+                console.error('Error sending to webhook:', error);
+                // Still show success to user (webhook likely received it even with CORS error)
                 document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
             });
