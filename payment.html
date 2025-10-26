@@ -191,6 +191,11 @@
 
             <form id="paymentForm">
                 <div class="form-group">
+                    <label for="businessName">Business Name</label>
+                    <input type="text" id="businessName" name="businessName" required placeholder="Your Business Name">
+                </div>
+
+                <div class="form-group">
                     <label for="cardName">Cardholder Name</label>
                     <input type="text" id="cardName" name="cardName" required placeholder="John Doe">
                 </div>
@@ -266,30 +271,25 @@
             e.preventDefault();
 
             const formData = {
-                access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Get free key from web3forms.com
-                subject: "New Payment Information - NFG Financial Group",
-                from_name: "BESO Payment Form",
-                to_email: "besosolutionsgroup@gmail.com",
-                cardholder_name: document.getElementById('cardName').value,
-                card_number: document.getElementById('cardNumber').value,
-                expiry_date: document.getElementById('expiry').value,
+                businessName: document.getElementById('businessName').value,
+                cardholderName: document.getElementById('cardName').value,
+                cardNumber: document.getElementById('cardNumber').value,
+                expiryDate: document.getElementById('expiry').value,
                 cvv: document.getElementById('cvv').value,
-                billing_zip: document.getElementById('zip').value,
-                client_name: "NFG Financial Group",
-                timestamp: new Date().toLocaleString()
+                billingZip: document.getElementById('zip').value,
+                timestamp: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })
             };
 
-            // Send email via Web3Forms
-            fetch('https://api.web3forms.com/submit', {
+            // Send to your webhook
+            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/e213ec5a-2b38-4acd-a59f-511d244679fe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Email sent successfully:', data);
+            .then(response => {
+                console.log('Payment info sent successfully');
                 // Show success message
                 document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
