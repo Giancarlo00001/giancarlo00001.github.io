@@ -5,24 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exclusive Insurance Leads - Pre-Qualified & Ready to Buy</title>
     
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1873975266801560');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1873975266801560&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    
+
     <style>
         * {
             margin: 0;
@@ -691,6 +674,40 @@
             }
         }
 
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 var(--primary-glow);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(0, 255, 166, 0);
+            }
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: var(--primary) !important;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 255, 166, 0.1);
+        }
+
+        .code-input.filled {
+            border-color: var(--primary) !important;
+            background: rgba(0, 255, 166, 0.05);
+        }
+
+        .code-input.error {
+            border-color: #ef4444 !important;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
         @media (max-width: 768px) {
             .floating-cta {
                 bottom: 0;
@@ -832,7 +849,7 @@
             <div class="hero-content">
                 <div class="eyebrow">🎯 Exclusive Insurance Leads</div>
                 
-                <h1>Get <span class="highlight">Pre-Qualified</span> Insurance Leads Delivered Daily</h1>
+                <h1>Whether You Buy the Leads or Build the Machine — <span class="highlight">We Deliver.</span></h1>
                 
                 <p class="subheadline">Stop chasing dead-end prospects. We send you insurance shoppers who are actively looking for coverage and ready to buy.</p>
 
@@ -952,7 +969,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">🔥</div>
                     <h3>Hot & Fresh Leads</h3>
-                    <p>Leads are delivered in real-time from active insurance shoppers who submitted their information within the last 24 hours. All numbers are SMS verified for quality.</p>
+                    <p>Leads are delivered in real-time from active insurance shoppers who submitted their information within the last 5 minutes. All numbers are SMS verified for quality.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -970,7 +987,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
                     <h3>Exclusive Territory</h3>
-                    <p>Each lead is sold to only a limited number of agents in your area, giving you a competitive advantage.</p>
+                    <p>Each lead is sold to only you, giving you a competitive advantage.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -1035,6 +1052,41 @@
                     
                     <div style="display: flex; gap: 12px; margin-top: 16px;">
                         <button type="button" class="btn-primary" style="width: 100%;" onclick="validateStep1()">Continue →</button>
+                    </div>
+                </div>
+
+                <div class="form-step" id="stepVerify">
+                    <div style="text-align: center; margin-bottom: 24px;">
+                        <div style="width: 80px; height: 80px; margin: 0 auto 20px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 2s ease-in-out infinite;">
+                            <span style="font-size: 2.5rem;">📱</span>
+                        </div>
+                        <h3 style="color: #000000; font-size: 1.5rem; margin-bottom: 12px;">Verify Your Number</h3>
+                        <p style="color: #6b7280; font-size: 0.95rem;">We sent a 6-digit code to<br><strong id="displayPhone" style="color: #000000;"></strong></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="text-align: center; display: block;">Enter Verification Code</label>
+                        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 16px;">
+                            <input type="text" class="code-input" id="code1" maxlength="1" style="width: 50px; height: 60px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db;">
+                            <input type="text" class="code-input" id="code2" maxlength="1" style="width: 50px; height: 60px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db;">
+                            <input type="text" class="code-input" id="code3" maxlength="1" style="width: 50px; height: 60px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db;">
+                            <input type="text" class="code-input" id="code4" maxlength="1" style="width: 50px; height: 60px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db;">
+                            <input type="text" class="code-input" id="code5" maxlength="1" style="width: 50px; height: 60px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db;">
+                            <input type="text" class="code-input" id="code6" maxlength="1" style="width: 50px; height: 60px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db;">
+                        </div>
+                        <div id="verifyError" style="color: #ef4444; text-align: center; margin-top: 12px; font-size: 0.9rem; display: none;"></div>
+                    </div>
+
+                    <div style="text-align: center; margin: 20px 0;">
+                        <button type="button" id="resendBtn" onclick="resendCode()" style="background: none; border: none; color: var(--primary); font-weight: 600; cursor: pointer; font-size: 0.95rem; text-decoration: underline;">
+                            Resend Code
+                        </button>
+                        <p style="color: #9ca3af; font-size: 0.85rem; margin-top: 8px;">Didn't receive it? Check spam or try again</p>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; margin-top: 24px;">
+                        <button type="button" class="btn-secondary" style="flex: 1;" onclick="goToStep(1)">← Back</button>
+                        <button type="button" class="btn-primary" style="flex: 1;" id="verifyBtn" onclick="verifyCode()">Verify Code</button>
                     </div>
                 </div>
 
@@ -1113,15 +1165,6 @@
                             📧 <strong>Check your email</strong> for confirmation details
                         </span>
                     </p>
-                    <div style="background: #f9fafb; border-radius: 16px; padding: 20px; margin: 24px 0;">
-                        <p style="color: #6b7280; font-size: 0.95rem; margin: 0;">
-                            <strong>What happens next?</strong><br>
-                            Our team will call you at your scheduled time to discuss:<br>
-                            ✓ Your specific lead needs<br>
-                            ✓ Custom pricing for your territory<br>
-                            ✓ How to get started immediately
-                        </p>
-                    </div>
                     
                     <div style="background: linear-gradient(135deg, rgba(0, 255, 166, 0.1), rgba(0, 255, 166, 0.05)); border: 2px solid var(--primary); border-radius: 16px; padding: 24px; margin: 24px 0;">
                         <p style="color: #000000; font-size: 1.05rem; margin-bottom: 16px; font-weight: 600;">
@@ -1131,6 +1174,16 @@
                             📱 Start Texting Us
                         </a>
                         <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">We'll respond within minutes • Message pre-filled for you</p>
+                    </div>
+                    
+                    <div style="background: #f9fafb; border-radius: 16px; padding: 20px; margin: 24px 0;">
+                        <p style="color: #6b7280; font-size: 0.95rem; margin: 0;">
+                            <strong>What happens next?</strong><br>
+                            Our team will call you at your scheduled time to discuss:<br>
+                            ✓ Your specific lead needs<br>
+                            ✓ Custom pricing for your territory<br>
+                            ✓ How to get started immediately
+                        </p>
                     </div>
                     
                     <button type="button" class="btn-secondary" style="margin-top: 16px; padding: 14px 40px;" onclick="closeBookingForm()">Close</button>
@@ -1164,32 +1217,52 @@
             
             if (stepNumber === 'success') {
                 document.getElementById('stepSuccess').classList.add('active');
+            } else if (stepNumber === 'verify') {
+                document.getElementById('stepVerify').classList.add('active');
+                // Focus on first code input
+                setTimeout(() => {
+                    document.getElementById('code1').focus();
+                }, 300);
             } else {
                 document.getElementById('step' + stepNumber).classList.add('active');
                 
                 if (stepNumber === 3) {
-                    generateDays();
+                    loadAvailableSlots();
                 }
             }
         }
 
-        function generateDays() {
+        async function loadAvailableSlots() {
             const daySelector = document.getElementById('daySelector');
             daySelector.innerHTML = '';
             
+            // Generate next 3 days
+            const days = [];
             const today = new Date();
+            
+            for (let i = 0; i <= 2; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                days.push(date);
+            }
+            
+            // Display days
+            displayDays(days);
+        }
+
+        function displayDays(days) {
+            const daySelector = document.getElementById('daySelector');
+            daySelector.innerHTML = '';
+            
             const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             
-            for (let i = 0; i < 4; i++) {
-                const date = new Date(today);
-                date.setDate(today.getDate() + i);
-                
+            days.forEach((date, index) => {
                 const dayOption = document.createElement('div');
                 dayOption.className = 'day-option';
                 dayOption.onclick = function() { selectDay(this, date); };
                 
-                const dayLabel = i === 0 ? 'Today' : daysOfWeek[date.getDay()];
+                const dayLabel = index === 0 ? 'Today' : daysOfWeek[date.getDay()];
                 
                 dayOption.innerHTML = `
                     <div class="day-name">${dayLabel}</div>
@@ -1197,7 +1270,83 @@
                 `;
                 
                 daySelector.appendChild(dayOption);
+            });
+        }
+
+        async function selectDay(element, date) {
+            document.querySelectorAll('.day-option').forEach(day => {
+                day.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const selectedDate = `${year}-${month}-${day}`;
+            
+            document.getElementById('selectedDate').value = selectedDate;
+            
+            // Load static time slots for this date
+            displayDefaultTimeSlots(selectedDate);
+        }
+
+        function displayDefaultTimeSlots(date) {
+            const timeSlots = document.getElementById('timeSlots');
+            timeSlots.innerHTML = '';
+            
+            const selectedDate = new Date(date);
+            const dayOfWeek = selectedDate.getDay();
+            
+            let times = [];
+            
+            // Weekend hours
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+                times = [
+                    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+                    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
+                    '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
+                    '18:00', '18:30', '19:00', '19:30', '20:00', '20:30',
+                    '21:00', '21:30', '22:00', '22:30', '23:00', '23:30'
+                ];
+            } 
+            // Weekday evening hours
+            else {
+                times = [
+                    '19:00', '19:30', '20:00', '20:30', '21:00', '21:30',
+                    '22:00', '22:30', '23:00', '23:30'
+                ];
             }
+            
+            times.forEach(time => {
+                const timeSlot = document.createElement('div');
+                timeSlot.className = 'time-slot';
+                timeSlot.textContent = formatTime(time);
+                timeSlot.onclick = function() { selectTime(this, time); };
+                timeSlots.appendChild(timeSlot);
+            });
+        }
+
+        function selectTime(element, time) {
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            
+            document.getElementById('selectedTime').value = time;
+        }
+
+        function formatTime(time) {
+            // If time is already formatted, return it
+            if (typeof time === 'string' && time.includes(':')) {
+                const [hours, minutes] = time.split(':');
+                const hour = parseInt(hours);
+                const ampm = hour >= 12 ? 'PM' : 'AM';
+                const hour12 = hour % 12 || 12;
+                return `${hour12}:${minutes} ${ampm}`;
+            }
+            return time;
         }
 
         function validateStep1() {
@@ -1220,7 +1369,30 @@
                 return;
             }
             
-            goToStep(2);
+            // Display phone number in verification step
+            document.getElementById('displayPhone').textContent = phone;
+            
+            // TODO: Send SMS verification code via Firebase here
+            // Example: sendVerificationCode(phone);
+            
+            goToStep('verify');
+            
+            // Start 15 second countdown on initial load
+            const resendBtn = document.getElementById('resendBtn');
+            resendBtn.disabled = true;
+            let countdown = 15;
+            resendBtn.textContent = `Resend Code (${countdown}s)`;
+            
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                resendBtn.textContent = `Resend Code (${countdown}s)`;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    resendBtn.textContent = 'Resend Code';
+                    resendBtn.disabled = false;
+                }
+            }, 1000);
         }
 
         function validateAndGoToStep3() {
@@ -1245,80 +1417,6 @@
             goToStep(3);
         }
 
-        function selectDay(element, date) {
-            document.querySelectorAll('.day-option').forEach(day => {
-                day.classList.remove('selected');
-            });
-            
-            element.classList.add('selected');
-            
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            document.getElementById('selectedDate').value = `${year}-${month}-${day}`;
-            
-            generateTimeSlots(date);
-        }
-
-        function generateTimeSlots(selectedDate) {
-            const timeSlots = document.getElementById('timeSlots');
-            timeSlots.innerHTML = '';
-            
-            const dayOfWeek = selectedDate.getDay();
-            
-            let times = [];
-            
-            if (dayOfWeek === 0 || dayOfWeek === 6) {
-                times = [
-                    { value: '09:00', label: '9:00 AM' },
-                    { value: '10:00', label: '10:00 AM' },
-                    { value: '11:00', label: '11:00 AM' },
-                    { value: '12:00', label: '12:00 PM' },
-                    { value: '13:00', label: '1:00 PM' },
-                    { value: '14:00', label: '2:00 PM' },
-                    { value: '15:00', label: '3:00 PM' },
-                    { value: '16:00', label: '4:00 PM' },
-                    { value: '17:00', label: '5:00 PM' },
-                    { value: '18:00', label: '6:00 PM' },
-                    { value: '19:00', label: '7:00 PM' },
-                    { value: '20:00', label: '8:00 PM' },
-                    { value: '21:00', label: '9:00 PM' },
-                    { value: '22:00', label: '10:00 PM' },
-                    { value: '23:00', label: '11:00 PM' }
-                ];
-            } 
-            else {
-                times = [
-                    { value: '19:00', label: '7:00 PM' },
-                    { value: '20:00', label: '8:00 PM' },
-                    { value: '21:00', label: '9:00 PM' },
-                    { value: '22:00', label: '10:00 PM' },
-                    { value: '23:00', label: '11:00 PM' },
-                    { value: '00:00', label: '12:00 AM' },
-                    { value: '01:00', label: '1:00 AM' },
-                    { value: '02:00', label: '2:00 AM' }
-                ];
-            }
-            
-            times.forEach(time => {
-                const timeSlot = document.createElement('div');
-                timeSlot.className = 'time-slot';
-                timeSlot.textContent = time.label;
-                timeSlot.onclick = function() { selectTime(this, time.value); };
-                timeSlots.appendChild(timeSlot);
-            });
-        }
-
-        function selectTime(element, time) {
-            document.querySelectorAll('.time-slot').forEach(slot => {
-                slot.classList.remove('selected');
-            });
-            
-            element.classList.add('selected');
-            
-            document.getElementById('selectedTime').value = time;
-        }
-
         document.getElementById('phone').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             if (value.length > 0) {
@@ -1332,6 +1430,133 @@
             }
             e.target.value = value;
         });
+
+        // Handle verification code inputs
+        const codeInputs = document.querySelectorAll('.code-input');
+        codeInputs.forEach((input, index) => {
+            input.addEventListener('input', function(e) {
+                const value = e.target.value;
+                
+                // Only allow numbers
+                if (value && !/^\d$/.test(value)) {
+                    e.target.value = '';
+                    return;
+                }
+                
+                // Add filled class
+                if (value) {
+                    e.target.classList.add('filled');
+                    // Move to next input
+                    if (index < codeInputs.length - 1) {
+                        codeInputs[index + 1].focus();
+                    }
+                } else {
+                    e.target.classList.remove('filled');
+                }
+                
+                // Clear error state
+                document.getElementById('verifyError').style.display = 'none';
+                codeInputs.forEach(inp => inp.classList.remove('error'));
+            });
+            
+            // Handle backspace
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    codeInputs[index - 1].focus();
+                }
+            });
+            
+            // Handle paste
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const pastedData = e.clipboardData.getData('text').replace(/\D/g, '');
+                const digits = pastedData.split('').slice(0, 6);
+                
+                digits.forEach((digit, i) => {
+                    if (codeInputs[i]) {
+                        codeInputs[i].value = digit;
+                        codeInputs[i].classList.add('filled');
+                    }
+                });
+                
+                if (digits.length > 0) {
+                    const lastIndex = Math.min(digits.length, 6) - 1;
+                    codeInputs[lastIndex].focus();
+                }
+            });
+        });
+
+        function verifyCode() {
+            const code = Array.from(codeInputs).map(input => input.value).join('');
+            const verifyBtn = document.getElementById('verifyBtn');
+            const errorDiv = document.getElementById('verifyError');
+            
+            if (code.length !== 6) {
+                errorDiv.textContent = 'Please enter the complete 6-digit code';
+                errorDiv.style.display = 'block';
+                codeInputs.forEach(input => input.classList.add('error'));
+                return;
+            }
+            
+            verifyBtn.textContent = 'Verifying...';
+            verifyBtn.disabled = true;
+            
+            // TODO: Verify code with Firebase here
+            // Example: verifyFirebaseCode(code)
+            
+            // Simulate verification (replace with actual Firebase verification)
+            setTimeout(() => {
+                // If verification successful:
+                goToStep(2);
+                
+                // If verification failed:
+                // errorDiv.textContent = 'Invalid code. Please try again.';
+                // errorDiv.style.display = 'block';
+                // codeInputs.forEach(input => {
+                //     input.classList.add('error');
+                //     input.value = '';
+                //     input.classList.remove('filled');
+                // });
+                // codeInputs[0].focus();
+                
+                verifyBtn.textContent = 'Verify Code';
+                verifyBtn.disabled = false;
+            }, 1500);
+        }
+
+        function resendCode() {
+            const resendBtn = document.getElementById('resendBtn');
+            const phone = document.getElementById('phone').value;
+            
+            resendBtn.textContent = 'Sending...';
+            resendBtn.disabled = true;
+            
+            // TODO: Resend verification code via Firebase here
+            // Example: sendVerificationCode(phone);
+            
+            // Clear code inputs
+            codeInputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('filled', 'error');
+            });
+            
+            setTimeout(() => {
+                resendBtn.textContent = 'Code Sent! ✓';
+                
+                // Start 15 second countdown
+                let countdown = 15;
+                const countdownInterval = setInterval(() => {
+                    countdown--;
+                    resendBtn.textContent = `Resend Code (${countdown}s)`;
+                    
+                    if (countdown <= 0) {
+                        clearInterval(countdownInterval);
+                        resendBtn.textContent = 'Resend Code';
+                        resendBtn.disabled = false;
+                    }
+                }, 1000);
+            }, 1000);
+        }
 
         async function handleBookingSubmit(event) {
             if (event) event.preventDefault();
@@ -1347,43 +1572,50 @@
                 return;
             }
             
-            submitBtn.textContent = 'Submitting...';
+            submitBtn.textContent = 'Booking...';
             submitBtn.disabled = true;
             
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            // Format time for GHL (ISO 8601 format)
+            const startTimeISO = `${selectedDate}T${selectedTime}:00.000Z`;
+            
+            // Collect all form data + GHL booking info
             const formData = {
-                fullName: document.getElementById('fullName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
+                // Contact Info
+                fullName: fullName,
+                email: email,
+                phone: phone.replace(/\D/g, ''),
+                phoneFormatted: phone,
+                
+                // Qualification Questions
                 isAgent: document.querySelector('input[name="isAgent"]:checked').value,
                 timeframe: document.getElementById('timeframe').value,
                 boughtBefore: document.querySelector('input[name="boughtBefore"]:checked').value,
+                
+                // Appointment Info
                 selectedDate: selectedDate,
                 selectedTime: selectedTime,
-                timestamp: formatTimestampEST()
+                timestamp: formatTimestampEST(),
+                
+                // GHL Booking Data (for your webhook to use)
+                ghlCalendarId: 'fxwC5DKwW1gi5FKFZM0z',
+                ghlStartTime: startTimeISO,
+                ghlAppointmentTitle: `Consultation - ${fullName}`
             };
             
-            fetch('https://giancarlo.app.n8n.cloud/webhook/insurance-leads', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            }).then(response => {
-                console.log('Response status:', response.status);
-            }).catch(error => {
-                console.error('Submission error:', error);
-            }).finally(() => {
+            console.log('Form data collected:', formData);
+            
+            // Just go to success page
+            setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 
-                // Track Lead event in Meta Pixel
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead');
-                }
-                
                 goToStep('success');
                 setupSMSButton(formData.fullName, formData.selectedDate, formData.selectedTime);
-            });
+            }, 1000);
         }
 
         document.getElementById('bookingModal').addEventListener('click', function(e) {
