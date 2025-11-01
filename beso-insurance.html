@@ -1422,7 +1422,7 @@
             // Format phone for Firebase (needs +1 for US)
             const phoneNumber = '+1' + phone.replace(/\D/g, '');
             
-            // Setup reCAPTCHA verifier
+            // Setup reCAPTCHA verifier only if it doesn't exist
             if (!window.recaptchaVerifier) {
                 window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
                     'size': 'invisible',
@@ -1471,14 +1471,18 @@
                     } else if (error.code === 'auth/quota-exceeded') {
                         errorMsg += 'SMS quota exceeded. Please contact support.';
                     } else {
-                        errorMsg += 'Please try again. Error: ' + error.message;
+                        errorMsg += 'Please try again.';
                     }
                     
                     alert(errorMsg);
                     
-                    // Reset reCAPTCHA
+                    // Clear and reset reCAPTCHA
                     if (window.recaptchaVerifier) {
-                        window.recaptchaVerifier.clear();
+                        try {
+                            window.recaptchaVerifier.clear();
+                        } catch (e) {
+                            console.log('Error clearing recaptcha:', e);
+                        }
                         window.recaptchaVerifier = null;
                     }
                 });
