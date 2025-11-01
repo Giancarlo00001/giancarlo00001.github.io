@@ -1672,28 +1672,32 @@
             };
             
             console.log('Form data collected:', formData);
+            console.log('Calling webhook URL:', 'https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/9b1319df-0abb-49d9-876f-827ced99db5a');
+            console.log('Sending data:', JSON.stringify(formData, null, 2));
             
-            // Just go to success page
+            // Send to webhook first
+            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/9b1319df-0abb-49d9-876f-827ced99db5a', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            }).then(response => {
+                console.log('✅ Webhook request sent (no-cors mode)');
+                console.log('Response:', response);
+            }).catch(error => {
+                console.error('❌ Webhook error:', error);
+            });
+            
+            // Go to success page after short delay
             setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 
-                // Send to webhook
-                fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/9b1319df-0abb-49d9-876f-827ced99db5a', {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                }).then(response => {
-                    console.log('Webhook response:', response.status);
-                }).catch(error => {
-                    console.error('Webhook error:', error);
-                });
-                
                 goToStep('success');
                 setupSMSButton(formData.fullName, formData.selectedDate, formData.selectedTime);
-            }, 1000);
+            }, 1500);
         }
 
         document.getElementById('bookingModal').addEventListener('click', function(e) {
