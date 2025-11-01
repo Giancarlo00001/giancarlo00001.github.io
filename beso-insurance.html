@@ -1675,17 +1675,18 @@
             console.log('Calling webhook URL:', 'https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/9b1319df-0abb-49d9-876f-827ced99db5a');
             console.log('Sending data:', JSON.stringify(formData, null, 2));
             
-            // Send to webhook first
+            // Send to webhook
             fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/9b1319df-0abb-49d9-876f-827ced99db5a', {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: { 
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             }).then(response => {
-                console.log('✅ Webhook request sent (no-cors mode)');
-                console.log('Response:', response);
+                console.log('✅ Webhook response status:', response.status);
+                return response.json();
+            }).then(data => {
+                console.log('Webhook response data:', data);
             }).catch(error => {
                 console.error('❌ Webhook error:', error);
             });
