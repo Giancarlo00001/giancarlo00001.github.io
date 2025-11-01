@@ -1644,8 +1644,23 @@
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             
-            // Format time for GHL (ISO 8601 format)
-            const startTimeISO = `${selectedDate}T${selectedTime}:00.000Z`;
+            // Format time for GHL (ISO 8601 format) - convert EST to UTC
+            // Parse the selected date/time as EST (America/New_York)
+            const dateTimeString = `${selectedDate}T${selectedTime}:00`;
+            const dateTimeEST = new Date(dateTimeString);
+            
+            // Get the timezone offset for EST (5 hours behind UTC, or 4 during DST)
+            // The browser's Date object will handle this automatically based on the date
+            const startTimeISO = dateTimeEST.toISOString();
+            
+            // Get user's timezone info for debugging
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const userTimezoneOffset = new Date().getTimezoneOffset() / -60; // Convert to hours ahead of UTC
+            const userLocalDateTime = dateTimeEST.toLocaleString('en-US', { 
+                timeZone: userTimezone,
+                dateStyle: 'short',
+                timeStyle: 'short'
+            });
             
             // Collect all form data + GHL booking info
             const formData = {
@@ -1664,6 +1679,11 @@
                 selectedDate: selectedDate,
                 selectedTime: selectedTime,
                 timestamp: formatTimestampEST(),
+                
+                // Timezone Info (for debugging)
+                userTimezone: userTimezone,
+                userTimezoneOffset: `UTC${userTimezoneOffset >= 0 ? '+' : ''}${userTimezoneOffset}`,
+                userLocalDateTime: userLocalDateTime,
                 
                 // GHL Booking Data (for your webhook to use)
                 ghlCalendarId: 'fxwC5DKwW1gi5FKFZM0z',
