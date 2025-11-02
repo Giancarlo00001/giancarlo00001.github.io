@@ -1422,15 +1422,27 @@
             // Format phone for Firebase (needs +1 for US)
             const phoneNumber = '+1' + phone.replace(/\D/g, '');
             
-            // Setup reCAPTCHA verifier only if it doesn't exist
-            if (!window.recaptchaVerifier) {
-                window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                    'size': 'invisible',
-                    'callback': (response) => {
-                        // reCAPTCHA solved
-                    }
-                });
+            // Clear any existing reCAPTCHA
+            if (window.recaptchaVerifier) {
+                try {
+                    window.recaptchaVerifier.clear();
+                } catch (e) {
+                    console.log('Error clearing existing recaptcha:', e);
+                }
+                window.recaptchaVerifier = null;
             }
+            
+            // Clear the container
+            const container = document.getElementById('recaptcha-container');
+            container.innerHTML = '';
+            
+            // Setup fresh reCAPTCHA verifier
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                'size': 'invisible',
+                'callback': (response) => {
+                    console.log('reCAPTCHA solved');
+                }
+            });
             
             // Send SMS code
             const appVerifier = window.recaptchaVerifier;
@@ -1485,6 +1497,7 @@
                         }
                         window.recaptchaVerifier = null;
                     }
+                    container.innerHTML = '';
                 });
         }
 
@@ -1632,6 +1645,27 @@
             codeInputs.forEach(input => {
                 input.value = '';
                 input.classList.remove('filled', 'error');
+            });
+            
+            // Clear and reset reCAPTCHA
+            if (window.recaptchaVerifier) {
+                try {
+                    window.recaptchaVerifier.clear();
+                } catch (e) {
+                    console.log('Error clearing recaptcha:', e);
+                }
+                window.recaptchaVerifier = null;
+            }
+            
+            const container = document.getElementById('recaptcha-container');
+            container.innerHTML = '';
+            
+            // Create fresh reCAPTCHA
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                'size': 'invisible',
+                'callback': (response) => {
+                    console.log('reCAPTCHA solved');
+                }
             });
             
             // Resend SMS code via Firebase
@@ -1788,14 +1822,6 @@
             const encodedMessage = encodeURIComponent(message);
             
             smsButton.href = `sms:+18605108741?&body=${encodedMessage}`;
-        }
-
-        function formatTime(time24) {
-            const [hours, minutes] = time24.split(':');
-            const hour = parseInt(hours);
-            const ampm = hour >= 12 ? 'PM' : 'AM';
-            const hour12 = hour % 12 || 12;
-            return `${hour12}:${minutes} ${ampm}`;
         }
 
         function formatTimestampEST() {
