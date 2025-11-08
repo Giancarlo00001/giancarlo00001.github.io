@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BatchLeads to GHL Cleaner | BESO Solutions</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,217,163,0.15);
+            border: 2px solid #00D9A3;
+            overflow: hidden;
+        }
+
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header h1 .beso-brand {
+            color: #00D9A3;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .upload-section {
+            border: 3px dashed #00D9A3;
+            border-radius: 15px;
+            padding: 60px;
+            text-align: center;
+            background: #f0fdf9;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-section:hover {
+            border-color: #00c794;
+            background: #e6fcf5;
+        }
+
+        .upload-section.dragover {
+            border-color: #00c794;
+            background: #d4f7ed;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            color: #00D9A3;
+            margin-bottom: 20px;
+        }
+
+        .upload-section h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        .upload-section p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .btn {
+            background: #00D9A3;
+            color: #1a1a1a;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 217, 163, 0.4);
+        }
+
+        .btn:hover {
+            background: #00c794;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 217, 163, 0.6);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .processing {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #00D9A3;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: #1a1a1a;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid #2a2a2a;
+        }
+        
+        .stat-card h3 {
+            color: #00D9A3;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 1em;
+            opacity: 0.95;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 30px;
+            background: #f0fdf9;
+            border-radius: 15px;
+        }
+
+        .details {
+            background: #f0fdf9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .details h3 {
+            color: #00D9A3;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .details ul {
+            list-style-position: inside;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .details ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .details ul li:last-child {
+            border-bottom: none;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #856404;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #155724;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            background: #f0fdf9;
+        }
+
+        .address-toggle {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f0fdf9;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .address-toggle label {
+            margin: 0 20px;
+            font-size: 1.1em;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .address-toggle input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 BESO <span class="beso-brand">Solutions</span> Lead Cleaner</h1>
+            <p>Automated BatchLeads to GHL Processing</p>
+        </div>
+
+        <div class="content">
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-icon">📤</div>
+                <h2>Upload Your BatchLeads File</h2>
+                <p>Drag & drop your .xlsx file here or click to browse</p>
+                <button class="btn" onclick="document.getElementById('fileInput').click()">
+                    Select File
+                </button>
+                <input type="file" id="fileInput" accept=".xlsx,.xls" onchange="handleFile(this.files[0])">
+            </div>
+
+            <div class="processing" id="processing">
+                <div class="spinner"></div>
+                <h2>Processing Your Leads...</h2>
+                <p>Filtering phone numbers, cleaning data, and organizing contacts</p>
+            </div>
+
+            <div class="results" id="results">
+                <div class="success">
+                    <strong>✅ Processing Complete!</strong> Your cleaned CSV is ready for GHL import.
+                </div>
+
+                <div class="stats-grid" id="statsGrid"></div>
+
+                <div class="download-section">
+                    <h2>Your Clean CSV File is Ready!</h2>
+                    <button class="btn" id="downloadBtn" onclick="downloadCSV()">
+                        Download Clean CSV for GHL
+                    </button>
+                </div>
+
+                <div class="details" id="details"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>BESO Solutions</strong> | Back End Scaling & Operations</p>
+            <p>Built for automated lead processing & SMS campaigns</p>
+        </div>
+    </div>
+
+    <script>
+        let cleanedData = [];
+        let stats = {};
+
+        // Handle drag and drop
+        const uploadSection = document.getElementById('uploadSection');
+        uploadSection.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadSection.classList.add('dragover');
+        });
+
+        uploadSection.addEventListener('dragleave', () => {
+            uploadSection.classList.remove('dragover');
+        });
+
+        uploadSection.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadSection.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file) handleFile(file);
+        });
+
+        function handleFile(file) {
+            if (!file) return;
+
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('processing').style.display = 'block';
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, {type: 'array'});
+                    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const jsonData = XLSX.utils.sheet_to_json(firstSheet);
+                    
+                    processData(jsonData);
+                } catch (error) {
+                    alert('Error reading file: ' + error.message);
+                    location.reload();
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function processData(data) {
+            // Always use Property Address (97.2% are the same, better for SMS campaigns)
+            const addressType = 'property';
+            
+            stats = {
+                totalRows: data.length,
+                removedNoMobile: 0,
+                keptContacts: 0,
+                mobileSelected: 0,
+                emailFound: 0,
+                emailNA: 0
+            };
+
+            cleanedData = [];
+
+            data.forEach(row => {
+                // Find best mobile phone
+                const phone = findBestMobilePhone(row);
+                
+                if (!phone) {
+                    stats.removedNoMobile++;
+                    return; // Skip this contact - no mobile number
+                }
+
+                stats.mobileSelected++;
+
+                // Find best email
+                const email = findBestEmail(row);
+                if (email && email !== 'N/A') {
+                    stats.emailFound++;
+                } else {
+                    stats.emailNA++;
+                }
+
+                // Build the cleaned contact
+                const cleanContact = {
+                    // Section 1: Contact Information
+                    'First Name': formatValue(row['First Name']),
+                    'Last Name': formatValue(row['Last Name']),
+                    'Mobile Phone': phone,
+                    'Email': email,
+                    
+                    // Section 2: Location (based on user selection)
+                    'Street Address': formatValue(addressType === 'property' ? row['Property Address'] : row['Mailing Address']),
+                    'City': formatValue(addressType === 'property' ? row['Property City'] : row['Mailing City']),
+                    'State': formatValue(addressType === 'property' ? row['Property State'] : row['Mailing State']),
+                    'Zip Code': formatValue(addressType === 'property' ? row['Property Zip'] : row['Mailing Zip']),
+                    'County': formatValue(addressType === 'property' ? row['Property County'] : row['Mailing County']),
+                    
+                    // Section 3: Property Data
+                    'Property Type': formatValue(row['Property Type Detail']),
+                    'Owner Occupied': formatValue(row['Owner Occupied']),
+                    'Bedroom Count': formatValue(row['Bedroom Count']),
+                    'Bathroom Count': formatValue(row['Bathroom Count']),
+                    'Building Square Feet': formatValue(row['Total Building Area Square Feet']),
+                    'Lot Size Square Feet': formatValue(row['Lot Size Square Feet']),
+                    'Year Built': formatValue(row['Year Built']),
+                    'Estimated Value': formatValue(row['Estimated Value']),
+                    'Total Assessed Value': formatValue(row['Total Assessed Value']),
+                    'Last Sale Date': formatValue(row['Last Sale Date']),
+                    'Last Sale Price': formatValue(row['Last Sale Price']),
+                    'Loan Balance': formatValue(row['Total Loan Balance']),
+                    'Equity': formatValue(row['Equity Current Estimated Balance'])
+                };
+
+                cleanedData.push(cleanContact);
+                stats.keptContacts++;
+            });
+
+            displayResults();
+        }
+
+        function findBestMobilePhone(row) {
+            // Check phones 1-5 in order, return first mobile number found
+            for (let i = 1; i <= 5; i++) {
+                const phone = row[`Phone ${i}`];
+                const type = row[`Phone ${i} TYPE`];
+                
+                if (phone && type && type.toLowerCase() === 'mobile') {
+                    return formatPhone(phone);
+                }
+            }
+            return null; // No mobile found
+        }
+
+        function findBestEmail(row) {
+            // Check Email and Email 2, return first valid one
+            if (row['Email'] && String(row['Email']).trim() !== '') {
+                return String(row['Email']).trim();
+            }
+            if (row['Email 2'] && String(row['Email 2']).trim() !== '') {
+                return String(row['Email 2']).trim();
+            }
+            return 'N/A';
+        }
+
+        function formatPhone(phone) {
+            // Convert scientific notation or format phone properly
+            let phoneStr = String(phone);
+            
+            // Remove any non-digits
+            phoneStr = phoneStr.replace(/\D/g, '');
+            
+            // Ensure it's 10 digits
+            if (phoneStr.length >= 10) {
+                phoneStr = phoneStr.slice(-10); // Take last 10 digits
+                // Format as (XXX) XXX-XXXX
+                return `(${phoneStr.slice(0,3)}) ${phoneStr.slice(3,6)}-${phoneStr.slice(6,10)}`;
+            }
+            
+            return phoneStr;
+        }
+
+        function formatValue(value) {
+            if (value === null || value === undefined || value === '' || String(value).trim() === '') {
+                return 'N/A';
+            }
+            return String(value).trim();
+        }
+
+        function displayResults() {
+            document.getElementById('processing').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+
+            // Display stats
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <h3>${stats.totalRows}</h3>
+                    <p>Total Rows Uploaded</p>
+                </div>
+                <div class="stat-card">
+                    <h3>${stats.keptContacts}</h3>
+                    <p>Clean Contacts</p>
+                </div>
+                <div class="stat-card">
+                    <h3>${stats.removedNoMobile}</h3>
+                    <p>Removed (No Mobile)</p>
+                </div>
+                <div class="stat-card">
+                    <h3>${stats.emailFound}</h3>
+                    <p>Contacts with Email</p>
+                </div>
+            `;
+
+            // Display details
+            const details = document.getElementById('details');
+            
+            details.innerHTML = `
+                <h3>📋 Processing Summary</h3>
+                <ul>
+                    <li><strong>Total Leads Uploaded:</strong> ${stats.totalRows}</li>
+                    <li><strong>Contacts Kept (With Mobile):</strong> ${stats.keptContacts}</li>
+                    <li><strong>Contacts Deleted (No Mobile):</strong> ${stats.removedNoMobile}</li>
+                    <li><strong>Contacts with Email:</strong> ${stats.emailFound}</li>
+                    <li><strong>Contacts with N/A Email:</strong> ${stats.emailNA}</li>
+                    <li><strong>Address Type Used:</strong> Property Address (Best for SMS campaigns)</li>
+                    <li><strong>Mobile Numbers Selected:</strong> ${stats.mobileSelected}</li>
+                </ul>
+                <br>
+                <h3>✅ What Was Done</h3>
+                <ul>
+                    <li>Selected first available MOBILE number (Phone 1 → 5)</li>
+                    <li>Selected first available Email (Email → Email 2, or N/A if blank)</li>
+                    <li>Deleted all contacts with NO mobile numbers</li>
+                    <li>Filled blank fields with "N/A" instead of leaving empty</li>
+                    <li>Organized data into 3 sections: Contact Info, Location, Property Data</li>
+                    <li>Formatted phone numbers for GHL import: (XXX) XXX-XXXX</li>
+                    <li>Used Property Address for location (97% match mailing address anyway)</li>
+                </ul>
+            `;
+        }
+
+        function downloadCSV() {
+            const csv = Papa.unparse(cleanedData);
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            const timestamp = new Date().toISOString().slice(0,10);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `GHL_Clean_Leads_${timestamp}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
