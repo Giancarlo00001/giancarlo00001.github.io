@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BESO Solutions | Done-For-You Insurance Lead Generation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: #1e40af;
+            font-weight: 700;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: #555;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        .nav-menu a:hover {
+            color: #2563eb;
+        }
+
+        .header-cta {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .header-cta:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #dbeafe 0%, #fef3c7 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            color: #1e40af;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subheadline {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            padding: 18px 40px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        /* About / How It Works Section */
+        .about-section {
+            padding: 80px 20px;
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #1e40af;
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+            background: #eff6ff;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #dbeafe 0%, #fef3c7 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            font-size: 20px;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            background: #eff6ff;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+        }
+
+        .contact-card h3 {
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: #666;
+            font-size: 15px;
+            word-break: break-word;
+        }
+
+        .contact-card a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: #1e40af;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e40af;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #fef3c7;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #dbeafe;
+            font-size: 14px;
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #fef3c7;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: #dbeafe;
+            font-size: 14px;
+        }
+
+        /* Lead Form Styles */
+        .lead-form-section {
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .lead-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .lead-form-container h3 {
+            font-size: 28px;
+            color: #1e40af;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .lead-form-container .form-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .form-disclaimer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .required {
+            color: #f44336;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.3s;
+        }
+
+        .modal-content h3 {
+            color: #1e40af;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .modal-close:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Legal Document Modals */
+        .legal-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s;
+            overflow-y: auto;
+        }
+
+        .legal-modal.show {
+            display: block;
+        }
+
+        .legal-modal-content {
+            background: white;
+            margin: 40px auto;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 90%;
+            animation: slideUp 0.3s;
+            position: relative;
+        }
+
+        .legal-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .legal-modal-close:hover {
+            color: #1e40af;
+        }
+
+        .legal-modal h2 {
+            color: #1e40af;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .legal-modal h3 {
+            color: #1e40af;
+            font-size: 22px;
+            margin: 30px 0 15px;
+        }
+
+        .legal-modal p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .legal-modal ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .legal-modal li {
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero .subheadline {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .header-contact {
+                justify-content: center;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 18px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .lead-form-container {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">📊</div>
+                    <h1>BESO Solutions</h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#lead-form" class="header-cta">Get Started</a>
+                </nav>
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <a href="tel:8606611421">(860) 661-1421</a>
+                    </div>
+                    <div class="contact-item">
+                        Middletown, CT
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Done-For-You Insurance Lead Generation</h2>
+            <p class="subheadline">The 90-Day Appointment System for Life Insurance Agents</p>
+            <p class="tagline">Stop chasing bad leads. Start closing qualified appointments.</p>
+            <a href="#lead-form" class="cta-button">See If You Qualify</a>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="about-section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="text-center mb-20" style="font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 40px;">
+                BESO Solutions provides complete lead generation and appointment setting services for experienced life insurance agents. We handle everything from ads to SMS automation.
+            </p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">🎯</div>
+                    <h3>Exclusive Facebook Ads</h3>
+                    <p>We create and manage targeted Facebook ad campaigns to generate high-quality final expense leads exclusively for you.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">💬</div>
+                    <h3>SMS Automation</h3>
+                    <p>Our automated SMS system qualifies leads, answers questions, and books appointments directly to your calendar.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📅</div>
+                    <h3>Qualified Appointments</h3>
+                    <p>You only call people who are pre-qualified, expecting your call, and ready to discuss coverage options.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📈</div>
+                    <h3>Proven Results</h3>
+                    <p>Get 35-40 qualified appointments over 90 days. No more cold calling, no more chasing ghosts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose BESO Solutions?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Exclusive Leads</h3>
+                    <p>Every lead goes only to you. No shared leads, no competing with other agents.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Pre-Qualified</h3>
+                    <p>SMS automation qualifies leads before booking. You only talk to serious prospects.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>Save Time</h3>
+                    <p>Stop spending 20 hours a week cold calling. Focus on closing, not prospecting.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Proven ROI</h3>
+                    <p>35-40 appointments in 90 days. At 50% close rate, that's 19 sales and solid profit.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔧</div>
+                    <h3>Full Service</h3>
+                    <p>We build everything - ads, landing pages, SMS automation. You just close deals.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Transparent Reporting</h3>
+                    <p>Weekly reports on leads generated, appointments booked, and show rates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Form Section -->
+    <section id="lead-form" class="lead-form-section">
+        <div class="container">
+            <div class="lead-form-container">
+                <h3>Request Information</h3>
+                <p class="form-subtitle">Fill out the form below to learn more about our services</p>
+                
+                <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="(860) 661-1421" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">How long have you been selling life insurance? <span class="required">*</span></label>
+                        <select id="experience" name="experience" required>
+                            <option value="">-- Select One --</option>
+                            <option value="less-than-1">Less than 1 year</option>
+                            <option value="1-2-years">1-2 years</option>
+                            <option value="3-plus-years">3+ years</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="volume">How many policies do you write per month? <span class="required">*</span></label>
+                        <select id="volume" name="volume" required>
+                            <option value="">-- Select One --</option>
+                            <option value="0-4">0-4 policies</option>
+                            <option value="5-10">5-10 policies</option>
+                            <option value="10-plus">10+ policies</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comments">Tell us about your current lead situation</label>
+                        <textarea id="comments" name="comments" placeholder="What are you currently doing for leads? What's your biggest frustration?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Request Information</button>
+                    
+                    <p class="form-disclaimer">
+                        By submitting this form, you consent to receive SMS messages or calls from BESO Solutions regarding your inquiry. You can opt out at any time by replying STOP. Message and data rates may apply.
+                        <br><br>
+                        We respect your privacy and will never share your information with third parties. 
+                        See our <a href="javascript:void(0)" onclick="openPrivacyModal()" style="color: #2563eb; text-decoration: underline;">Privacy Policy</a> for more details.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="text-center mb-20" style="font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 40px;">
+                Ready to stop chasing bad leads? Contact us today to see if you qualify for the 90-Day Appointment System.
+            </p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-card-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p><a href="tel:8606611421">(860) 661-1421</a></p>
+                    <p style="font-size: 13px; color: #888; margin-top: 10px;">Eastern Time</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">✉️</div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:besosolutionsgroup@gmail.com">besosolutionsgroup@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>BESO Solutions</p>
+                    <p>Middletown, CT</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">⏰</div>
+                    <h3>Hours</h3>
+                    <p>Monday - Friday</p>
+                    <p>9:00 AM - 6:00 PM EST</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#lead-form" class="cta-button">Request Information</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BESO Solutions</h3>
+                    <p>Back End Scaling & Operations</p>
+                    <p style="margin-top: 20px;">Done-for-you lead generation and appointment setting services for life insurance agents.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><strong>BESO Solutions</strong></p>
+                    <p>Middletown, Connecticut</p>
+                    <p>Phone: (860) 661-1421</p>
+                    <p>Email: besosolutionsgroup@gmail.com</p>
+                    <p>Time Zone: Eastern Time</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#lead-form">Get Started</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="javascript:void(0)" onclick="openPrivacyModal()">Privacy Policy</a>
+                    <a href="javascript:void(0)" onclick="openTermsModal()">Terms & Conditions</a>
+                    <p style="margin-top: 20px; font-size: 12px;">Professional lead generation services for insurance agents.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BESO Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h3>🎉 Thank You!</h3>
+            <p><strong>We've received your information.</strong></p>
+            <p>A member of our team will contact you within 24 hours to discuss the 90-Day Appointment System and see if you qualify.</p>
+            <p>Check your email at <strong><span id="userEmail"></span></strong> for more information.</p>
+            <button class="modal-close" onclick="closeModal()">Got It!</button>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="legal-modal">
+        <div class="legal-modal-content">
+            <span class="legal-modal-close" onclick="closePrivacyModal()">&times;</span>
+            
+            <h2>Privacy Policy</h2>
+            
+            <h3>Communication Consent</h3>
+            <p>
+                By submitting your information through our website, you consent to receive SMS or email communications from BESO Solutions about our lead generation services or related offers. You may opt out at any time by replying STOP to any text message or by contacting us directly.
+            </p>
+            
+            <h3>Information We Collect</h3>
+            <p>
+                We collect information you provide directly to us, including your name, email address, phone number, and professional details you submit through our contact forms. This information is used solely to provide you with information about our services and respond to your inquiries.
+            </p>
+            
+            <h3>How We Use Your Information</h3>
+            <p>Your information is used to:</p>
+            <ul>
+                <li>Assess your eligibility for our lead generation services</li>
+                <li>Provide personalized consultation services</li>
+                <li>Contact you regarding your inquiry via phone, email, or SMS</li>
+                <li>Send you information about our services and industry updates</li>
+            </ul>
+            
+            <h3>Information Sharing</h3>
+            <p>
+                We do not sell, trade, or share your personal information with third parties for marketing purposes. Your information is kept confidential and secure.
+            </p>
+            
+            <h3>Your Rights</h3>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Opt out of communications at any time by replying STOP</li>
+                <li>Request access to your personal information</li>
+                <li>Request deletion of your personal information</li>
+                <li>Update or correct your information</li>
+            </ul>
+            
+            <h3>Contact Us</h3>
+            <p>
+                If you have questions about this Privacy Policy or how we handle your information, please contact us:
+            </p>
+            <p><strong>BESO Solutions</strong><br>
+            Middletown, Connecticut<br>
+            Phone: (860) 661-1421<br>
+            Email: besosolutionsgroup@gmail.com<br>
+            Time Zone: Eastern Time</p>
+            
+            <p style="margin-top: 30px; font-size: 14px; color: #888;">
+                <em>Last Updated: November 2025</em>
+            </p>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div id="termsModal" class="legal-modal">
+        <div class="legal-modal-content">
+            <span class="legal-modal-close" onclick="closeTermsModal()">&times;</span>
+            
+            <h2>Terms & Conditions</h2>
+            
+            <h3>Acceptance of Terms</h3>
+            <p>
+                By accessing and using this website, you accept and agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our website.
+            </p>
+            
+            <h3>Services</h3>
+            <p>
+                BESO Solutions provides lead generation and appointment setting services to life insurance agents. All services are subject to eligibility requirements and final approval.
+            </p>
+            
+            <h3>Estimates and Projections</h3>
+            <p>
+                Any estimates, appointment projections, or performance metrics provided are for informational purposes only and are subject to change based on ad performance, industry conditions, and other factors. Results may vary based on individual agent performance and close rates.
+            </p>
+            
+            <h3>Eligibility</h3>
+            <p>
+                Not all insurance agents qualify for our services. Eligibility depends on factors including but not limited to: years of experience, current sales volume, budget availability, and professional licensing requirements.
+            </p>
+            
+            <h3>Communications</h3>
+            <p>
+                By submitting your information, you consent to receive communications from BESO Solutions via phone, email, or SMS. Standard message and data rates may apply. You can opt out at any time.
+            </p>
+            
+            <h3>Limitation of Liability</h3>
+            <p>
+                BESO Solutions is not liable for any indirect, incidental, or consequential damages arising from the use of our website or services. Our liability is limited to the amount paid for our services.
+            </p>
+            
+            <h3>Contact Information</h3>
+            <p>
+                For questions about these Terms & Conditions, please contact us:
+            </p>
+            <p><strong>BESO Solutions</strong><br>
+            Middletown, Connecticut<br>
+            Phone: (860) 661-1421<br>
+            Email: besosolutionsgroup@gmail.com</p>
+            
+            <p style="margin-top: 30px; font-size: 14px; color: #888;">
+                <em>Last Updated: November 2025</em>
+            </p>
+    </div>
+
+    <script>
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            console.log('Form submitted with data:', data);
+            
+            // Show success modal
+            document.getElementById('userEmail').textContent = data.email;
+            document.getElementById('successModal').classList.add('show');
+            
+            // Reset form
+            event.target.reset();
+            
+            // Optional: Send to GoHighLevel, Zapier, or your CRM
+            // Example webhook call (uncomment and update URL):
+            /*
+            fetch('YOUR_WEBHOOK_URL_HERE', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Success:', data))
+            .catch((error) => console.error('Error:', error));
+            */
+        }
+        
+        // Close modal function
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('show');
+        }
+        
+        // Privacy Policy modal functions
+        function openPrivacyModal() {
+            document.getElementById('privacyModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closePrivacyModal() {
+            document.getElementById('privacyModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Terms & Conditions modal functions
+        function openTermsModal() {
+            document.getElementById('termsModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeTermsModal() {
+            document.getElementById('termsModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const successModal = document.getElementById('successModal');
+            const privacyModal = document.getElementById('privacyModal');
+            const termsModal = document.getElementById('termsModal');
+            
+            if (event.target === successModal) {
+                successModal.classList.remove('show');
+            }
+            if (event.target === privacyModal) {
+                closePrivacyModal();
+            }
+            if (event.target === termsModal) {
+                closeTermsModal();
+            }
+        }
+        
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 3) {
+                    value = '(' + value;
+                } else if (value.length <= 6) {
+                    value = '(' + value.slice(0, 3) + ') ' + value.slice(3);
+                } else {
+                    value = '(' + value.slice(0, 3) + ') ' + value.slice(3, 6) + '-' + value.slice(6, 10);
+                }
+            }
+            e.target.value = value;
+        });
+        
+        // Smooth scroll with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                if (href === '#' || this.getAttribute('onclick')) {
+                                 return;
+                }
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
