@@ -3,51 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusive Insurance Leads - Pre-Qualified & Ready to Buy</title>
-    
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1873975266801560');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1873975266801560&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
+    <title>BESO Solutions - Insurance Lead Generation</title>
     
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     
-    <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAjxTuXUrBLLnSmBv9YPHRGxDgimvXT2Xk",
-            authDomain: "beso-sms-verify.firebaseapp.com",
-            projectId: "beso-sms-verify",
-            storageBucket: "beso-sms-verify.firebasestorage.app",
-            messagingSenderId: "256955185877",
-            appId: "1:256955185877:web:5da4d2211f362acbd2c05c"
-        };
-        
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        
-        // Global variables for phone verification
-        let confirmationResult = null;
-        let isPhoneVerified = false;
-    </script>
-    
-
     <style>
         * {
             margin: 0;
@@ -60,7 +21,6 @@
             --primary-dark: #00cc85;
             --primary-glow: rgba(0, 255, 166, 0.4);
             --bg-dark: #000000;
-            --bg-darker: #050505;
             --glass: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-primary: #ffffff;
@@ -101,11 +61,6 @@
             will-change: transform;
         }
 
-        @keyframes scrollReviews {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-350px * 3)); }
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -131,11 +86,11 @@
         }
 
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             align-items: center;
             text-align: center;
-            padding: 60px 0;
+            padding: 40px 0 60px 0;
         }
 
         .hero-content {
@@ -237,15 +192,22 @@
             margin-bottom: 32px;
         }
 
-        .cta-section .btn-primary {
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
             padding: 20px 56px;
-            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 800;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
             box-shadow: 0 10px 40px var(--primary-glow);
             animation: ctaPulse 2.5s ease-in-out infinite;
-            margin-top: 12px;
-            width: auto;
-            display: inline-flex;
         }
 
         @keyframes ctaPulse {
@@ -259,156 +221,10 @@
             }
         }
 
-        .cta-section .btn-primary:hover {
+        .btn-primary:hover {
             transform: translateY(-5px) scale(1.08);
             box-shadow: 0 20px 60px var(--primary-glow);
             animation: none;
-        }
-
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: var(--bg-dark);
-            padding: 18px 48px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 20px var(--primary-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 30px var(--primary-glow);
-        }
-
-        .features {
-            margin: 64px 0;
-        }
-
-        .features h2 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .reviews-section {
-            margin: 48px 0 64px 0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .reviews-track {
-            display: flex;
-            gap: 20px;
-            width: fit-content;
-            will-change: transform;
-        }
-
-        .review-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 24px;
-            width: 350px;
-            min-width: 350px;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .review-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px var(--primary-glow);
-        }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .review-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--bg-dark);
-            flex-shrink: 0;
-        }
-
-        .review-info h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .review-info p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .review-stars {
-            color: var(--primary);
-            font-size: 1rem;
-            margin-bottom: 12px;
-        }
-
-        .review-text {
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            font-style: italic;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px var(--primary-glow);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 16px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
         }
 
         .footer {
@@ -420,30 +236,31 @@
             margin-top: 64px;
         }
 
-        .booking-modal {
+        /* Modal Styles */
+        .modal {
             display: none;
             position: fixed;
-            top: 0;
+            z-index: 1000;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
             overflow-y: auto;
+            animation: fadeIn 0.3s ease;
         }
 
-        .booking-modal.active {
-            display: flex !important;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .booking-modal-content {
+        .modal-content {
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 24px;
+            margin: 5% auto;
             padding: 40px 20px;
             max-width: 500px;
             width: 100%;
@@ -452,10 +269,6 @@
             animation: scaleIn 0.3s ease;
             max-height: 90vh;
             overflow-y: auto;
-        }
-
-        .booking-modal-content h2 {
-            color: #000000;
         }
 
         @keyframes scaleIn {
@@ -469,32 +282,31 @@
             }
         }
 
-        .booking-close {
+        .close-modal {
+            color: #000000;
             position: absolute;
-            top: 20px;
-            right: 20px;
+            right: 24px;
+            top: 24px;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
             background: #f3f4f6;
             border: 1px solid #e5e7eb;
-            color: #000000;
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            line-height: 1;
         }
 
-        .booking-close:hover {
+        .close-modal:hover {
+            color: #ef4444;
             background: rgba(255, 0, 0, 0.1);
             border-color: rgba(255, 0, 0, 0.3);
             transform: rotate(90deg);
-        }
-
-        .booking-form {
-            margin-top: 20px;
         }
 
         .form-step {
@@ -503,10 +315,10 @@
 
         .form-step.active {
             display: block;
-            animation: fadeInUp 0.4s ease;
+            animation: slideIn 0.3s ease;
         }
 
-        @keyframes fadeInUp {
+        @keyframes slideIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -517,28 +329,39 @@
             }
         }
 
+        .modal-content h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: #000000;
+        }
+
+        .modal-subtext {
+            color: #6b7280;
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .form-group label {
             display: block;
-            color: #000000;
-            font-weight: 600;
             margin-bottom: 8px;
-            font-size: 0.95rem;
+            font-weight: 600;
+            color: #000000;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 12px 16px;
+            padding: 14px 16px;
             background: #f9fafb;
             border: 1px solid #d1d5db;
             border-radius: 12px;
             color: #000000;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
         .form-group input:focus,
@@ -594,6 +417,33 @@
         .radio-option span {
             color: #000000;
             font-weight: 600;
+        }
+
+        .experience-option {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .experience-option:hover {
+            border-color: var(--primary);
+            background: rgba(0, 255, 166, 0.05);
+        }
+
+        .experience-option.selected {
+            border-color: var(--primary);
+            background: rgba(0, 255, 166, 0.1);
+            border-width: 2px;
+        }
+
+        .experience-option span {
+            color: #000000;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .day-selector {
@@ -668,15 +518,42 @@
             border-width: 2px;
         }
 
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #000000;
+            padding: 18px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 30px var(--primary-glow);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .btn-secondary {
             background: #ffffff;
             color: #000000;
+            padding: 14px 32px;
             border: 2px solid #d1d5db;
             border-radius: 50px;
-            padding: 12px 24px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             font-size: 1rem;
         }
 
@@ -685,48 +562,20 @@
             border-color: #9ca3af;
         }
 
-        .floating-cta {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(100px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            pointer-events: none;
+        .success-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 24px;
         }
 
-        .floating-cta.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
+        #thankYou {
+            text-align: center;
         }
 
-        .floating-cta .btn-primary {
-            padding: 14px 28px;
-            font-size: 0.95rem;
-            box-shadow: 0 8px 30px var(--primary-glow);
-            animation: subtlePulse 3s ease-in-out infinite;
-        }
-
-        @keyframes subtlePulse {
-            0%, 100% { 
-                transform: scale(1);
-            }
-            50% { 
-                transform: scale(1.03);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 var(--primary-glow);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 15px rgba(0, 255, 166, 0);
-            }
+        #recaptcha-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
         }
 
         .code-input:focus {
@@ -753,74 +602,66 @@
         }
 
         @media (max-width: 768px) {
-            .floating-cta {
-                bottom: 0;
-                right: 0;
-                left: 0;
-                width: 100%;
-                padding: 12px 16px;
-                background: rgba(0, 0, 0, 0.95);
-                backdrop-filter: blur(20px);
-                border-top: 1px solid var(--glass-border);
+            .header {
+                padding: 16px 0;
             }
 
-            .floating-cta .btn-primary {
-                width: 100%;
-                justify-content: center;
-                padding: 16px 24px;
-                font-size: 1rem;
-            }
-
-            .booking-modal-content {
-                max-height: 90vh;
-                overflow-y: auto;
+            .logo {
+                font-size: 1.4rem;
             }
 
             h1 {
-                font-size: 2.25rem;
-                line-height: 1.2;
+                font-size: 1.75rem;
+                line-height: 1.15;
+                margin-bottom: 16px;
             }
 
             .subheadline {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
+                margin-bottom: 24px !important;
             }
 
             .eyebrow {
-                font-size: 0.8rem;
-                padding: 6px 16px;
+                font-size: 0.75rem;
+                padding: 6px 14px;
+                margin-bottom: 16px;
             }
 
             .cta-section {
-                padding: 32px 20px;
-                margin: 32px 0;
+                padding: 24px 20px;
+                margin: 0 0 32px 0 !important;
             }
 
             .cta-section h2 {
-                font-size: 1.75rem;
+                font-size: 1.4rem;
                 line-height: 1.2;
+                margin-bottom: 12px;
             }
 
             .cta-section p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                margin-bottom: 20px;
             }
 
-            .cta-section .btn-primary {
-                width: 100%;
-                padding: 18px 24px;
-                font-size: 1.1rem;
-                justify-content: center;
+            .cta-section > div {
+                padding: 12px !important;
+                margin: 16px 0 !important;
+            }
+
+            .cta-section > div p {
+                font-size: 0.85rem !important;
+                margin: 0 !important;
             }
 
             .btn-primary {
-                padding: 16px 32px;
-                font-size: 1rem;
                 width: 100%;
+                padding: 14px 24px;
+                font-size: 1rem;
                 justify-content: center;
             }
 
             .hero {
-                padding: 40px 0;
-                min-height: auto;
+                padding: 24px 0 40px 0;
             }
 
             .benefits {
@@ -833,56 +674,35 @@
                 padding: 20px;
             }
 
-            .features {
-                margin: 48px 0;
+            .modal-content {
+                margin: 10% 16px;
+                padding: 40px 20px;
+                max-height: 90vh;
+                overflow-y: auto;
             }
 
-            .features h2 {
-                font-size: 1.75rem;
-                padding: 0 10px;
+            .modal-content h2 {
+                font-size: 1.5rem;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .feature-card {
-                padding: 24px;
-            }
-
-            .review-card {
-                width: 280px;
-                min-width: 280px;
-                padding: 20px;
-            }
-
-            .reviews-section {
-                margin: 32px -20px 48px -20px;
+            .experience-grid {
+                grid-template-columns: 1fr !important;
             }
 
             .day-selector {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
             }
 
             .time-slots {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            @keyframes scrollReviews {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-300px * 3)); }
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px !important;
             }
         }
     </style>
 </head>
 <body>
     <div class="animated-bg"></div>
-    
-    <!-- Firebase reCAPTCHA container (invisible) -->
-    <div id="recaptcha-container"></div>
 
     <header class="header">
         <div class="container">
@@ -895,20 +715,20 @@
             <div class="hero-content">
                 <div class="eyebrow">🎯 Exclusive Insurance Leads</div>
                 
-                <h1>Whether You Buy the Leads or Build the Machine — <span class="highlight">We Deliver.</span></h1>
+                <h1>Tired of Paying for Leads That <span class="highlight">Never Convert?</span></h1>
                 
-                <div class="cta-section" style="margin-top: 40px; margin-bottom: 32px;">
+                <p class="subheadline" style="margin-bottom: 40px;">Stop chasing dead-end prospects. We send you insurance shoppers who are actively looking for coverage and ready to buy.</p>
+                
+                <div class="cta-section" style="margin-top: 0; margin-bottom: 32px;">
                     <h2>Ready to <span class="highlight">Fill Your Pipeline?</span></h2>
                     <p>Book a 15-minute call to discuss your lead needs and get a custom quote</p>
                     <div style="background: rgba(0, 255, 166, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 16px; margin: 24px 0;">
                         <p style="margin: 0; font-size: 1rem; color: var(--text-primary);"><strong>🛡️ 100% Quality Guarantee:</strong> We replace any garbage leads for free. No questions asked.</p>
                     </div>
-                    <a href="#" class="btn-primary" onclick="openBookingForm(event)">
+                    <a href="#" class="btn-primary" onclick="showQualificationForm(); return false;">
                         📅 Schedule Your Call Now
                     </a>
                 </div>
-
-                <p class="subheadline" style="margin-bottom: 32px;">Stop chasing dead-end prospects. We send you insurance shoppers who are actively looking for coverage and ready to buy.</p>
 
                 <div class="benefits">
                     <div class="benefit">
@@ -931,355 +751,339 @@
         </div>
     </section>
 
-    <section class="features">
-        <div class="container">
-            <h2>Why Insurance Agents Choose <span class="highlight">BESO Leads</span></h2>
+    <!-- Qualification Form Modal -->
+    <div id="qualificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeQualificationForm()">&times;</span>
             
-            <div class="reviews-section">
-                <div class="reviews-track">
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">TR</div>
-                            <div class="review-info">
-                                <h4>Tom R.</h4>
-                                <p>Phoenix, AZ</p>
-                            </div>
-                        </div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Been working with other lead companies for years and was tired of the bad quality. These guys actually deliver what they promise."</p>
+            <div id="step1" class="form-step active">
+                <h2>Quick Question</h2>
+                <p class="modal-subtext">This helps us customize your lead solution</p>
+                
+                <div class="form-group">
+                    <label>Are you a current insurance agent? *</label>
+                    <div style="display: flex; gap: 12px; margin-top: 8px;">
+                        <label class="radio-option">
+                            <input type="radio" name="isAgent" value="Yes - Licensed & Active" id="isAgentYes" required>
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="isAgent" value="No - Not licensed" id="isAgentNo" required>
+                            <span>No</span>
+                        </label>
                     </div>
+                </div>
+                
+                <button class="btn-primary" onclick="validateStep1()" style="width: 100%; margin-top: 20px;">
+                    Continue →
+                </button>
+            </div>
 
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">LM</div>
-                            <div class="review-info">
-                                <h4>Lisa M.</h4>
-                                <p>Dallas, TX</p>
-                            </div>
+            <div id="step2" class="form-step">
+                <h2>Your Experience</h2>
+                <p class="modal-subtext">Help us understand your background</p>
+                
+                <div class="form-group">
+                    <label>How long have you been an insurance agent? *</label>
+                    <div class="experience-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px;">
+                        <div class="experience-option" onclick="selectExperience(this, 'Less than 6 months')">
+                            <span>Less than 6 months</span>
                         </div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Super convenient getting started with them. They walked me through everything and the leads are actually good quality. Finally."</p>
+                        <div class="experience-option" onclick="selectExperience(this, '6 months - 1 year')">
+                            <span>6 months - 1 year</span>
+                        </div>
+                        <div class="experience-option" onclick="selectExperience(this, '1-3 years')">
+                            <span>1-3 years</span>
+                        </div>
+                        <div class="experience-option" onclick="selectExperience(this, '3-5+ years')">
+                            <span>3-5+ years</span>
+                        </div>
                     </div>
+                    <input type="hidden" id="experience" required>
+                </div>
+                
+                <button class="btn-secondary" onclick="goToStep1()" style="width: 100%; margin-top: 10px;">
+                    ← Back
+                </button>
+            </div>
 
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">JK</div>
-                            <div class="review-info">
-                                <h4>James K.</h4>
-                                <p>Tampa, FL</p>
-                            </div>
-                        </div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Very professional team. They do what they say they're gonna do which is refreshing in this industry."</p>
+            <div id="step3" class="form-step">
+                <h2>Almost Done!</h2>
+                <p class="modal-subtext">One last question</p>
+                
+                <div class="form-group">
+                    <label>How soon are you looking to start? *</label>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px;">
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="Immediately" required>
+                            <span>Immediately</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="1-2 weeks" required>
+                            <span>1-2 weeks</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="Within a month" required>
+                            <span>Within a month</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="Just researching" required>
+                            <span>Just researching</span>
+                        </label>
                     </div>
+                </div>
+                
+                <button class="btn-primary" onclick="validateStep3()" style="width: 100%; margin-top: 20px;">
+                    Continue →
+                </button>
+                
+                <button class="btn-secondary" onclick="goToStep3()" style="width: 100%; margin-top: 10px;">
+                    ← Back
+                </button>
+            </div>
 
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">TR</div>
-                            <div class="review-info">
-                                <h4>Tom R.</h4>
-                                <p>Phoenix, AZ</p>
-                            </div>
-                        </div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Been working with other lead companies for years and was tired of the bad quality. These guys actually deliver what they promise."</p>
-                    </div>
+            <div id="step4" class="form-step">
+                <h2>Contact Information</h2>
+                <p class="modal-subtext">How can we reach you?</p>
+                <!-- NOTE: SMS verification is temporarily disabled for testing. Will submit directly to calendar booking. -->
+                
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="fullName" placeholder="John Smith" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+                </div>
+                
+                <button class="btn-primary" onclick="validateStep4()" style="width: 100%; margin-top: 20px;">
+                    Continue →
+                </button>
+                
+                <button class="btn-secondary" onclick="goToStep3()" style="width: 100%; margin-top: 10px;">
+                    ← Back
+                </button>
+            </div>
 
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">LM</div>
-                            <div class="review-info">
-                                <h4>Lisa M.</h4>
-                                <p>Dallas, TX</p>
-                            </div>
-                        </div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Super convenient getting started with them. They walked me through everything and the leads are actually good quality. Finally."</p>
-                    </div>
+            <div id="stepCalendar" class="form-step">
+                <h2>Schedule Your Call</h2>
+                <p class="modal-subtext">Pick a time that works for you (times shown in your timezone)</p>
+                
+                <div class="form-group">
+                    <label>Select a Day *</label>
+                    <div class="day-selector" id="daySelector"></div>
+                    <input type="hidden" id="selectedDate" name="selectedDate">
+                </div>
 
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">JK</div>
-                            <div class="review-info">
-                                <h4>James K.</h4>
-                                <p>Tampa, FL</p>
-                            </div>
-                        </div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Very professional team. They do what they say they're gonna do which is refreshing in this industry."</p>
-                    </div>
+                <div class="form-group">
+                    <label>Select a Time *</label>
+                    <div class="time-slots" id="timeSlots"></div>
+                    <input type="hidden" id="selectedTime" name="selectedTime">
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 24px;">
+                    <button type="button" class="btn-secondary" style="flex: 1;" onclick="goToStep4()">← Back</button>
+                    <button type="button" class="btn-primary" style="flex: 1;" id="submitBtn" onclick="submitBooking()">Schedule Call 📅</button>
                 </div>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔥</div>
-                    <h3>Hot & Fresh Leads</h3>
-                    <p>Leads are delivered in real-time from active insurance shoppers who submitted their information within the last 5 minutes. All numbers are SMS verified for quality.</p>
+            <div id="stepVerify" class="form-step">
+                <div style="text-align: center; margin-bottom: 24px; padding: 0 10px;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 20px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 2.5rem;">📱</span>
+                    </div>
+                    <h3 style="color: #000000; font-size: 1.5rem; margin-bottom: 12px;">Verify Your Number</h3>
+                    <p style="color: #6b7280; font-size: 0.95rem;">We sent a 6-digit code to<br><strong id="displayPhone" style="color: #000000;"></strong></p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Specific Demographics</h3>
-                    <p>Target exactly who you want - age range, coverage type, income level, and location. No wasted time on unqualified prospects.</p>
+
+                <div class="form-group" style="padding: 0 10px;">
+                    <label style="text-align: center; display: block;">Enter Verification Code</label>
+                    <div style="display: flex; gap: 5px; justify-content: center; margin-top: 16px;">
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code1" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code2" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code3" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code4" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code5" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code6" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
+                    </div>
+                    <div id="verifyError" style="color: #ef4444; text-align: center; margin-top: 12px; font-size: 0.9rem; display: none;"></div>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>SMS Verified Numbers</h3>
-                    <p>Every lead includes SMS verified phone numbers. No fake contacts or disconnected lines. Just real people ready to discuss their insurance needs.</p>
+
+                <div style="text-align: center; margin: 20px 0; padding: 0 10px;">
+                    <button type="button" id="resendBtn" onclick="resendCode()" style="background: none; border: none; color: var(--primary); font-weight: 600; cursor: pointer; font-size: 0.95rem; text-decoration: underline;">
+                        Resend Code
+                    </button>
+                    <p style="color: #9ca3af; font-size: 0.85rem; margin-top: 8px;">Didn't receive it? Check spam or try again</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Exclusive Territory</h3>
-                    <p>Each lead is sold to only you, giving you a competitive advantage.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Flexible Pricing</h3>
-                    <p>Pay per lead or monthly packages. Scale up or down based on your capacity. No long-term contracts required.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Performance Tracking</h3>
-                    <p>Access detailed analytics on your lead performance, close rates, and ROI through our agent dashboard.</p>
+
+                <div style="display: flex; gap: 12px; margin-top: 24px; padding: 0 10px;">
+                    <button type="button" class="btn-secondary" style="flex: 1;" onclick="goToStep4()">← Back</button>
+                    <button type="button" class="btn-primary" style="flex: 1;" id="verifyBtn" onclick="verifyCode()">Verify Code</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="container">
-        <div class="cta-section">
-            <h2>Ready to <span class="highlight">Fill Your Pipeline?</span></h2>
-            <p>Book a 15-minute call to discuss your lead needs and get a custom quote</p>
-            <a href="#" class="btn-primary" onclick="openBookingForm(event)">
-                📅 Schedule Your Call Now
-            </a>
+            <div id="thankYou" class="form-step">
+                <div class="success-icon">✅</div>
+                <h2>You're All Set!</h2>
+                <p class="modal-subtext">We'll be in touch within 24 hours to discuss your custom lead solution.</p>
+                <p style="margin-top: 20px; color: var(--text-secondary);">Check your email for confirmation details.</p>
+            </div>
         </div>
-    </section>
+    </div>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 BESO Solutions. All rights reserved. | Exclusive Insurance Lead Generation</p>
+            <p>&copy; 2025 BESO Solutions. All rights reserved.</p>
         </div>
     </footer>
 
-    <div class="floating-cta" id="floatingCTA">
-        <a href="#" class="btn-primary" onclick="openBookingForm(event)">
-            📅 Schedule Your Call Now
-        </a>
-    </div>
-
-    <div class="booking-modal" id="bookingModal">
-        <div class="booking-modal-content">
-            <button class="booking-close" onclick="closeBookingForm()">&times;</button>
-            <h2 style="margin-bottom: 24px; font-size: 2rem;">Schedule Your Call</h2>
-            
-            <form class="booking-form" id="bookingForm" onsubmit="handleBookingSubmit(event)">
-                <div class="form-step active" id="step1">
-                    <div class="form-group">
-                        <label for="fullName">Full Name *</label>
-                        <input type="text" id="fullName" name="fullName" required placeholder="John Smith">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="john@example.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567" pattern="[0-9\s\(\)\-]+" title="Please enter a valid phone number">
-                        <small style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px; display: block;">We'll send you a verification code</small>
-                    </div>
-                    
-                    <div style="display: flex; gap: 12px; margin-top: 16px;">
-                        <button type="button" class="btn-primary" style="width: 100%;" onclick="validateStep1()">Continue →</button>
-                    </div>
-                </div>
-
-                <div class="form-step" id="stepVerify">
-                    <div style="text-align: center; margin-bottom: 24px; padding: 0 10px;">
-                        <div style="width: 80px; height: 80px; margin: 0 auto 20px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 2s ease-in-out infinite;">
-                            <span style="font-size: 2.5rem;">📱</span>
-                        </div>
-                        <h3 style="color: #000000; font-size: 1.5rem; margin-bottom: 12px;">Verify Your Number</h3>
-                        <p style="color: #6b7280; font-size: 0.95rem;">We sent a 6-digit code to<br><strong id="displayPhone" style="color: #000000;"></strong></p>
-                    </div>
-
-                    <div class="form-group" style="padding: 0 10px;">
-                        <label style="text-align: center; display: block;">Enter Verification Code</label>
-                        <div style="display: flex; gap: 5px; justify-content: center; margin-top: 16px;">
-                            <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code1" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
-                            <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code2" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
-                            <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code3" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
-                            <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code4" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
-                            <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code5" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
-                            <input type="text" inputmode="numeric" pattern="[0-9]*" class="code-input" id="code6" maxlength="1" style="width: 48px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 700; border-radius: 12px; border: 2px solid #d1d5db; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 0; line-height: 56px;">
-                        </div>
-                        <div id="verifyError" style="color: #ef4444; text-align: center; margin-top: 12px; font-size: 0.9rem; display: none;"></div>
-                    </div>
-
-                    <div style="text-align: center; margin: 20px 0; padding: 0 10px;">
-                        <button type="button" id="resendBtn" onclick="resendCode()" style="background: none; border: none; color: var(--primary); font-weight: 600; cursor: pointer; font-size: 0.95rem; text-decoration: underline;">
-                            Resend Code
-                        </button>
-                        <p style="color: #9ca3af; font-size: 0.85rem; margin-top: 8px;">Didn't receive it? Check spam or try again</p>
-                    </div>
-
-                    <div style="display: flex; gap: 12px; margin-top: 24px; padding: 0 10px;">
-                        <button type="button" class="btn-secondary" style="flex: 1;" onclick="goToStep(1)">← Back</button>
-                        <button type="button" class="btn-primary" style="flex: 1;" id="verifyBtn" onclick="verifyCode()">Verify Code</button>
-                    </div>
-                </div>
-
-                <div class="form-step" id="step2">
-                    <div class="form-group">
-                        <label>Are you an insurance agent? *</label>
-                        <div style="display: flex; gap: 12px; margin-top: 8px;">
-                            <label class="radio-option">
-                                <input type="radio" name="isAgent" value="yes" id="isAgentYes" required>
-                                <span>Yes</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="isAgent" value="no" id="isAgentNo" required>
-                                <span>No</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="timeframe">How soon are you looking to get started? *</label>
-                        <select id="timeframe" name="timeframe" required>
-                            <option value="">Select timeframe...</option>
-                            <option value="immediately">Immediately</option>
-                            <option value="1-2weeks">1-2 weeks</option>
-                            <option value="1month">Within a month</option>
-                            <option value="just-researching">Just researching</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Have you bought leads before? *</label>
-                        <div style="display: flex; gap: 12px; margin-top: 8px;">
-                            <label class="radio-option">
-                                <input type="radio" name="boughtBefore" value="yes" id="boughtBeforeYes" required>
-                                <span>Yes</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="boughtBefore" value="no" id="boughtBeforeNo" required>
-                                <span>No</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 12px; margin-top: 16px;">
-                        <button type="button" class="btn-secondary" style="flex: 1;" onclick="goToStep(1)">← Back</button>
-                        <button type="button" class="btn-primary" style="flex: 1;" onclick="validateAndGoToStep3()">Continue →</button>
-                    </div>
-                </div>
-
-                <div class="form-step" id="step3">
-                    <div class="form-group">
-                        <label>Select a Day *</label>
-                        <div class="day-selector" id="daySelector"></div>
-                        <input type="hidden" id="selectedDate" name="selectedDate">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Select a Time *</label>
-                        <div class="time-slots" id="timeSlots"></div>
-                        <input type="hidden" id="selectedTime" name="selectedTime">
-                    </div>
-
-                    <div style="display: flex; gap: 12px; margin-top: 24px;">
-                        <button type="button" class="btn-secondary" style="flex: 1;" onclick="goToStep(2)">← Back</button>
-                        <button type="button" class="btn-primary" style="flex: 1;" id="submitBtn" onclick="handleBookingSubmit(event)">Schedule Call 📅</button>
-                    </div>
-                </div>
-
-                <div class="form-step" id="stepSuccess" style="text-align: center; padding: 40px 20px;">
-                    <div style="font-size: 5rem; margin-bottom: 24px; animation: scaleIn 0.5s ease;">🎉</div>
-                    <h3 style="color: var(--primary); margin-bottom: 16px; font-size: 2rem;">You're All Set!</h3>
-                    
-                    <div style="background: linear-gradient(135deg, rgba(0, 255, 166, 0.1), rgba(0, 255, 166, 0.05)); border: 2px solid var(--primary); border-radius: 16px; padding: 24px; margin: 24px 0;">
-                        <p style="color: #000000; font-size: 1.05rem; margin-bottom: 16px; font-weight: 600;">
-                            💬 Have questions? Text us right now!
-                        </p>
-                        <a href="#" id="smsButton" class="btn-primary" style="display: inline-flex; padding: 18px 40px; margin-bottom: 12px; text-decoration: none; font-size: 1.1rem; box-shadow: 0 8px 25px var(--primary-glow);">
-                            📱 Start Texting Us
-                        </a>
-                        <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">We'll respond within minutes • Message pre-filled for you</p>
-                    </div>
-                    
-                    <p style="color: #374151; line-height: 1.8; font-size: 1.1rem; margin-bottom: 24px;">
-                        <strong>Thank you for scheduling a call with us!</strong><br><br>
-                        We've received your information and one of our lead specialists will call you at your scheduled time.<br><br>
-                        <span style="background: rgba(0, 255, 166, 0.1); padding: 8px 16px; border-radius: 8px; display: inline-block; margin-top: 12px;">
-                            📧 <strong>Check your email</strong> for confirmation details
-                        </span>
-                    </p>
-                    
-                    <div style="background: #f9fafb; border-radius: 16px; padding: 20px; margin: 24px 0;">
-                        <p style="color: #6b7280; font-size: 0.95rem; margin: 0;">
-                            <strong>What happens next?</strong><br>
-                            Our team will call you at your scheduled time to discuss:<br>
-                            ✓ Your specific lead needs<br>
-                            ✓ Custom pricing for your territory<br>
-                            ✓ How to get started immediately
-                        </p>
-                    </div>
-                    
-                    <button type="button" class="btn-secondary" style="margin-top: 16px; padding: 14px 40px;" onclick="closeBookingForm()">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <script>
-        function openBookingForm(event) {
-            if (event) event.preventDefault();
-            const modal = document.getElementById('bookingModal');
-            modal.classList.add('active');
-            modal.style.display = 'flex';
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAjxTuXUrBLLnSmBv9YPHRGxDgimvXT2Xk",
+            authDomain: "beso-sms-verify.firebaseapp.com",
+            projectId: "beso-sms-verify",
+            storageBucket: "beso-sms-verify.firebasestorage.app",
+            messagingSenderId: "256955185877",
+            appId: "1:256955185877:web:5da4d2211f362acbd2c05c"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        let confirmationResult = null;
+        let recaptchaVerifier = null;
+        let isPhoneVerified = false;
+
+        function showQualificationForm() {
+            document.getElementById('qualificationModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        function closeBookingForm() {
-            const modal = document.getElementById('bookingModal');
-            modal.classList.remove('active');
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-            document.getElementById('bookingForm').reset();
-            goToStep(1);
+        function closeQualificationForm() {
+            document.getElementById('qualificationModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            // Reset form
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step1').classList.add('active');
         }
 
-        function goToStep(stepNumber) {
-            document.querySelectorAll('.form-step').forEach(step => {
-                step.classList.remove('active');
+        function goToStep1() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step1').classList.add('active');
+        }
+
+        function goToStepVerify() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('stepVerify').classList.add('active');
+        }
+
+        function goToStep2() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step2').classList.add('active');
+        }
+
+        function goToStep3() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step3').classList.add('active');
+        }
+
+        function goToStep4() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step4').classList.add('active');
+        }
+
+        function validateStep1() {
+            const isAgentSelected = document.querySelector('input[name="isAgent"]:checked');
+
+            if (!isAgentSelected) {
+                alert('Please select if you are a current insurance agent');
+                return;
+            }
+
+            goToStep2();
+        }
+
+        function selectExperience(element, value) {
+            // Remove selected class from all options
+            document.querySelectorAll('.experience-option').forEach(opt => {
+                opt.classList.remove('selected');
             });
             
-            if (stepNumber === 'success') {
-                document.getElementById('stepSuccess').classList.add('active');
-            } else if (stepNumber === 'verify') {
-                document.getElementById('stepVerify').classList.add('active');
-                // Focus on first code input
-                setTimeout(() => {
-                    document.getElementById('code1').focus();
-                }, 300);
-            } else {
-                document.getElementById('step' + stepNumber).classList.add('active');
-                
-                if (stepNumber === 3) {
-                    loadAvailableSlots();
-                }
-            }
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Set hidden input value
+            document.getElementById('experience').value = value;
+            
+            // Auto-advance after short delay
+            setTimeout(() => {
+                validateStep2();
+            }, 300);
         }
 
-        async function loadAvailableSlots() {
+        function validateStep2() {
+            const experience = document.getElementById('experience').value;
+
+            if (!experience) {
+                alert('Please select how long you have been an insurance agent');
+                return;
+            }
+
+            goToStep3();
+        }
+
+        function validateStep3() {
+            const timelineRadio = document.querySelector('input[name="timeline"]:checked');
+
+            if (!timelineRadio) {
+                alert('Please select how soon you are looking to start');
+                return;
+            }
+
+            goToStep4();
+        }
+
+        function validateStep4() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            if (!fullName || !email || !phone) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            // Go to calendar booking step
+            goToStepCalendar();
+        }
+
+        function goToStepCalendar() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('stepCalendar').classList.add('active');
+            
+            // Detect user's timezone
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            console.log('User timezone detected:', userTimezone);
+            
+            loadAvailableSlots();
+        }
+
+        function loadAvailableSlots() {
             const daySelector = document.getElementById('daySelector');
             daySelector.innerHTML = '';
             
@@ -1320,7 +1124,7 @@
             });
         }
 
-        async function selectDay(element, date) {
+        function selectDay(element, date) {
             document.querySelectorAll('.day-option').forEach(day => {
                 day.classList.remove('selected');
             });
@@ -1334,54 +1138,108 @@
             
             document.getElementById('selectedDate').value = selectedDate;
             
-            // Load static time slots for this date
-            displayDefaultTimeSlots(selectedDate);
+            // Load time slots for this date
+            displayTimeSlots(date);
         }
 
-        function displayDefaultTimeSlots(date) {
+        function displayTimeSlots(date) {
             const timeSlots = document.getElementById('timeSlots');
             timeSlots.innerHTML = '';
             
-            const selectedDate = new Date(date);
-            const dayOfWeek = selectedDate.getDay();
+            const dayOfWeek = date.getDay();
             
-            let times = [];
+            // Define EST availability hours (your availability)
+            let estAvailabilityHours = [];
             
-            // Weekend hours
+            // Weekend hours in EST
             if (dayOfWeek === 0 || dayOfWeek === 6) {
-                times = [
-                    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-                    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
-                    '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
-                    '18:00', '18:30', '19:00', '19:30', '20:00', '20:30',
-                    '21:00', '21:30', '22:00', '22:30', '23:00', '23:30'
-                ];
+                // 9am - 11:30pm EST
+                for (let hour = 9; hour < 24; hour++) {
+                    estAvailabilityHours.push(hour + ':00');
+                    if (hour < 23 || (hour === 23 && 30 <= 30)) {
+                        estAvailabilityHours.push(hour + ':30');
+                    }
+                }
             } 
-            // Weekday evening hours
+            // Weekday evening hours in EST
             else {
-                times = [
-                    '19:00', '19:30', '20:00', '20:30', '21:00', '21:30',
-                    '22:00', '22:30', '23:00', '23:30'
-                ];
+                // 7pm - 11:30pm EST
+                for (let hour = 19; hour < 24; hour++) {
+                    estAvailabilityHours.push(hour + ':00');
+                    if (hour < 23 || (hour === 23 && 30 <= 30)) {
+                        estAvailabilityHours.push(hour + ':30');
+                    }
+                }
             }
             
-            times.forEach(time => {
+            // Convert EST times to user's local timezone
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            
+            estAvailabilityHours.forEach(estTime => {
+                const [hours, minutes] = estTime.split(':');
+                
+                // Create date in EST
+                const estDate = new Date(date);
+                estDate.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+                
+                // Convert to EST explicitly (America/New_York)
+                const estDateStr = estDate.toLocaleString('en-US', { 
+                    timeZone: 'America/New_York',
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+                
+                // Parse and create proper EST date
+                const [dateStr, timeStr] = estDateStr.split(', ');
+                const [month, day, year] = dateStr.split('/');
+                const [estHour, estMinute] = timeStr.split(':');
+                
+                // Create UTC date from EST
+                const utcDate = new Date(`${year}-${month}-${day}T${estHour}:${estMinute}:00-05:00`);
+                
+                // Convert to user's local timezone
+                const localTimeStr = utcDate.toLocaleString('en-US', {
+                    timeZone: userTimezone,
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
+                
                 const timeSlot = document.createElement('div');
                 timeSlot.className = 'time-slot';
-                timeSlot.textContent = formatTime(time);
-                timeSlot.onclick = function() { selectTime(this, time); };
+                timeSlot.textContent = localTimeStr;
+                timeSlot.dataset.estTime = estTime; // Store EST time
+                timeSlot.dataset.localTime = localTimeStr; // Store local time display
+                timeSlot.onclick = function() { selectTime(this, estTime, localTimeStr); };
                 timeSlots.appendChild(timeSlot);
             });
+            
+            // Add timezone indicator
+            const tzAbbr = new Date().toLocaleString('en-US', { 
+                timeZone: userTimezone, 
+                timeZoneName: 'short' 
+            }).split(' ').pop();
+            
+            const tzNote = document.createElement('div');
+            tzNote.style.cssText = 'grid-column: 1 / -1; text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 8px;';
+            tzNote.textContent = `Times shown in your timezone (${tzAbbr})`;
+            timeSlots.appendChild(tzNote);
         }
 
-        function selectTime(element, time) {
+        function selectTime(element, estTime, localTime) {
             document.querySelectorAll('.time-slot').forEach(slot => {
                 slot.classList.remove('selected');
             });
             
             element.classList.add('selected');
             
-            document.getElementById('selectedTime').value = time;
+            // Store EST time (for GHL) and local time (for display)
+            document.getElementById('selectedTime').value = estTime;
+            document.getElementById('selectedTime').dataset.localTime = localTime;
         }
 
         function formatTime(time) {
@@ -1396,159 +1254,106 @@
             return time;
         }
 
-        function validateStep1() {
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+        function submitBooking() {
+            const selectedDate = document.getElementById('selectedDate').value;
+            const selectedTimeEST = document.getElementById('selectedTime').value; // This is already in EST (24hr format)
+            const selectedTimeInput = document.getElementById('selectedTime');
+            const selectedTimeLocal = selectedTimeInput.dataset.localTime; // User's local time display
             
-            if (!fullName) {
-                alert('Please enter your full name');
+            if (!selectedDate || !selectedTimeEST) {
+                alert('Please select both a day and time for your call');
                 return;
             }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = 'Booking...';
+            submitBtn.disabled = true;
+
+            // Get user's timezone info
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const userTimezoneOffset = new Date().getTimezoneOffset() / -60;
             
-            if (!email) {
-                alert('Please enter your email address');
-                return;
-            }
+            // Create EST datetime for GHL
+            const [hours, minutes] = selectedTimeEST.split(':');
+            const estDateTime = new Date(`${selectedDate}T${hours}:${minutes}:00-05:00`);
+            const estDateTimeISO = estDateTime.toISOString();
             
-            if (!phone || phone.length < 10) {
-                alert('Please enter a valid phone number');
-                return;
-            }
+            // Collect all form data
+            const isAgentRadio = document.querySelector('input[name="isAgent"]:checked');
+            const timelineRadio = document.querySelector('input[name="timeline"]:checked');
             
-            // Display phone number in verification step
-            document.getElementById('displayPhone').textContent = phone;
-            
-            // Format phone for Firebase (needs +1 for US)
-            const phoneNumber = '+1' + phone.replace(/\D/g, '');
-            
-            // Clear any existing reCAPTCHA
-            if (window.recaptchaVerifier) {
-                try {
-                    window.recaptchaVerifier.clear();
-                } catch (e) {
-                    console.log('Error clearing existing recaptcha:', e);
-                }
-                window.recaptchaVerifier = null;
-            }
-            
-            // Clear the container
-            const container = document.getElementById('recaptcha-container');
-            container.innerHTML = '';
-            
-            // Setup fresh reCAPTCHA verifier
-            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                'size': 'invisible',
-                'callback': (response) => {
-                    console.log('reCAPTCHA solved');
-                }
+            const formData = {
+                // Qualification data
+                isAgent: isAgentRadio ? isAgentRadio.value : '',
+                experience: document.getElementById('experience').value,
+                timeline: timelineRadio ? timelineRadio.value : '',
+                
+                // Contact info
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value.replace(/\D/g, ''),
+                phoneFormatted: document.getElementById('phone').value,
+                phoneVerified: isPhoneVerified,
+                
+                // Appointment info - EST times (what GHL needs)
+                selectedDate: selectedDate,
+                selectedTime: selectedTimeEST, // 24hr EST format (e.g., "19:00")
+                selectedTimeEST: formatTime(selectedTimeEST), // Formatted EST (e.g., "7:00 PM")
+                appointmentDateTimeISO: estDateTimeISO, // ISO format in EST
+                
+                // User timezone info (for reference/debugging)
+                userTimezone: userTimezone,
+                userTimezoneOffset: `UTC${userTimezoneOffset >= 0 ? '+' : ''}${userTimezoneOffset}`,
+                selectedTimeLocal: selectedTimeLocal, // What they saw (e.g., "6:00 PM CST")
+                
+                // Metadata
+                timestamp: new Date().toISOString(),
+                ghlCalendarId: 'fxwC5DKwW1gi5FKFZM0z'
+            };
+
+            console.log('Booking submitted:', formData);
+            console.log('EST Appointment Time:', formData.selectedTimeEST);
+            console.log('User Local Time:', formData.selectedTimeLocal);
+            console.log('ISO DateTime:', formData.appointmentDateTimeISO);
+
+            // Send to GoHighLevel webhook
+            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/10de0130-9308-4554-ba53-7811c9af53bb', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('GHL Webhook Success:', data);
+                // Show success page
+                submitBtn.textContent = 'Schedule Call 📅';
+                submitBtn.disabled = false;
+                submitQualification();
+            })
+            .catch(error => {
+                console.error('GHL Webhook Error:', error);
+                // Still show success to user even if webhook fails
+                alert('Booking submitted! We\'ll be in touch soon.');
+                submitBtn.textContent = 'Schedule Call 📅';
+                submitBtn.disabled = false;
+                submitQualification();
             });
-            
-            // Send SMS code
-            const appVerifier = window.recaptchaVerifier;
-            auth.signInWithPhoneNumber(phoneNumber, appVerifier)
-                .then((result) => {
-                    confirmationResult = result;
-                    console.log('SMS sent successfully');
-                    goToStep('verify');
-                    
-                    // Start 15 second countdown
-                    const resendBtn = document.getElementById('resendBtn');
-                    resendBtn.disabled = true;
-                    let countdown = 15;
-                    resendBtn.textContent = `Resend Code (${countdown}s)`;
-                    
-                    const countdownInterval = setInterval(() => {
-                        countdown--;
-                        resendBtn.textContent = `Resend Code (${countdown}s)`;
-                        
-                        if (countdown <= 0) {
-                            clearInterval(countdownInterval);
-                            resendBtn.textContent = 'Resend Code';
-                            resendBtn.disabled = false;
-                        }
-                    }, 1000);
-                })
-                .catch((error) => {
-                    console.error('Firebase Error Details:', error);
-                    console.error('Error code:', error.code);
-                    console.error('Error message:', error.message);
-                    
-                    let errorMsg = 'Error sending verification code. ';
-                    
-                    if (error.code === 'auth/too-many-requests') {
-                        errorMsg += 'Too many attempts. Please try again later.';
-                    } else if (error.code === 'auth/invalid-phone-number') {
-                        errorMsg += 'Invalid phone number format.';
-                    } else if (error.code === 'auth/quota-exceeded') {
-                        errorMsg += 'SMS quota exceeded. Please contact support.';
-                    } else {
-                        errorMsg += 'Please try again.';
-                    }
-                    
-                    alert(errorMsg);
-                    
-                    // Clear and reset reCAPTCHA
-                    if (window.recaptchaVerifier) {
-                        try {
-                            window.recaptchaVerifier.clear();
-                        } catch (e) {
-                            console.log('Error clearing recaptcha:', e);
-                        }
-                        window.recaptchaVerifier = null;
-                    }
-                    container.innerHTML = '';
-                });
         }
-
-        function validateAndGoToStep3() {
-            const isAgentSelected = document.querySelector('input[name="isAgent"]:checked');
-            if (!isAgentSelected) {
-                alert('Please select if you are an insurance agent');
-                return;
-            }
-            
-            const timeframe = document.getElementById('timeframe').value;
-            if (!timeframe) {
-                alert('Please select how soon you are looking to get started');
-                return;
-            }
-            
-            const boughtBeforeSelected = document.querySelector('input[name="boughtBefore"]:checked');
-            if (!boughtBeforeSelected) {
-                alert('Please select if you have bought leads before');
-                return;
-            }
-            
-            goToStep(3);
-        }
-
-        document.getElementById('phone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 0) {
-                if (value.length <= 3) {
-                    value = `(${value}`;
-                } else if (value.length <= 6) {
-                    value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
-                } else {
-                    value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
-                }
-            }
-            e.target.value = value;
-        });
 
         // Handle verification code inputs
         const codeInputs = document.querySelectorAll('.code-input');
         codeInputs.forEach((input, index) => {
             input.addEventListener('input', function(e) {
                 const value = e.target.value;
-                
+
                 // Only allow numbers
                 if (value && !/^\d$/.test(value)) {
                     e.target.value = '';
                     return;
                 }
-                
+
                 // Add filled class
                 if (value) {
                     e.target.classList.add('filled');
@@ -1559,32 +1364,32 @@
                 } else {
                     e.target.classList.remove('filled');
                 }
-                
+
                 // Clear error state
                 document.getElementById('verifyError').style.display = 'none';
                 codeInputs.forEach(inp => inp.classList.remove('error'));
             });
-            
+
             // Handle backspace
             input.addEventListener('keydown', function(e) {
                 if (e.key === 'Backspace' && !e.target.value && index > 0) {
                     codeInputs[index - 1].focus();
                 }
             });
-            
+
             // Handle paste
             input.addEventListener('paste', function(e) {
                 e.preventDefault();
                 const pastedData = e.clipboardData.getData('text').replace(/\D/g, '');
                 const digits = pastedData.split('').slice(0, 6);
-                
+
                 digits.forEach((digit, i) => {
                     if (codeInputs[i]) {
                         codeInputs[i].value = digit;
                         codeInputs[i].classList.add('filled');
                     }
                 });
-                
+
                 if (digits.length > 0) {
                     const lastIndex = Math.min(digits.length, 6) - 1;
                     codeInputs[lastIndex].focus();
@@ -1596,24 +1401,24 @@
             const code = Array.from(codeInputs).map(input => input.value).join('');
             const verifyBtn = document.getElementById('verifyBtn');
             const errorDiv = document.getElementById('verifyError');
-            
+
             if (code.length !== 6) {
                 errorDiv.textContent = 'Please enter the complete 6-digit code';
                 errorDiv.style.display = 'block';
                 codeInputs.forEach(input => input.classList.add('error'));
                 return;
             }
-            
+
             verifyBtn.textContent = 'Verifying...';
             verifyBtn.disabled = true;
-            
+
             // Verify code with Firebase
             confirmationResult.confirm(code)
                 .then((result) => {
                     // SMS verification successful
                     isPhoneVerified = true;
                     console.log('Phone verified successfully');
-                    goToStep(2);
+                    submitQualification();
                     verifyBtn.textContent = 'Verify Code';
                     verifyBtn.disabled = false;
                 })
@@ -1637,51 +1442,48 @@
             const resendBtn = document.getElementById('resendBtn');
             const phone = document.getElementById('phone').value;
             const phoneNumber = '+1' + phone.replace(/\D/g, '');
-            
+
             resendBtn.textContent = 'Sending...';
             resendBtn.disabled = true;
-            
+
             // Clear code inputs
             codeInputs.forEach(input => {
                 input.value = '';
                 input.classList.remove('filled', 'error');
             });
-            
+
             // Clear and reset reCAPTCHA
-            if (window.recaptchaVerifier) {
+            if (recaptchaVerifier) {
                 try {
-                    window.recaptchaVerifier.clear();
+                    recaptchaVerifier.clear();
                 } catch (e) {
                     console.log('Error clearing recaptcha:', e);
                 }
-                window.recaptchaVerifier = null;
+                recaptchaVerifier = null;
             }
-            
-            const container = document.getElementById('recaptcha-container');
-            container.innerHTML = '';
-            
+
             // Create fresh reCAPTCHA
-            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
                 'size': 'invisible',
                 'callback': (response) => {
                     console.log('reCAPTCHA solved');
                 }
             });
-            
+
             // Resend SMS code via Firebase
-            const appVerifier = window.recaptchaVerifier;
+            const appVerifier = recaptchaVerifier;
             auth.signInWithPhoneNumber(phoneNumber, appVerifier)
                 .then((result) => {
                     confirmationResult = result;
                     console.log('SMS resent successfully');
                     resendBtn.textContent = 'Code Sent! ✓';
-                    
+
                     // Start 15 second countdown
                     let countdown = 15;
                     const countdownInterval = setInterval(() => {
                         countdown--;
                         resendBtn.textContent = `Resend Code (${countdown}s)`;
-                        
+
                         if (countdown <= 0) {
                             clearInterval(countdownInterval);
                             resendBtn.textContent = 'Resend Code';
@@ -1697,191 +1499,65 @@
                 });
         }
 
-        async function handleBookingSubmit(event) {
-            if (event) event.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            
-            const selectedDate = document.getElementById('selectedDate').value;
-            const selectedTime = document.getElementById('selectedTime').value;
-            
-            if (!selectedDate || !selectedTime) {
-                alert('Please select both a day and time for your call');
-                return;
-            }
-            
-            submitBtn.textContent = 'Booking...';
-            submitBtn.disabled = true;
-            
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            
-            // Format time for GHL (ISO 8601 format) - convert EST to UTC
-            // Parse the selected date/time as EST (America/New_York)
-            const dateTimeString = `${selectedDate}T${selectedTime}:00`;
-            const dateTimeEST = new Date(dateTimeString);
-            
-            // Get the timezone offset for EST (5 hours behind UTC, or 4 during DST)
-            // The browser's Date object will handle this automatically based on the date
-            const startTimeISO = dateTimeEST.toISOString();
-            
-            // Get user's timezone info for debugging
-            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            const userTimezoneOffset = new Date().getTimezoneOffset() / -60; // Convert to hours ahead of UTC
-            const userLocalDateTime = dateTimeEST.toLocaleString('en-US', { 
-                timeZone: userTimezone,
-                dateStyle: 'short',
-                timeStyle: 'short'
-            });
-            
-            // Collect all form data + GHL booking info
+        function submitQualification() {
+            // Collect all form data
+            const isAgentRadio = document.querySelector('input[name="isAgent"]:checked');
+            const timelineRadio = document.querySelector('input[name="timeline"]:checked');
             const formData = {
-                // Contact Info
-                fullName: fullName,
-                email: email,
-                phone: phone.replace(/\D/g, ''),
-                phoneFormatted: phone,
+                isAgent: isAgentRadio ? isAgentRadio.value : '',
+                experience: document.getElementById('experience').value,
+                timeline: timelineRadio ? timelineRadio.value : '',
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
                 phoneVerified: isPhoneVerified,
-                
-                // Qualification Questions
-                isAgent: document.querySelector('input[name="isAgent"]:checked').value,
-                timeframe: document.getElementById('timeframe').value,
-                boughtBefore: document.querySelector('input[name="boughtBefore"]:checked').value,
-                
-                // Appointment Info
-                selectedDate: selectedDate,
-                selectedTime: selectedTime,
-                timestamp: formatTimestampEST(),
-                
-                // Timezone Info (for debugging)
-                userTimezone: userTimezone,
-                userTimezoneOffset: `UTC${userTimezoneOffset >= 0 ? '+' : ''}${userTimezoneOffset}`,
-                userLocalDateTime: userLocalDateTime,
-                
-                // GHL Booking Data (for your webhook to use)
-                ghlCalendarId: 'fxwC5DKwW1gi5FKFZM0z',
-                ghlStartTime: startTimeISO,
-                ghlAppointmentTitle: `Consultation - ${fullName}`
+                timestamp: new Date().toISOString()
             };
-            
-            console.log('Form data collected:', formData);
-            console.log('Calling webhook URL:', 'https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/9b1319df-0abb-49d9-876f-827ced99db5a');
-            console.log('Sending data:', JSON.stringify(formData, null, 2));
-            
-            // Send to webhook
-            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/9b1319df-0abb-49d9-876f-827ced99db5a', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            }).then(response => {
-                console.log('✅ Webhook response status:', response.status);
-                return response.json();
-            }).then(data => {
-                console.log('Webhook response data:', data);
-            }).catch(error => {
-                console.error('❌ Webhook error:', error);
-            });
-            
-            // Go to success page after short delay
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                goToStep('success');
-                setupSMSButton(formData.fullName, formData.selectedDate, formData.selectedTime);
-                
-                // Track Facebook Pixel Lead event
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead', {
-                        content_name: 'Insurance Lead Form',
-                        value: 0,
-                        currency: 'USD'
-                    });
-                }
-            }, 1500);
+
+            console.log('Form submitted:', formData);
+
+            // Show thank you message
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('thankYou').classList.add('active');
+
+            // TODO: Send to GoHighLevel webhook or your backend
+            // fetch('YOUR_WEBHOOK_URL', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
         }
 
-        document.getElementById('bookingModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeBookingForm();
+        // Phone formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 3) {
+                    value = `(${value}`;
+                } else if (value.length <= 6) {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                } else {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                }
             }
+            e.target.value = value;
         });
 
-        function setupSMSButton(fullName, selectedDate, selectedTime) {
-            const firstName = fullName.split(' ')[0];
-            const smsButton = document.getElementById('smsButton');
-            
-            const timeFormatted = formatTime(selectedTime);
-            
-            const message = `Hi, this is ${firstName}. I just scheduled a call for ${selectedDate} at ${timeFormatted}.`;
-            
-            const encodedMessage = encodeURIComponent(message);
-            
-            smsButton.href = `sms:+18605108741?&body=${encodedMessage}`;
-        }
-
-        function formatTimestampEST() {
-            const now = new Date();
-            
-            const estDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-            
-            const month = String(estDate.getMonth() + 1).padStart(2, '0');
-            const day = String(estDate.getDate()).padStart(2, '0');
-            const year = estDate.getFullYear();
-            
-            let hours = estDate.getHours();
-            const minutes = String(estDate.getMinutes()).padStart(2, '0');
-            const seconds = String(estDate.getSeconds()).padStart(2, '0');
-            
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12 || 12;
-            
-            return `${month}/${day}/${year} ${hours}:${minutes}:${seconds} ${ampm} EST`;
-        }
-
-        const floatingCTA = document.getElementById('floatingCTA');
-        const mainCTAs = document.querySelectorAll('.cta-section');
-        
-        function checkCTAVisibility() {
-            let anyMainCTAVisible = false;
-            
-            const isMobile = window.innerWidth <= 768;
-            const scrollThreshold = isMobile ? window.innerHeight * 0.8 : 300;
-            
-            mainCTAs.forEach(cta => {
-                const rect = cta.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                if (isVisible) {
-                    anyMainCTAVisible = true;
-                }
-            });
-            
-            if (!anyMainCTAVisible && window.scrollY > scrollThreshold) {
-                floatingCTA.classList.add('visible');
-            } else {
-                floatingCTA.classList.remove('visible');
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('qualificationModal');
+            if (event.target == modal) {
+                closeQualificationForm();
             }
         }
-        
-        window.addEventListener('scroll', checkCTAVisibility);
-        window.addEventListener('resize', checkCTAVisibility);
-        checkCTAVisibility();
 
-        const reviewsTrack = document.querySelector('.reviews-track');
-        if (reviewsTrack) {
-            reviewsTrack.style.animation = 'scrollReviews 20s linear infinite';
-            
-            reviewsTrack.addEventListener('mouseenter', function() {
-                this.style.animationPlayState = 'paused';
-            });
-            reviewsTrack.addEventListener('mouseleave', function() {
-                this.style.animationPlayState = 'running';
-            });
-        }
+        // Initialize reCAPTCHA container
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.createElement('div');
+            container.id = 'recaptcha-container';
+            container.style.display = 'none';
+            document.body.appendChild(container);
+        });
     </script>
 </body>
 </html>
