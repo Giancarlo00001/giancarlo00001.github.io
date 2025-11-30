@@ -260,11 +260,14 @@
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 24px;
-            margin: 5% auto;
+            margin: 0 auto;
             padding: 40px 20px;
             max-width: 500px;
-            width: 100%;
-            position: relative;
+            width: calc(100% - 32px);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: scaleIn 0.3s ease;
             max-height: 90vh;
@@ -675,10 +678,14 @@
             }
 
             .modal-content {
-                margin: 10% 16px;
+                margin: 0 auto;
                 padding: 40px 20px;
                 max-height: 90vh;
                 overflow-y: auto;
+                width: calc(100% - 32px);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
 
             .modal-content h2 {
