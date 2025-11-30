@@ -575,6 +575,40 @@
             text-align: center;
         }
 
+        .calendar-sticky-buttons {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 16px 20px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            border-radius: 0 0 24px 24px;
+        }
+
+        .back-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #000000;
+            flex-shrink: 0;
+        }
+
+        .back-circle:hover {
+            background: #e5e7eb;
+            border-color: #9ca3af;
+        }
+
         #recaptcha-container {
             margin: 20px 0;
             display: flex;
@@ -887,14 +921,18 @@
                     <input type="hidden" id="selectedDate" name="selectedDate">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 100px;">
                     <label>Select a Time *</label>
                     <div class="time-slots" id="timeSlots"></div>
                     <input type="hidden" id="selectedTime" name="selectedTime">
                 </div>
 
-                <div style="display: flex; gap: 12px; margin-top: 24px;">
-                    <button type="button" class="btn-secondary" style="flex: 1;" onclick="goToStep4()">← Back</button>
+                <div class="calendar-sticky-buttons">
+                    <button type="button" class="back-circle" onclick="goToStep4()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
                     <button type="button" class="btn-primary" style="flex: 1;" id="submitBtn" onclick="submitBooking()">Schedule Call 📅</button>
                 </div>
             </div>
@@ -1181,90 +1219,97 @@
 
         function displayTimeSlots(date) {
             const timeSlots = document.getElementById('timeSlots');
-            timeSlots.innerHTML = '';
+            timeSlots.innerHTML = '<p style="color: #6b7280; text-align: center; grid-column: 1 / -1;">Loading available times...</p>';
             
-            const dayOfWeek = date.getDay();
+            const calendarId = 'fxwC5DKwW1gi5FKFZM0z';
+            const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IjFCNWxGbFhyZWFZV1NoeThaT0tQIiwidmVyc2lvbiI6MSwiaWF0IjoxNzYwOTMwMDcxMjIzLCJzdWIiOiJncm43ZnA3ZHIwVXVGUnk5RG94aiJ9.7Myxn3C8OLDrdmYg8PYZ9GrdHdMvwT7yvkjybdzteqo';
             
-            // Define EST availability hours (your availability)
-            let estAvailabilityHours = [];
+            // Format date for API
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const dateStr = `${year}-${month}-${day}`;
             
-            // Weekend hours in EST
-            if (dayOfWeek === 0 || dayOfWeek === 6) {
-                // 9am - 11:30pm EST
-                for (let hour = 9; hour < 24; hour++) {
-                    estAvailabilityHours.push(hour + ':00');
-                    if (hour < 23 || (hour === 23 && 30 <= 30)) {
-                        estAvailabilityHours.push(hour + ':30');
-                    }
-                }
-            } 
-            // Weekday evening hours in EST
-            else {
-                // 7pm - 11:30pm EST
-                for (let hour = 19; hour < 24; hour++) {
-                    estAvailabilityHours.push(hour + ':00');
-                    if (hour < 23 || (hour === 23 && 30 <= 30)) {
-                        estAvailabilityHours.push(hour + ':30');
-                    }
-                }
-            }
-            
-            // Convert EST times to user's local timezone
+            // Get user's timezone
             const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             
-            estAvailabilityHours.forEach(estTime => {
-                const [hours, minutes] = estTime.split(':');
+            // Fetch available slots from GHL
+            fetch(`https://services.leadconnectorhq.com/calendars/${calendarId}/free-slots?startDate=${dateStr}&endDate=${dateStr}&timezone=${encodeURIComponent(userTimezone)}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Version': '2021-04-15',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                timeSlots.innerHTML = '';
                 
-                // Create date in EST
-                const estDate = new Date(date);
-                estDate.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+                // Get slots for the selected date
+                const slots = data[dateStr]?.slots || [];
                 
-                // Convert to EST explicitly (America/New_York)
-                const estDateStr = estDate.toLocaleString('en-US', { 
-                    timeZone: 'America/New_York',
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: false
+                if (slots.length === 0) {
+                    timeSlots.innerHTML = '<p style="color: #6b7280; text-align: center; grid-column: 1 / -1;">No available times for this day</p>';
+                    return;
+                }
+                
+                // Get current time to filter past slots
+                const now = new Date();
+                
+                slots.forEach(slot => {
+                    const slotTime = new Date(slot);
+                    
+                    // Skip past times
+                    if (slotTime <= now) return;
+                    
+                    // Format for display in user's timezone
+                    const localTimeStr = slotTime.toLocaleString('en-US', {
+                        timeZone: userTimezone,
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        hour12: true
+                    });
+                    
+                    // Format EST time for storage (24hr)
+                    const estTimeStr = slotTime.toLocaleString('en-US', {
+                        timeZone: 'America/New_York',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: false
+                    });
+                    
+                    const timeSlotEl = document.createElement('div');
+                    timeSlotEl.className = 'time-slot';
+                    timeSlotEl.textContent = localTimeStr;
+                    timeSlotEl.dataset.estTime = estTimeStr;
+                    timeSlotEl.dataset.localTime = localTimeStr;
+                    timeSlotEl.dataset.isoTime = slot;
+                    timeSlotEl.onclick = function() { selectTime(this, estTimeStr, localTimeStr); };
+                    timeSlots.appendChild(timeSlotEl);
                 });
                 
-                // Parse and create proper EST date
-                const [dateStr, timeStr] = estDateStr.split(', ');
-                const [month, day, year] = dateStr.split('/');
-                const [estHour, estMinute] = timeStr.split(':');
+                // If all slots were filtered out (past times)
+                if (timeSlots.children.length === 0) {
+                    timeSlots.innerHTML = '<p style="color: #6b7280; text-align: center; grid-column: 1 / -1;">No available times remaining for today</p>';
+                    return;
+                }
                 
-                // Create UTC date from EST
-                const utcDate = new Date(`${year}-${month}-${day}T${estHour}:${estMinute}:00-05:00`);
+                // Add timezone indicator
+                const tzAbbr = new Date().toLocaleString('en-US', { 
+                    timeZone: userTimezone, 
+                    timeZoneName: 'short' 
+                }).split(' ').pop();
                 
-                // Convert to user's local timezone
-                const localTimeStr = utcDate.toLocaleString('en-US', {
-                    timeZone: userTimezone,
-                    hour: 'numeric',
-                    minute: '2-digit',
-                    hour12: true
-                });
-                
-                const timeSlot = document.createElement('div');
-                timeSlot.className = 'time-slot';
-                timeSlot.textContent = localTimeStr;
-                timeSlot.dataset.estTime = estTime; // Store EST time
-                timeSlot.dataset.localTime = localTimeStr; // Store local time display
-                timeSlot.onclick = function() { selectTime(this, estTime, localTimeStr); };
-                timeSlots.appendChild(timeSlot);
+                const tzNote = document.createElement('div');
+                tzNote.style.cssText = 'grid-column: 1 / -1; text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 8px;';
+                tzNote.textContent = `Times shown in your timezone (${tzAbbr})`;
+                timeSlots.appendChild(tzNote);
+            })
+            .catch(error => {
+                console.error('Error fetching slots:', error);
+                timeSlots.innerHTML = '<p style="color: #ef4444; text-align: center; grid-column: 1 / -1;">Error loading times. Please try again.</p>';
             });
-            
-            // Add timezone indicator
-            const tzAbbr = new Date().toLocaleString('en-US', { 
-                timeZone: userTimezone, 
-                timeZoneName: 'short' 
-            }).split(' ').pop();
-            
-            const tzNote = document.createElement('div');
-            tzNote.style.cssText = 'grid-column: 1 / -1; text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 8px;';
-            tzNote.textContent = `Times shown in your timezone (${tzAbbr})`;
-            timeSlots.appendChild(tzNote);
         }
 
         function selectTime(element, estTime, localTime) {
