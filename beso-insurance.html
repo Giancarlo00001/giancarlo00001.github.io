@@ -1221,25 +1221,30 @@
             const timeSlots = document.getElementById('timeSlots');
             timeSlots.innerHTML = '<p style="color: #6b7280; text-align: center; grid-column: 1 / -1;">Loading available times...</p>';
             
-            const calendarSlug = 'fxwC5DKwW1gi5FKFZM0z';
+            const calendarId = 'fxwC5DKwW1gi5FKFZM0z';
+            const userId = 'Gnuv4j7kg547FQQ6r0o2';
             
-            // Format date for API
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            const dateStr = `${year}-${month}-${day}`;
+            // Get start of selected day and end of day in milliseconds
+            const startOfDay = new Date(date);
+            startOfDay.setHours(0, 0, 0, 0);
+            const endOfDay = new Date(date);
+            endOfDay.setHours(23, 59, 59, 999);
+            
+            const startDate = startOfDay.getTime();
+            const endDate = endOfDay.getTime();
             
             // Get user's timezone
             const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             
-            // Fetch available slots from GHL public widget endpoint
-            fetch(`https://api.leadconnectorhq.com/widget/booking/${calendarSlug}/slots?date=${dateStr}&timezone=${encodeURIComponent(userTimezone)}`)
+            // Fetch available slots from GHL backend
+            fetch(`https://backend.leadconnectorhq.com/calendars/${calendarId}/free-slots?startDate=${startDate}&endDate=${endDate}&timezone=${encodeURIComponent(userTimezone)}&userId=${userId}&sendSeatsPerSlot=false`)
             .then(response => response.json())
             .then(data => {
                 timeSlots.innerHTML = '';
                 
-                // Get slots from response
-                const slots = data.slots || data || [];
+                // Get slots from response - format is { "YYYY-MM-DD": { slots: [...] } }
+                const dateKey = Object.keys(data)[0];
+                const slots = data[dateKey]?.slots || [];
                 
                 if (!Array.isArray(slots) || slots.length === 0) {
                     timeSlots.innerHTML = '<p style="color: #6b7280; text-align: center; grid-column: 1 / -1;">No available times for this day</p>';
