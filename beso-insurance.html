@@ -1221,8 +1221,7 @@
             const timeSlots = document.getElementById('timeSlots');
             timeSlots.innerHTML = '<p style="color: #6b7280; text-align: center; grid-column: 1 / -1;">Loading available times...</p>';
             
-            const calendarId = 'fxwC5DKwW1gi5FKFZM0z';
-            const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IjFCNWxGbFhyZWFZV1NoeThaT0tQIiwidmVyc2lvbiI6MSwiaWF0IjoxNzYwOTMwMDcxMjIzLCJzdWIiOiJncm43ZnA3ZHIwVXVGUnk5RG94aiJ9.7Myxn3C8OLDrdmYg8PYZ9GrdHdMvwT7yvkjybdzteqo';
+            const calendarSlug = 'fxwC5DKwW1gi5FKFZM0z';
             
             // Format date for API
             const year = date.getFullYear();
@@ -1233,23 +1232,16 @@
             // Get user's timezone
             const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             
-            // Fetch available slots from GHL
-            fetch(`https://services.leadconnectorhq.com/calendars/${calendarId}/free-slots?startDate=${dateStr}&endDate=${dateStr}&timezone=${encodeURIComponent(userTimezone)}`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${apiKey}`,
-                    'Version': '2021-04-15',
-                    'Content-Type': 'application/json'
-                }
-            })
+            // Fetch available slots from GHL public widget endpoint
+            fetch(`https://api.leadconnectorhq.com/widget/booking/${calendarSlug}/slots?date=${dateStr}&timezone=${encodeURIComponent(userTimezone)}`)
             .then(response => response.json())
             .then(data => {
                 timeSlots.innerHTML = '';
                 
-                // Get slots for the selected date
-                const slots = data[dateStr]?.slots || [];
+                // Get slots from response
+                const slots = data.slots || data || [];
                 
-                if (slots.length === 0) {
+                if (!Array.isArray(slots) || slots.length === 0) {
                     timeSlots.innerHTML = '<p style="color: #6b7280; text-align: center; grid-column: 1 / -1;">No available times for this day</p>';
                     return;
                 }
