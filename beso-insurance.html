@@ -929,10 +929,9 @@
             </div>
 
             <div id="thankYou" class="form-step">
-                <div class="success-icon">✅</div>
-                <h2>You're All Set!</h2>
-                <p class="modal-subtext">We'll be in touch within 24 hours to discuss your custom lead solution.</p>
-                <p style="margin-top: 20px; color: var(--text-secondary);">Check your email for confirmation details.</p>
+                <h2 style="font-size: 1.75rem; margin-bottom: 24px;">You Just Did What 95% of Agents Won't</h2>
+                <p style="color: #000000; font-size: 1.1rem; margin-bottom: 16px;">🏆 This is exactly what separates a regular agent from a top producer.</p>
+                <p style="color: #000000; font-size: 1.1rem;">📲 We're sending you a quick video now to get you ready for our call at <strong id="callTime">3:00 PM EST</strong> - make sure you watch it.</p>
             </div>
         </div>
     </div>
@@ -1068,8 +1067,40 @@
                 return;
             }
 
-            // Go to calendar booking step
-            goToStepCalendar();
+            // Send SMS verification code via Firebase
+            const phoneNumber = '+1' + phone.replace(/\D/g, '');
+            document.getElementById('displayPhone').textContent = phone;
+
+            // Initialize reCAPTCHA if not already done
+            if (!recaptchaVerifier) {
+                recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                    'size': 'invisible',
+                    'callback': (response) => {
+                        console.log('reCAPTCHA solved');
+                    }
+                });
+            }
+
+            // Send SMS code
+            auth.signInWithPhoneNumber(phoneNumber, recaptchaVerifier)
+                .then((result) => {
+                    confirmationResult = result;
+                    console.log('SMS sent successfully');
+                    goToStepVerify();
+                })
+                .catch((error) => {
+                    console.error('Error sending SMS:', error);
+                    alert('Error sending verification code. Please check your phone number and try again.');
+                    // Reset reCAPTCHA on error
+                    if (recaptchaVerifier) {
+                        try {
+                            recaptchaVerifier.clear();
+                        } catch (e) {
+                            console.log('Error clearing recaptcha:', e);
+                        }
+                        recaptchaVerifier = null;
+                    }
+                });
         }
 
         function goToStepCalendar() {
@@ -1289,7 +1320,8 @@
                 timeline: timelineRadio ? timelineRadio.value : '',
                 
                 // Contact info
-                fullName: document.getElementById('fullName').value,
+                firstName: document.getElementById('fullName').value.split(' ')[0] || '',
+                lastName: document.getElementById('fullName').value.split(' ').slice(1).join(' ') || '',
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value.replace(/\D/g, ''),
                 phoneFormatted: document.getElementById('phone').value,
@@ -1317,7 +1349,7 @@
             console.log('ISO DateTime:', formData.appointmentDateTimeISO);
 
             // Send to GoHighLevel webhook
-            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/10de0130-9308-4554-ba53-7811c9af53bb', {
+            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/3794da4f-ef2f-45fd-a06c-dbea6b1f7714', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json'
@@ -1418,7 +1450,7 @@
                     // SMS verification successful
                     isPhoneVerified = true;
                     console.log('Phone verified successfully');
-                    submitQualification();
+                    goToStepCalendar();
                     verifyBtn.textContent = 'Verify Code';
                     verifyBtn.disabled = false;
                 })
@@ -1515,6 +1547,12 @@
             };
 
             console.log('Form submitted:', formData);
+
+            // Update call time on thank you page
+            const selectedTimeLocal = document.getElementById('selectedTime').dataset.localTime;
+            if (selectedTimeLocal) {
+                document.getElementById('callTime').textContent = selectedTimeLocal;
+            }
 
             // Show thank you message
             document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
