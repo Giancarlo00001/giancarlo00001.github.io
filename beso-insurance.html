@@ -896,7 +896,6 @@
             <div id="step4" class="form-step">
                 <h2>Contact Information</h2>
                 <p class="modal-subtext">How can we reach you?</p>
-                <!-- NOTE: SMS verification is temporarily disabled for testing. Will submit directly to calendar booking. -->
                 
                 <div class="form-group">
                     <label>Full Name *</label>
@@ -1018,6 +1017,40 @@
         let recaptchaVerifier = null;
         let isPhoneVerified = false;
 
+        // Helper function to completely reset reCAPTCHA
+        function resetRecaptcha() {
+            // Clear existing verifier
+            if (recaptchaVerifier) {
+                try {
+                    recaptchaVerifier.clear();
+                } catch (e) {
+                    console.log('Error clearing recaptcha:', e);
+                }
+                recaptchaVerifier = null;
+            }
+            
+            // Remove and recreate the container element
+            const oldContainer = document.getElementById('recaptcha-container');
+            if (oldContainer) {
+                oldContainer.remove();
+            }
+            
+            const newContainer = document.createElement('div');
+            newContainer.id = 'recaptcha-container';
+            newContainer.style.display = 'none';
+            document.body.appendChild(newContainer);
+            
+            // Create fresh verifier
+            recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                'size': 'invisible',
+                'callback': (response) => {
+                    console.log('reCAPTCHA solved');
+                }
+            });
+            
+            return recaptchaVerifier;
+        }
+
         function showQualificationForm() {
             document.getElementById('qualificationModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -1128,18 +1161,11 @@
             const phoneNumber = '+1' + phone.replace(/\D/g, '');
             document.getElementById('displayPhone').textContent = phone;
 
-            // Initialize reCAPTCHA if not already done
-            if (!recaptchaVerifier) {
-                recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                    'size': 'invisible',
-                    'callback': (response) => {
-                        console.log('reCAPTCHA solved');
-                    }
-                });
-            }
+            // Always reset reCAPTCHA before sending to prevent duplicate errors
+            const appVerifier = resetRecaptcha();
 
             // Send SMS code
-            auth.signInWithPhoneNumber(phoneNumber, recaptchaVerifier)
+            auth.signInWithPhoneNumber(phoneNumber, appVerifier)
                 .then((result) => {
                     confirmationResult = result;
                     console.log('SMS sent successfully');
@@ -1148,15 +1174,6 @@
                 .catch((error) => {
                     console.error('Error sending SMS:', error);
                     alert('Error sending verification code. Please check your phone number and try again.');
-                    // Reset reCAPTCHA on error
-                    if (recaptchaVerifier) {
-                        try {
-                            recaptchaVerifier.clear();
-                        } catch (e) {
-                            console.log('Error clearing recaptcha:', e);
-                        }
-                        recaptchaVerifier = null;
-                    }
                 });
         }
 
@@ -1549,26 +1566,10 @@
                 input.classList.remove('filled', 'error');
             });
 
-            // Clear and reset reCAPTCHA
-            if (recaptchaVerifier) {
-                try {
-                    recaptchaVerifier.clear();
-                } catch (e) {
-                    console.log('Error clearing recaptcha:', e);
-                }
-                recaptchaVerifier = null;
-            }
-
-            // Create fresh reCAPTCHA
-            recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                'size': 'invisible',
-                'callback': (response) => {
-                    console.log('reCAPTCHA solved');
-                }
-            });
+            // Reset reCAPTCHA completely before resending
+            const appVerifier = resetRecaptcha();
 
             // Resend SMS code via Firebase
-            const appVerifier = recaptchaVerifier;
             auth.signInWithPhoneNumber(phoneNumber, appVerifier)
                 .then((result) => {
                     confirmationResult = result;
@@ -1622,13 +1623,6 @@
             // Show thank you message
             document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
             document.getElementById('thankYou').classList.add('active');
-
-            // TODO: Send to GoHighLevel webhook or your backend
-            // fetch('YOUR_WEBHOOK_URL', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(formData)
-            // });
         }
 
         // Phone formatting
@@ -1654,7 +1648,7 @@
             }
         }
 
-        // Initialize reCAPTCHA container
+        // Initialize reCAPTCHA container on page load
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.createElement('div');
             container.id = 'recaptcha-container';
