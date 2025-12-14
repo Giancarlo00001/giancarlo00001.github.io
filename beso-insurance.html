@@ -6,7 +6,23 @@
     <title>BESO Solutions - Insurance Lead Generation</title>
     
     <!-- Meta Pixel Code - DISABLED FOR TESTING -->
-    <!-- Add pixel back before going live -->
+    <!--
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1873975266801560');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1873975266801560&ev=PageView&noscript=1"
+    /></noscript>
+    -->
     
     <style>
         * {
@@ -1746,6 +1762,37 @@
             formData.email = email;
             formData.phone = phone;
 
+            // Fire Lead pixel event - qualified lead submitted contact info
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead');
+            }
+
+            // Send qualified lead to GHL (no booking yet)
+            const leadData = {
+                firstName: fullName.split(' ')[0] || '',
+                lastName: fullName.split(' ').slice(1).join(' ') || '',
+                email: email,
+                phone: '+1' + phone.replace(/\D/g, ''),
+                phoneFormatted: phone,
+                isLicensed: formData.isLicensed,
+                insuranceType: formData.insuranceType,
+                hasBudget: formData.hasBudget,
+                timeline: formData.timeline,
+                bookingStatus: 'Qualified - Not Booked',
+                timestamp: new Date().toISOString()
+            };
+
+            console.log('Qualified lead submitted:', leadData);
+
+            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/344c85b6-c4b9-4f7e-90b3-040a4d360833', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(leadData)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Lead webhook success:', data))
+            .catch(error => console.error('Lead webhook error:', error));
+
             // FIREBASE SMS DISABLED FOR TESTING
             // Skip directly to calendar
             goToStep(6);
@@ -1826,6 +1873,11 @@
             if (!formData.selectedDate || !formData.selectedTime) {
                 alert('Please select a day and time');
                 return;
+            }
+
+            // Fire Schedule pixel event - booked appointment
+            if (typeof fbq !== 'undefined') {
+                fbq('trackCustom', 'Schedule');
             }
 
             console.log('Form submitted:', formData);
