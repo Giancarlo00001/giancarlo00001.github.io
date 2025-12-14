@@ -1767,7 +1767,7 @@
                 fbq('track', 'Lead');
             }
 
-            // Send qualified lead to GHL (no booking yet)
+            // Send qualified lead to GHL
             const leadData = {
                 firstName: fullName.split(' ')[0] || '',
                 lastName: fullName.split(' ').slice(1).join(' ') || '',
@@ -1778,13 +1778,12 @@
                 insuranceType: formData.insuranceType,
                 hasBudget: formData.hasBudget,
                 timeline: formData.timeline,
-                bookingStatus: 'Qualified - Not Booked',
                 timestamp: new Date().toISOString()
             };
 
             console.log('Qualified lead submitted:', leadData);
 
-            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/344c85b6-c4b9-4f7e-90b3-040a4d360833', {
+            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/6d4426b6-959b-4d03-b7a0-3ffc5d2c7497', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(leadData)
