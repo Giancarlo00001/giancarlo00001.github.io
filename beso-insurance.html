@@ -23,6 +23,10 @@
     src="https://www.facebook.com/tr?id=1873975266801560&ev=PageView&noscript=1"
     /></noscript>
     -->
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
     
     <style>
         * {
@@ -816,6 +820,39 @@
             color: #9ca3af;
         }
 
+        .code-inputs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .code-input {
+            width: 48px;
+            height: 56px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+
+        @media (max-width: 480px) {
+            .code-input {
+                width: 40px;
+                height: 48px;
+                font-size: 1.25rem;
+            }
+        }
+
         .radio-option {
             display: inline-flex;
             align-items: center;
@@ -1478,6 +1515,33 @@
                 <button class="btn-secondary" onclick="goToStep(4)">← Back</button>
             </div>
 
+            <!-- Step 5b: SMS Verification -->
+            <div id="step5b" class="form-step">
+                <h2>Verify Your Phone</h2>
+                <p class="modal-subtext">We sent a 6-digit code to <span id="phoneDisplay"></span></p>
+                
+                <div class="form-group">
+                    <label>Enter Verification Code *</label>
+                    <div class="code-inputs" id="codeInputs">
+                        <input type="text" maxlength="1" class="code-input" data-index="0" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" class="code-input" data-index="1" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" class="code-input" data-index="2" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" class="code-input" data-index="3" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" class="code-input" data-index="4" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" class="code-input" data-index="5" inputmode="numeric" pattern="[0-9]*">
+                    </div>
+                    <p id="verifyError" style="color: #ef4444; font-size: 0.85rem; margin-top: 8px; display: none;"></p>
+                </div>
+                
+                <button class="btn-form" onclick="verifyCode()" id="verifyBtn">Verify →</button>
+                <p style="color: #6b7280; font-size: 0.85rem; margin-top: 16px; text-align: center;">
+                    Didn't get the code? <a href="#" onclick="resendCode(); return false;" style="color: var(--primary-dark); font-weight: 600;">Resend</a>
+                </p>
+                <button class="btn-secondary" onclick="goToStep(5)">← Back</button>
+                
+                <div id="recaptcha-container"></div>
+            </div>
+
             <!-- Step 6: Calendar Booking -->
             <div id="step6" class="form-step">
                 <h2>Schedule Your Call</h2>
@@ -1660,8 +1724,9 @@
         }
 
         function updateProgress(step) {
+            const stepNum = step === '5b' ? 5.5 : parseInt(step);
             document.querySelectorAll('.progress-step').forEach((el, index) => {
-                el.classList.toggle('active', index < step);
+                el.classList.toggle('active', index < stepNum);
             });
         }
 
@@ -1741,6 +1806,35 @@
             }, 300);
         }
 
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAjxTuXUrBLLnSmBv9YPHRGxDgimvXT2Xk",
+            authDomain: "beso-sms-verify.firebaseapp.com",
+            projectId: "beso-sms-verify",
+            storageBucket: "beso-sms-verify.firebasestorage.app",
+            messagingSenderId: "256955185877",
+            appId: "1:256955185877:web:5da4d2211f362acbd2c05c",
+            measurementId: "G-5TPLDTV3SX"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        let confirmationResult = null;
+        let recaptchaVerifier = null;
+
+        // Initialize reCAPTCHA
+        function initRecaptcha() {
+            if (!recaptchaVerifier) {
+                recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                    'size': 'invisible',
+                    'callback': (response) => {
+                        console.log('reCAPTCHA verified');
+                    }
+                });
+            }
+        }
+
         // Step 5: Contact Info
         function validateStep5() {
             const fullName = document.getElementById('fullName').value.trim();
@@ -1792,10 +1886,94 @@
             .then(data => console.log('Lead webhook success:', data))
             .catch(error => console.error('Lead webhook error:', error));
 
-            // FIREBASE SMS DISABLED FOR TESTING
-            // Skip directly to calendar
-            goToStep(6);
-            loadAvailableDays();
+            // Send SMS verification
+            sendVerificationCode();
+        }
+
+        function sendVerificationCode() {
+            const phoneNumber = '+1' + formData.phone.replace(/\D/g, '');
+            document.getElementById('phoneDisplay').textContent = formData.phone;
+            
+            initRecaptcha();
+            
+            auth.signInWithPhoneNumber(phoneNumber, recaptchaVerifier)
+                .then((result) => {
+                    confirmationResult = result;
+                    console.log('SMS sent successfully');
+                    goToStep('5b');
+                    setupCodeInputs();
+                })
+                .catch((error) => {
+                    console.error('SMS error:', error);
+                    alert('Error sending verification code. Please try again.');
+                    // Reset reCAPTCHA
+                    recaptchaVerifier = null;
+                });
+        }
+
+        function setupCodeInputs() {
+            const inputs = document.querySelectorAll('.code-input');
+            inputs.forEach((input, index) => {
+                input.value = '';
+                input.addEventListener('input', (e) => {
+                    const value = e.target.value;
+                    if (value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                    // Auto-verify when all 6 digits entered
+                    if (index === 5 && value.length === 1) {
+                        verifyCode();
+                    }
+                });
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && input.value === '' && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
+                    pastedData.split('').forEach((char, i) => {
+                        if (inputs[i]) inputs[i].value = char;
+                    });
+                    if (pastedData.length === 6) verifyCode();
+                });
+            });
+            inputs[0].focus();
+        }
+
+        function verifyCode() {
+            const inputs = document.querySelectorAll('.code-input');
+            const code = Array.from(inputs).map(input => input.value).join('');
+            
+            if (code.length !== 6) {
+                document.getElementById('verifyError').textContent = 'Please enter all 6 digits';
+                document.getElementById('verifyError').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('verifyBtn').textContent = 'Verifying...';
+            document.getElementById('verifyBtn').disabled = true;
+
+            confirmationResult.confirm(code)
+                .then((result) => {
+                    console.log('Phone verified:', result.user);
+                    formData.phoneVerified = true;
+                    goToStep(6);
+                    loadAvailableDays();
+                })
+                .catch((error) => {
+                    console.error('Verification error:', error);
+                    document.getElementById('verifyError').textContent = 'Invalid code. Please try again.';
+                    document.getElementById('verifyError').style.display = 'block';
+                    document.getElementById('verifyBtn').textContent = 'Verify →';
+                    document.getElementById('verifyBtn').disabled = false;
+                });
+        }
+
+        function resendCode() {
+            recaptchaVerifier = null;
+            sendVerificationCode();
         }
 
         // Step 6: Calendar
