@@ -1886,8 +1886,9 @@
             .then(data => console.log('Lead webhook success:', data))
             .catch(error => console.error('Lead webhook error:', error));
 
-            // Send SMS verification
-            sendVerificationCode();
+            // FIREBASE SMS DISABLED - Skip directly to calendar
+            goToStep(6);
+            loadAvailableDays();
         }
 
         function sendVerificationCode() {
