@@ -1878,19 +1878,19 @@
             .then(data => console.log('Lead webhook success:', data))
             .catch(error => console.error('Lead webhook error:', error));
 
-            // FIREBASE SMS DISABLED - Skip directly to calendar
-            goToStep(6);
-            loadGHLCalendar();
+            // Send SMS verification
+            sendVerificationCode();
         }
 
         function loadGHLCalendar() {
             // Build URL with pre-filled contact info
             const baseUrl = 'https://api.leadconnectorhq.com/widget/booking/fxwC5DKwW1gi5FKFZM0z';
+            const phoneDigits = formData.phone.replace(/\D/g, '');
             const params = new URLSearchParams({
                 first_name: formData.fullName.split(' ')[0] || '',
                 last_name: formData.fullName.split(' ').slice(1).join(' ') || '',
                 email: formData.email,
-                phone: formData.phone.replace(/\D/g, '')
+                phone: '+1' + phoneDigits
             });
             
             const calendarUrl = `${baseUrl}?${params.toString()}`;
@@ -1967,7 +1967,7 @@
                     console.log('Phone verified:', result.user);
                     formData.phoneVerified = true;
                     goToStep(6);
-                    loadAvailableDays();
+                    loadGHLCalendar();
                 })
                 .catch((error) => {
                     console.error('Verification error:', error);
