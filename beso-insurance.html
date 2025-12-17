@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BESO Solutions - Insurance Lead Generation</title>
     
-    <!-- Meta Pixel Code - DISABLED FOR TESTING -->
-    <!--
+    <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -22,7 +21,7 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1873975266801560&ev=PageView&noscript=1"
     /></noscript>
-    -->
+    <!-- End Meta Pixel Code -->
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
@@ -1860,10 +1859,10 @@
                 email: email,
                 phone: '+1' + phone.replace(/\D/g, ''),
                 phoneFormatted: phone,
-                isLicensed: formData.isLicensed,
-                insuranceType: formData.insuranceType,
-                hasBudget: formData.hasBudget,
-                timeline: formData.timeline,
+                isLicensed: String(formData.isLicensed || ''),
+                insuranceType: String(formData.insuranceType || ''),
+                hasBudget: String(formData.hasBudget || ''),
+                timeline: String(formData.timeline || ''),
                 timestamp: new Date().toISOString()
             };
 
