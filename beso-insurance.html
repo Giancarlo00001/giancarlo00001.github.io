@@ -2057,14 +2057,39 @@
                 fbq('trackCustom', 'Schedule');
             }
 
-            console.log('Form submitted:', formData);
+            // Create appointment datetime in EST
+            const appointmentDateTimeISO = `${formData.selectedDate}T${formData.selectedTime}:00-05:00`;
+
+            // Send booking data to GHL
+            const bookingData = {
+                firstName: formData.fullName.split(' ')[0] || '',
+                lastName: formData.fullName.split(' ').slice(1).join(' ') || '',
+                email: formData.email,
+                phone: '+1' + formData.phone.replace(/\D/g, ''),
+                selectedDate: formData.selectedDate,
+                selectedTime: formData.selectedTime,
+                appointmentDateTimeISO: appointmentDateTimeISO,
+                calendarId: 'fxwC5DKwW1gi5FKFZM0z',
+                timestamp: new Date().toISOString()
+            };
+
+            console.log('Booking submitted:', bookingData);
+
+            fetch('https://services.leadconnectorhq.com/hooks/1B5lFlXreaYWShy8ZOKP/webhook-trigger/c4807583-df7a-49a7-9776-c28e2e0b1778', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bookingData)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Booking webhook success:', data))
+            .catch(error => console.error('Booking webhook error:', error));
 
             // Show confirmation
             const dateObj = new Date(formData.selectedDate + 'T12:00:00');
             const options = { weekday: 'long', month: 'long', day: 'numeric' };
             const formattedDate = dateObj.toLocaleDateString('en-US', options);
             
-            document.getElementById('bookingConfirmation').textContent = `${formattedDate} at ${formData.selectedTime}`;
+            document.getElementById('bookingConfirmation').textContent = `${formattedDate} at ${formData.selectedTime} EST`;
             
             document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
             document.getElementById('thankYou').classList.add('active');
