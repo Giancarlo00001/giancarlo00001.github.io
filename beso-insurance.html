@@ -1890,10 +1890,11 @@
                 first_name: formData.fullName.split(' ')[0] || '',
                 last_name: formData.fullName.split(' ').slice(1).join(' ') || '',
                 email: formData.email,
-                phone: '+1' + phoneDigits
+                phone: phoneDigits
             });
             
             const calendarUrl = `${baseUrl}?${params.toString()}`;
+            console.log('Calendar URL:', calendarUrl);
             document.getElementById('ghlCalendarIframe').src = calendarUrl;
         }
 
